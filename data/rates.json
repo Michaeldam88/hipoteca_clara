@@ -1,0 +1,246 @@
+{
+  "iva": 10,
+  "autonomous-region": [
+    {
+      "id": 1,
+      "name": "Andalucía",
+      "itp-prcg": 10,
+      "itp-reduction": [
+        "7 % para vivienda habitual de no más de 130.000 €.",
+        "3,5% para vivienda habitual de no más de 130.000 € destinada a un menor de 35 años, o de no más de 180.000 € destinada a una persona con discapacidad superior al 33 % o miembro de una familia numerosa."
+      ],
+      "adj-prcg": 1.5,
+      "adj-reduction": [
+        "0,3 % para vivienda habitual de menores de 35 si no supera los 130.000 €.",
+        "0,1 % para familia numerosa o personas con discapacidad superior al 33 % si no supera los 180.000 €."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Aragón",
+      "itp-prcg": 10,
+      "itp-reduction": [
+        "Bonificación del 12,5 % por vivienda habitual de no más de 100.000 € para menores de 35 años, con discapacidad superior al 65% o mujeres víctimas de violencia de género.",
+        "Bonificación del 50 % por compra de vivienda habitual para familias numerosas."
+      ],
+      "adj-prcg": 1.5,
+      "adj-reduction": [
+        "0,5 % para préstamos destinados a actuaciones protegidas de rehabilitación.",
+        "0,1 % para préstamos destinados a la eliminación de barreras arquitectónicas y adaptación funcional de la vivienda habitual de las personas con discapacidad."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Canarias",
+      "itp-prcg": 6.5,
+      "itp-reduction": [
+        "5 % para la compra de vivienda habitual. 1 % para la compra de vivienda habitual de familias numerosas o monoparentales y personas con discapacidad física.",
+        "20 % de bonificación para menores de 35 años y mujeres víctimas de violencia de género."
+      ],
+      "adj-prcg": 1,
+      "adj-reduction": [
+        "0,4 % para la adquisición de vivienda habitual de familias numerosas, menores de 35 años, personas con minusvalía, familias monoparentales, mujeres víctimas de violencia de género y vivienda protegida."
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Cantabria",
+      "itp-prcg": 10,
+      "itp-reduction": [
+        "5,5 % para vivienda protegida.",
+        "5 % para la compra de vivienda habitual de familias numerosas, menores de 30 años, personas con minusvalía superior al 33 % o viviendas que se vayan a rehabilitar.",
+        "4 % para la compra de vivienda habitual de personas con minusvalía superior al 65 %."
+      ],
+      "adj-prcg": 1.5,
+      "adj-reduction": [
+        "0,15% para personas con un grado de minusvalía igual o superior al 33% y para la compra de viviendas en localidades con peligro de despoblación."
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Castilla y León",
+      "itp-prcg": 8,
+      "itp-reduction": [
+        "4 % para la compra de vivienda habitual destinada a familia numerosa, adquiriente o familiar con discapacidad superior al 65%, primera vivienda de menores de 36 años o vivienda protegida si es la primera vivienda de los adquirientes."
+      ],
+      "adj-prcg": 1.5,
+      "adj-reduction": [
+        "0,01% para la adquisición de vivienda habitual en un municipio rural para menores de 36 años.",
+        "0,5 % para vivienda habitual de familias numerosas, personas con discapacidad superior al 65 %, menores de 36 años o vivienda protegida si es la primera vivienda de todos los adquirientes."
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Castilla-La Mancha",
+      "itp-prcg": 8,
+      "itp-reduction": [
+        "6 % para la compra de la primera vivienda habitual del contribuyente, siempre que no supere los 180.000 € y financie al menos el 50%."
+      ],
+      "adj-prcg": 1.5,
+      "adj-reduction": [
+        "0,75 % para primera vivienda habitual que no exceda de 180.000 € y se financie al menos un 50 %."
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Cataluña",
+      "itp-prcg": 11,
+      "itp-reduction": [
+        "7 % para viviendas de protección oficial.",
+        "5 % para familias numerosas, menores de 32 años o personas con minusvalía superior al 65 %."
+      ],
+      "adj-prcg": 1.5,
+      "adj-reduction": [
+        "0,5% para adquisición de vivienda habitual para menores de 33 años o adquisición de vivienda habitual para personas con discapacidad igual o superior al 33%."
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Ceuta",
+      "itp-prcg": 6,
+      "itp-reduction": [
+        "50 % de bonificación si el inmueble está situado en Ceuta."
+      ],
+      "adj-prcg": 1.5,
+      "adj-reduction": [
+        "50% de bonificación si el registro que deba proceder a la inscripción radique en Ceuta."
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Melilla",
+      "itp-prcg": 6,
+      "itp-reduction": [
+        "50 % de bonificación si el inmueble está situado en Melilla."
+      ],
+      "adj-prcg": 1.5,
+      "adj-reduction": [
+        "50% de bonificación si el registro que deba proceder a la inscripción radique en Melilla."
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Madrid",
+      "itp-prcg": 6,
+      "itp-reduction": [
+        "4 % para la compra de una vivienda habitual destinada a familia numerosa.",
+        "10 % de bonificación si se trata de la compra de una vivienda habitual."
+      ],
+      "adj-prcg": 0.75,
+      "adj-reduction": [
+        "0,2 % para VPO con una superficie de 90m2 cuando no cumplan los requisitos para la exención.",
+        "0,4 % para viviendas de nueva construcción e hipotecas inferiores a 120.000 €.",
+        "0,5 % para viviendas de nueva construcción e hipotecas inferiores a 180.000 €."
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Navarra",
+      "itp-prcg": 6,
+      "itp-reduction": [
+        "5 % para los primeros 180.303,63 € de una vivienda habitual destinada para familias de dos o más hijos."
+      ],
+      "adj-prcg": 0.5,
+      "adj-reduction": ["No tiene tipo reducido."]
+    },
+    {
+      "id": 12,
+      "name": "Valenciana",
+      "itp-prcg": 10,
+      "itp-reduction": [
+        "8 % para viviendas de protección pública de régimen general o primera vivienda habitual de menores de 35 años.",
+        "4% para viviendas habituales de protección oficial de régimen especial, familias numerosas o personas con un grado de minusvalía física superior al 65 % o psíquico superior al 33 %."
+      ],
+      "adj-prcg": 1.5,
+      "adj-reduction": [
+        "0,1 % para vivienda habitual y préstamos hipotecarios para vivienda habitual de familias numerosas y personas con un grado de discapacidad físico del 65 % o psíquico del 33 %."
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Extremadura",
+      "itp-prcg": 11,
+      "itp-reduction": [
+        "7 % para viviendas cuyo valor sea inferior a los 122.000 € y la suma de las bases imponibles general y del ahorro del contribuyente sea inferior a 19.000 € en declaración individual o 24.000 € en declaración conjunta.",
+        "4 % para viviendas de protección oficial con precio máximo legal."
+      ],
+      "adj-prcg": 1.5,
+      "adj-reduction": [
+        "0,75 % para la adquisición de vivienda habitual cuyo valor sea inferior a los 122.000 € y la suma de las bases imponibles general y del ahorro del contribuyente sea inferior a 19.000 € en declaración individual o 24.000 € en declaración conjunta.",
+        "0,1 % cuando se trate de viviendas con protección pública calificadas como viviendas medias, con las mismas limitaciones de renta."
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Galicia",
+      "itp-prcg": 10,
+      "itp-reduction": [
+        "7 % para la compra de la vivienda habitual de familias con patrimonio inferior a los 200.000 €.",
+        "3 % para la compra de la vivienda habitual de personas con minusvalía reconocida superior al 65 %, familia numerosa con patrimonio inferior a los 400.000 € o menores de 36 años con patrimonio inferior a los 200.000 €."
+      ],
+      "adj-prcg": 1.5,
+      "adj-reduction": [
+        "1 % para la primera adquisición de vivienda habitual.",
+        "0,5 % para la compra de la vivienda habitual de personas con minusvalía reconocida superior al 65 %, familia numerosa con patrimonio inferior a los 400.000 € o menores de 36 años con patrimonio inferior a los 200.000 €."
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Islas Baleares",
+      "itp-prcg": 11,
+      "itp-reduction": [
+        "5 % para la compra de la primera vivienda habitual, siempre que no supere los 200.000 €."
+      ],
+      "adj-prcg": 1.2,
+      "adj-reduction": [
+        "1,2 % para viviendas con un valor real inferior a 200.000 €."
+      ]
+    },
+    {
+      "id": 16,
+      "name": "La Rioja",
+      "itp-prcg": 7,
+      "itp-reduction": [
+        "5 % para viviendas de protección oficial y para la compra de la vivienda habitual de personas con discapacidad superior al 33 %, familias numerosas o primera vivienda habitual de jóvenes menores de 36 años.",
+        "3 % para la compra de la vivienda habitual para familias numerosas que hayan alcanzado esa consideración en los 5 años anteriores o menores de 36 años de edad en determinados municipios."
+      ],
+      "adj-prcg": 1,
+      "adj-reduction": [
+        "0,5 % para vivienda habitual de familia numerosa o personas con discapacidad superior al 33 %."
+      ]
+    },
+    {
+      "id": 17,
+      "name": "País Vasco",
+      "itp-prcg": 7,
+      "itp-reduction": [
+        "2,50 % para familias numerosas, viviendas de no más de 120 m2 (o 300m2 de parcela en unifamiliares) y compra de vivienda habitual."
+      ],
+      "adj-prcg": 0.5,
+      "adj-reduction": ["No tiene tipo reducido."]
+    },
+    {
+      "id": 18,
+      "name": "Asturias",
+      "itp-prcg": 10,
+      "itp-reduction": ["3 % para viviendas de protección oficial."],
+      "adj-prcg": 1.2,
+      "adj-reduction": [
+        "0,3 % para compra de viviendas efectuada por beneficiarios de ayudas económicas de la Administración para la adquisición de vivienda habitual."
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Murcia",
+      "itp-prcg": 8,
+      "itp-reduction": [
+        "4 % para viviendas protegidas de régimen especial.",
+        "3 % para vivienda habitual de familias numerosas o menores de 35 años, siempre que su valor no supere los 300.000 € en el primer caso y 150.000 € en el segundo."
+      ],
+      "adj-prcg": 1.5,
+      "adj-reduction": [
+        "0,1 % cuando se financie la primera transmisión de viviendas acogidas al Plan de vivienda joven de la Región de Murcia."
+      ]
+    }
+  ]
+}

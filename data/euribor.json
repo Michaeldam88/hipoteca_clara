@@ -1,0 +1,24 @@
+{
+  "2022": {
+    "January": -0.477,
+    "February": -0.335,
+    "March": -0.237,
+    "April": 0.013,
+    "May": 0.287,
+    "June": 0.852,
+    "July": 0.992,
+    "August": 1.249,
+    "September": 2.233,
+    "October": 2.629,
+    "November": 2.828,
+    "December": 3.018
+  },
+  "2023": {
+    "January": 3.337,
+    "February": 3.534,
+    "March": 3.647,
+    "April": 3.757,
+    "May": 3.862,
+    "June": 4.007
+  }
+}
