@@ -1,0 +1,87 @@
+@import "../../styles/variables.scss";
+button {
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+button.--primary,
+button.--primary-ghost,
+button.--default,
+button.--link {
+  text-align: center;
+  transition: all 0.35s;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  &.--size-medium {
+    height: 48px;
+    font-size: 1rem;
+  }
+
+  &.--size-big {
+    height: 56px;
+    font-size: 1.1rem;
+  }
+  &__element + &__element {
+    padding-left: 8px;
+  }
+}
+
+button.--default {
+  color: $--primaryColor;
+  background-color: $--primaryBackgroundColor;
+}
+
+button.--primary {
+  color: $--primaryColor;
+  border-color: $--primaryColor;
+  background-color: $--primaryBackgroundColor;
+
+  &[disabled] {
+    color: $--primaryColor;
+    opacity: 0.65;
+  }
+
+  &:not([disabled]):hover {
+    opacity: 0.9;
+    color: $--primaryColor;
+    background-color: $--primaryBackgroundColor;
+  }
+}
+
+button.--primary-ghost {
+  background: transparent;
+  color: $--primaryColor-ghost;
+  border-color: $--primaryColor-ghost;
+  &[disabled] {
+    opacity: 0.4;
+    color: $--primaryColor-ghost;
+  }
+
+  &:not([disabled]):hover {
+    opacity: 0.5;
+    color: $--primaryColor-ghost;
+    border-color: $--primaryColor-ghost;
+    background-color: transparent;
+  }
+}
+
+button.--link {
+  border: 0;
+  background: transparent;
+  color: $--primaryColor-ghost;
+  &:not([disabled]):hover {
+    background: transparent;
+    color: $--primaryColor-ghost;
+  }
+  &[disabled] {
+    opacity: 0.5;
+  }
+}

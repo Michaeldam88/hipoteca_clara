@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    domains: ["static.carrefour.es"],
+  }
+};
 
 module.exports = nextConfig;
