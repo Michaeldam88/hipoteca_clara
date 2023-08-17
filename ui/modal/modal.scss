@@ -3,7 +3,7 @@ $modal-vertical-padding: 10px;
 $modal-horizontal-padding: 16px;
 
 .modal {
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -30,7 +30,7 @@ $modal-horizontal-padding: 16px;
   }
   &__wrapper {
     height: fit-content;
-    max-height: 80vh;
+    max-height: 80dvh;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -45,7 +45,7 @@ $modal-horizontal-padding: 16px;
     animation-name: modalIn;
 
     @media (min-width: 576px) {
-      max-width: 24rem;
+      max-width: 35rem;
       border-radius: 16px;
     }
   }
@@ -119,4 +119,8 @@ $modal-horizontal-padding: 16px;
   100% {
     opacity: 0.8;
   }
+}
+
+.--open-modal{
+  overflow: hidden;
 }

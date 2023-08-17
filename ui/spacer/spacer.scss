@@ -1,9 +1,36 @@
+.--spacer-tiny {
+  width: 8px;
+  height: 8px;
+}
+.--spacer-smaller {
+  width: 10px;
+  height: 10px;
+}
 .--spacer-small {
   width: 12px;
   height: 12px;
 }
-
+.--spacer-medium {
+  width: 16px;
+  height: 16px;
+}
+.--spacer-large {
+  width: 24px;
+  height: 24px;
+}
 .--spacer-huge {
   width: 32px;
-  height: 32px;  
+  height: 32px;
+}
+.--spacer-xhuge {
+  width: 48px;
+  height: 48px;
+}
+.--spacer-giant {
+  width: 64px;
+  height: 64px;
+}
+.--spacer-enormous {
+  width: 80px;
+  height: 80px;
 }

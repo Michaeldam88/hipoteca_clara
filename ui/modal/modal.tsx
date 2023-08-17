@@ -29,15 +29,20 @@ const Modal = ({
 
   const startingPoint = useSignal<number | null>(null);
   const positionY = useSignal<number | null | undefined>(null);
-  const wrapperHeight = useSignal<number | null | undefined | "100vh" | "80vh">(
+  const wrapperHeight = useSignal<number | null | undefined | "100dvh" | "80dvh">(
     null
   );
   const upperFreeSpace = useSignal<number | null | undefined>(null);
   const backdropOpacity = useSignal(0.8);
   const activateCSSAnimations = useSignal(false);
 
+  const html = document?.querySelector("html");
+
+  const modalId = `--open-modal`;    
+
   const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     startingPoint.value = e?.touches[0]?.clientY || null;
+    html?.classList?.add(modalId);
   };
 
   const handleTouchMove = (
@@ -46,7 +51,6 @@ const Modal = ({
   ) => {
     const touch = e?.touches[0];
     handlePosition(touch?.clientY, opts);
-
     e?.target?.addEventListener(
       "touchend",
       handleTouchEnd as EventListenerOrEventListenerObject
@@ -67,9 +71,9 @@ const Modal = ({
   };
 
   const handleClose = () => {
-    enableCSSAnimations();
+    enableCSSAnimations();    
     positionY.value = window?.innerHeight;
-    backdropOpacity.value = 0;
+    backdropOpacity.value = 0;   
     onClose ? setTimeout(onClose, animationDuration) : null;
   };
 
@@ -128,7 +132,7 @@ const Modal = ({
     // If it has reached the top no-returning point the height go to 100%
     if (currentModalPosition < topNoReturnPoint) {
       enableCSSAnimations();
-      wrapperHeight.value = "100vh";
+      wrapperHeight.value = "100dvh";
       backdropOpacity.value = 0.8;
     }
 
@@ -139,7 +143,7 @@ const Modal = ({
       currentModalPosition > topNoReturnPoint
     ) {
       enableCSSAnimations();
-      wrapperHeight.value = "80vh";
+      wrapperHeight.value = "80dvh";
       backdropOpacity.value = 0.8;
     }
 
@@ -154,7 +158,8 @@ const Modal = ({
     );
   };
 
-  useEffect(() => {
+  useEffect(() => {    
+    html?.classList?.remove(modalId);
     if (startClosing) handleClose();
   });
 
@@ -162,7 +167,7 @@ const Modal = ({
     !isNaN(positionY.value || 0) ? `${positionY.value}px` : positionY.value;
 
   const modalHeight = () => {
-    if (wrapperHeight.value === "100vh" || wrapperHeight.value === "80vh") {
+    if (wrapperHeight.value === "100dvh" || wrapperHeight.value === "80dvh") {
       return wrapperHeight.value;
     } else {
       return !isNaN(wrapperHeight.value || 0)

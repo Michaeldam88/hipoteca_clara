@@ -6,6 +6,7 @@ import Button from "@/ui/button/button";
 import Modal from "@/ui/modal/modal";
 import { useState } from "react";
 import Avatar from "@/ui/avatar/avatar";
+import { Spacer } from "@/ui/spacer/spacer";
 
 export default function Home() {
   const [modal, setModal] = useState(false);
@@ -36,6 +37,7 @@ export default function Home() {
             onClick={() => setModal(true)}
           />
         </div>
+        <Spacer size="medium"></Spacer>
         <div>
           <Button
             preset="primary"
@@ -45,6 +47,7 @@ export default function Home() {
             onClick={() => setModal2(true)}
           />
         </div>
+        <Spacer size="medium"></Spacer>
         <div>
           <Button
             preset="primary"
@@ -60,6 +63,7 @@ export default function Home() {
         <div>
           <Button preset="primary" text={"Primary"} disabled={true} />
         </div>
+        <Spacer size="medium"></Spacer>
         <div>
           <Button
             preset="primary"
@@ -68,6 +72,7 @@ export default function Home() {
             size="medium"
           />
         </div>
+        <Spacer size="medium"></Spacer>
         <div>
           <Button
             preset="primary"
@@ -82,6 +87,7 @@ export default function Home() {
         <div>
           <Button preset="primary-ghost" text={"Ghost"} disabled={false} />
         </div>
+        <Spacer size="medium"></Spacer>
         <div>
           <Button
             preset="primary-ghost"
@@ -90,6 +96,7 @@ export default function Home() {
             size="medium"
           />
         </div>
+        <Spacer size="medium"></Spacer>
         <div>
           <Button
             preset="primary-ghost"
@@ -104,6 +111,7 @@ export default function Home() {
         <div>
           <Button preset="primary-ghost" text={"Ghost"} disabled={true} />
         </div>
+        <Spacer size="medium"></Spacer>
         <div>
           <Button
             preset="primary-ghost"
@@ -112,6 +120,7 @@ export default function Home() {
             size="medium"
           />
         </div>
+        <Spacer size="medium"></Spacer>
         <div>
           <Button
             preset="primary-ghost"
@@ -125,9 +134,11 @@ export default function Home() {
         <div>
           <Button preset="link" text={"Link"} disabled={false} />
         </div>
+        <Spacer size="medium"></Spacer>
         <div>
           <Button preset="link" text={"Link"} disabled={false} size="medium" />
         </div>
+        <Spacer size="medium"></Spacer>
         <div>
           <Button preset="link" text={"Link"} disabled={false} size="big" />
         </div>
@@ -137,9 +148,11 @@ export default function Home() {
         <div>
           <Button preset="link" text={"Link"} disabled={true} />
         </div>
+        <Spacer size="medium"></Spacer>
         <div>
           <Button preset="link" text={"Link"} disabled={true} size="medium" />
         </div>
+        <Spacer size="medium"></Spacer>
         <div>
           <Button preset="link" text={"Link"} disabled={true} size="big" />
         </div>

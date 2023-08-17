@@ -1,3 +1,7 @@
+* {
+  overscroll-behavior: none;
+}
+
 .--flex {
   display: flex;
 }
@@ -26,12 +30,10 @@
   text-transform: lowercase;
 }
 
-.--align-center{
+.--align-center {
   text-align: center;
-
 }
 
-.--align-right{
+.--align-right {
   text-align: right;
-
 }
