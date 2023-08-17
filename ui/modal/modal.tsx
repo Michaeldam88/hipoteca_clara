@@ -29,20 +29,22 @@ const Modal = ({
 
   const startingPoint = useSignal<number | null>(null);
   const positionY = useSignal<number | null | undefined>(null);
-  const wrapperHeight = useSignal<number | null | undefined | "100dvh" | "80dvh">(
-    null
-  );
+  const wrapperHeight = useSignal<
+    number | null | undefined | "100dvh" | "80dvh"
+  >(null);
   const upperFreeSpace = useSignal<number | null | undefined>(null);
   const backdropOpacity = useSignal(0.8);
   const activateCSSAnimations = useSignal(false);
 
   const html = document?.querySelector("html");
 
-  const modalId = `--open-modal`;    
+  const modalId = `--open-modal`;
+
+  //html?.classList?.add(modalId);
+  // html?.classList?.remove(modalId);
 
   const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     startingPoint.value = e?.touches[0]?.clientY || null;
-    html?.classList?.add(modalId);
   };
 
   const handleTouchMove = (
@@ -71,9 +73,11 @@ const Modal = ({
   };
 
   const handleClose = () => {
-    enableCSSAnimations();    
+    console.log("unmount");
+    html?.classList?.remove(modalId);
+    enableCSSAnimations();
     positionY.value = window?.innerHeight;
-    backdropOpacity.value = 0;   
+    backdropOpacity.value = 0;
     onClose ? setTimeout(onClose, animationDuration) : null;
   };
 
@@ -158,8 +162,10 @@ const Modal = ({
     );
   };
 
-  useEffect(() => {    
-    html?.classList?.remove(modalId);
+  useEffect(() => {
+    console.log("mount");
+    html?.classList?.add(modalId);
+    
     if (startClosing) handleClose();
   });
 
