@@ -35,16 +35,18 @@ const Modal = ({
   const upperFreeSpace = useSignal<number | null | undefined>(null);
   const backdropOpacity = useSignal(0.8);
   const activateCSSAnimations = useSignal(false);
+  const overflow = useSignal<"hidden" | "auto">("auto");
+  const initialWrapElementHeight = useSignal<number>(0);
 
   const html = document?.querySelector("html");
-
   const modalId = `--open-modal`;
-
-  //html?.classList?.add(modalId);
-  // html?.classList?.remove(modalId);
 
   const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     startingPoint.value = e?.touches[0]?.clientY || null;
+    const wrapElement = document?.querySelector(".modal__wrapper");
+
+    initialWrapElementHeight.value =
+      wrapElement?.getBoundingClientRect()?.height || 0;
   };
 
   const handleTouchMove = (
@@ -73,8 +75,6 @@ const Modal = ({
   };
 
   const handleClose = () => {
-    console.log("unmount");
-    html?.classList?.remove(modalId);
     enableCSSAnimations();
     positionY.value = window?.innerHeight;
     backdropOpacity.value = 0;
@@ -91,7 +91,6 @@ const Modal = ({
     const wrapElementHeight = wrapElement?.getBoundingClientRect()?.height || 0;
     upperFreeSpace.value = window?.innerHeight - wrapElementHeight;
     const shouldForce = opts?.force || false;
-
     const movement = touchPositionY - (startingPoint.value || 0);
 
     // move below
@@ -102,15 +101,15 @@ const Modal = ({
         return;
       }
 
-      const sum =
+      const newMaxHeight =
         wrapElementHeight + ((startingPoint.value || 0) - touchPositionY);
       startingPoint.value = touchPositionY;
-      wrapperHeight.value = Math.round(sum);
+      wrapperHeight.value = Math.round(newMaxHeight);
 
-      const offset =
-        (wrapElement?.getBoundingClientRect()?.y || 0) - upperFreeSpace.value;
-
-      let opacity = +(0.8 - (0.8 / wrapElementHeight) * offset).toFixed(2);
+      let opacity = +(
+        (0.8 / initialWrapElementHeight.value) *
+        wrapElementHeight
+      ).toFixed(2);
 
       opacity = opacity < 0 ? 0 : opacity;
       opacity = opacity > 0.8 ? 0.8 : opacity;
@@ -118,12 +117,19 @@ const Modal = ({
       backdropOpacity.value = opacity;
     }
 
+    // this will lock the scroll upward until when the modal is at fullscreen
+    if (wrapElementHeight < window?.innerHeight && movement < 0) {
+      overflow.value = "hidden";
+    } else {
+      overflow.value = "auto";
+    }
+
     // upper extend
     if (movement < 0 && (wrapElement?.getBoundingClientRect()?.y || 0) > 0) {
-      const sum =
-        wrapElementHeight + ((startingPoint.value || 0) - touchPositionY);
-      startingPoint.value = touchPositionY;
-      wrapperHeight.value = Math.round(sum);
+      const newMaxHeight =
+        initialWrapElementHeight.value +
+        ((startingPoint.value || 0) - touchPositionY);
+      wrapperHeight.value = Math.round(newMaxHeight);
     }
   };
 
@@ -163,10 +169,12 @@ const Modal = ({
   };
 
   useEffect(() => {
-    console.log("mount");
     html?.classList?.add(modalId);
-    
     if (startClosing) handleClose();
+
+    return () => {
+      html?.classList?.remove(modalId);
+    };
   });
 
   const modalYPosition = () =>
@@ -225,6 +233,9 @@ const Modal = ({
             className="modal__content"
             onTouchStart={touchStart}
             onTouchMove={(e) => handleTouchMove(e, { force: false })}
+            style={{
+              overflow: `${overflow.value}`,
+            }}
           >
             {content}
           </div>
