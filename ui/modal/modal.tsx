@@ -33,18 +33,21 @@ const Modal = ({
     number | null | undefined | "100dvh" | "80dvh"
   >(null);
   const upperFreeSpace = useSignal<number | null | undefined>(null);
-  const backdropOpacity = useSignal(0.8);
+  const backdropOpacity = useSignal(0.7);
   const activateCSSAnimations = useSignal(false);
   const overflow = useSignal<"hidden" | "auto">("auto");
   const initialWrapElementHeight = useSignal<number>(0);
+  const initialTimeStamp = useSignal<number>(0);
 
   const html = document?.querySelector("html");
   const modalId = `--open-modal`;
 
   const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     startingPoint.value = e?.touches[0]?.clientY || null;
-    const wrapElement = document?.querySelector(".modal__wrapper");
 
+    initialTimeStamp.value = e?.timeStamp;
+
+    const wrapElement = document?.querySelector(".modal__wrapper");
     initialWrapElementHeight.value =
       wrapElement?.getBoundingClientRect()?.height || 0;
   };
@@ -107,12 +110,12 @@ const Modal = ({
       wrapperHeight.value = Math.round(newMaxHeight);
 
       let opacity = +(
-        (0.8 / initialWrapElementHeight.value) *
+        (0.7 / initialWrapElementHeight.value) *
         wrapElementHeight
       ).toFixed(2);
 
       opacity = opacity < 0 ? 0 : opacity;
-      opacity = opacity > 0.8 ? 0.8 : opacity;
+      opacity = opacity > 0.7 ? 0.7 : opacity;
 
       backdropOpacity.value = opacity;
     }
@@ -143,7 +146,7 @@ const Modal = ({
     if (currentModalPosition < topNoReturnPoint) {
       enableCSSAnimations();
       wrapperHeight.value = "100dvh";
-      backdropOpacity.value = 0.8;
+      backdropOpacity.value = 0.7;
     }
 
     // If it has not reached the low or top no-returning point when the touch ends
@@ -154,13 +157,19 @@ const Modal = ({
     ) {
       enableCSSAnimations();
       wrapperHeight.value = "80dvh";
-      backdropOpacity.value = 0.8;
+      backdropOpacity.value = 0.7;
     }
 
     // If the modal reaches the not returning point it is moved to the bottom of the screen and closed when the animation is finished
     if (currentModalPosition > lowNoReturnPoint) {
       handleClose();
     }
+    
+    
+    //close the modal if there is a fast swipe down
+    if (e.timeStamp - initialTimeStamp.value < 800) {      
+      handleClose();
+    };
 
     e?.target?.removeEventListener(
       "touchend",
