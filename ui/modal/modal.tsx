@@ -130,8 +130,8 @@ const Modal = ({
     // upper extend
     if (movement < 0 && (wrapElement?.getBoundingClientRect()?.y || 0) > 0) {
       const newMaxHeight =
-        initialWrapElementHeight.value +
-        ((startingPoint.value || 0) - touchPositionY);
+        wrapElementHeight + ((startingPoint.value || 0) - touchPositionY);
+      startingPoint.value = touchPositionY;
       wrapperHeight.value = Math.round(newMaxHeight);
     }
   };
@@ -139,6 +139,9 @@ const Modal = ({
   const handleTouchEnd = (e: TouchEvent) => {
     const topNoReturnPoint = getTopNoReturnPoint();
     const lowNoReturnPoint = getLowNoReturnPoint();
+    
+    const wrapElement = document?.querySelector(".modal__wrapper");
+    const wrapElementHeight = wrapElement?.getBoundingClientRect()?.height || 0;
 
     const currentModalPosition = upperFreeSpace.value || 0;
 
@@ -164,12 +167,14 @@ const Modal = ({
     if (currentModalPosition > lowNoReturnPoint) {
       handleClose();
     }
-    
-    
+
     //close the modal if there is a fast swipe down
-    if (e.timeStamp - initialTimeStamp.value < 800) {      
-      handleClose();
-    };
+    if (
+      e.timeStamp - initialTimeStamp.value < 500 &&
+      initialWrapElementHeight.value - wrapElementHeight > 60
+    ) {
+      handleClose();;
+    }
 
     e?.target?.removeEventListener(
       "touchend",
