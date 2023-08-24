@@ -170,9 +170,10 @@ const Modal = ({
 
     //close the modal if there is a fast swipe down
     if (
-      e.timeStamp - initialTimeStamp.value < 500 &&
-      initialWrapElementHeight.value - wrapElementHeight > 60
+      e.timeStamp - initialTimeStamp.value < 150 &&
+      initialWrapElementHeight.value - wrapElementHeight > 100
     ) {
+      console.log(e.timeStamp - initialTimeStamp.value);
       handleClose();;
     }
 
