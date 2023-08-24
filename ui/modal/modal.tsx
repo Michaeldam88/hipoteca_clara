@@ -139,7 +139,7 @@ const Modal = ({
   const handleTouchEnd = (e: TouchEvent) => {
     const topNoReturnPoint = getTopNoReturnPoint();
     const lowNoReturnPoint = getLowNoReturnPoint();
-    
+
     const wrapElement = document?.querySelector(".modal__wrapper");
     const wrapElementHeight = wrapElement?.getBoundingClientRect()?.height || 0;
 
@@ -150,6 +150,7 @@ const Modal = ({
       enableCSSAnimations();
       wrapperHeight.value = "100dvh";
       backdropOpacity.value = 0.7;
+      overflow.value = "auto";
     }
 
     // If it has not reached the low or top no-returning point when the touch ends
@@ -171,10 +172,9 @@ const Modal = ({
     //close the modal if there is a fast swipe down
     if (
       e.timeStamp - initialTimeStamp.value < 150 &&
-      initialWrapElementHeight.value - wrapElementHeight > 100
+      initialWrapElementHeight.value - wrapElementHeight > 60
     ) {
-      console.log(e.timeStamp - initialTimeStamp.value);
-      handleClose();;
+      handleClose();
     }
 
     e?.target?.removeEventListener(
