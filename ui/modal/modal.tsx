@@ -118,17 +118,15 @@ const Modal = ({
       opacity = opacity > 0.7 ? 0.7 : opacity;
 
       backdropOpacity.value = opacity;
-    }
-
-    // this will lock the scroll upward until when the modal is at fullscreen
-    if (wrapElementHeight < window?.innerHeight && movement < 0) {
-      overflow.value = "hidden";
-    } else {
-      overflow.value = "auto";
-    }
+    }  
 
     // upper extend
     if (movement < 0 && (wrapElement?.getBoundingClientRect()?.y || 0) > 0) {
+      // this will lock the scroll upward until when the modal is at fullscreen
+      if (wrapElementHeight < window?.innerHeight) {
+        overflow.value = "hidden";
+      } 
+
       const newMaxHeight =
         wrapElementHeight + ((startingPoint.value || 0) - touchPositionY);
       startingPoint.value = touchPositionY;
@@ -162,6 +160,7 @@ const Modal = ({
       enableCSSAnimations();
       wrapperHeight.value = "80dvh";
       backdropOpacity.value = 0.7;
+      overflow.value = "auto";
     }
 
     // If the modal reaches the not returning point it is moved to the bottom of the screen and closed when the animation is finished
