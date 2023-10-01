@@ -1,4 +1,83 @@
-$--primaryColor: #ffffff;
-$--secondaryColor: #201f1f;
-$--primaryBackgroundColor: #201f1f;
-$--primaryColor-ghost: #696969;
+// Colors
+
+$color-neutral-0: rgb(0, 0, 0);
+$color-neutral-25: rgb(8, 8, 8);
+$color-neutral-50: rgb(16, 16, 16);
+$color-neutral-75: rgb(24, 24, 24);
+$color-neutral-100: rgb(32, 32, 32);
+$color-neutral-125: rgb(40, 40, 40);
+$color-neutral-150: rgb(48, 48, 48);
+$color-neutral-175: rgb(56, 56, 56);
+$color-neutral-200: rgb(64, 64, 64);
+$color-neutral-225: rgb(72, 72, 72);
+$color-neutral-250: rgb(80, 80, 80);
+$color-neutral-275: rgb(88, 88, 88);
+$color-neutral-300: rgb(96, 96, 96);
+$color-neutral-325: rgb(104, 104, 104);
+$color-neutral-350: rgb(105, 105, 105);
+$color-neutral-375: rgb(112, 112, 112);
+$color-neutral-400: rgb(120, 120, 120);
+$color-neutral-425: rgb(128, 128, 128);
+$color-neutral-450: rgb(136, 136, 136);
+$color-neutral-475: rgb(144, 144, 144);
+$color-neutral-500: rgb(152, 152, 152);
+$color-neutral-525: rgb(160, 160, 160);
+$color-neutral-550: rgb(168, 168, 168);
+$color-neutral-575: rgb(169, 169, 169);
+$color-neutral-600: rgb(176, 176, 176);
+$color-neutral-625: rgb(184, 184, 184);
+$color-neutral-650: rgb(190, 190, 190);
+$color-neutral-675: rgb(192, 192, 192);
+$color-neutral-700: rgb(200, 200, 200);
+$color-neutral-725: rgb(208, 208, 208);
+$color-neutral-750: rgb(211, 211, 211);
+$color-neutral-775: rgb(216, 216, 216);
+$color-neutral-800: rgb(220, 220, 220);
+$color-neutral-825: rgb(224, 224, 224);
+$color-neutral-850: rgb(232, 232, 232);
+$color-neutral-875: rgb(240, 240, 240);
+$color-neutral-900: rgb(245, 245, 245);
+$color-neutral-925: rgb(248, 248, 248);
+$color-neutral-950: rgb(255, 255, 255);
+
+// Primary color
+
+$text-color: #ffffff;
+
+//$color-primary-0: #FFFFFF;
+$color-primary-25: #f8fcfc;
+//$color-primary-50: #DDEEEF;
+$color-primary-75: #87a1a3;
+$color-primary-100: #4f7476;
+$color-primary-125: #9DBFCE;
+$color-primary-150: #193a48;
+$color-primary-175: #41676F;
+$color-primary-200: #081318;
+$color-primary-225: #32636D;
+//$color-primary-250: #f0b761;
+$color-primary-275: #f3b14e;
+//$color-primary-300: #CD463E;
+//$color-primary-325: #DBEEF8;
+$color-primary-350: #e0e0e0;
+//$color-primary-375: #190422;
+//$color-primary-400: #060108;
+
+$bk-tablet-sm: 576px;
+$bk-tablet: 768px;
+$bk-desktop: 1024px;
+$bk-desktop-xl: 1200px;
+$bk-desktop-xxl: 1440px;
+$bk-desktop-huge: 1600px;
+
+// Border radius
+$radius-small: 8px;
+$radius-medium-plus: 10px;
+$radius-large: 12px;
+$app-border-radius: 8px;
+
+// Form and button heights
+$form-height-small: 44px;
+$form-height-medium: 48px;
+$form-height-big: 56px;
+
+

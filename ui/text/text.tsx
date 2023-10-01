@@ -17,13 +17,13 @@ interface TextProps {
   preset: TextPreset;
   text: String;
   weight?: "bold";
-  color?: "subtle" | "ultraSubtle";
+  color?: "subtle" | "ultra-subtle";
   transform?: "uppercase" | "capitalize" | "lowercase";
   align?: "align-center" | "align-right";
 }
 
 const Text = ({ preset, text, weight, color, transform, align }: TextProps) => {
-  const textStyle = [weight, color, transform, align].reduce(
+  const textStyle = [preset, weight, color, transform, align].reduce(
     (acc, currentValue) => (currentValue ? acc + ` --${currentValue}` : acc),
     "--text"
   );

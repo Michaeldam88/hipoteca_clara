@@ -39,8 +39,8 @@ $modal-horizontal-padding: 16px;
     flex-direction: column;
     margin: 0 auto;
     z-index: 1;
-    color: $--primaryColor;
-    background-color: $--primaryBackgroundColor;
+    color: $text-color;
+    background-color: $color-primary-175;
     animation-duration: 0.3s;
     animation-name: modalIn;
 
@@ -56,8 +56,8 @@ $modal-horizontal-padding: 16px;
     position: relative;
     span {
       display: block;
-      height: 4px;
-      width: 5rem;
+      height: 8px;
+      width: 8rem;
       background-color: rgba(0, 0, 0, 0.4);
       border-radius: 6px;
     }
@@ -99,6 +99,11 @@ $modal-horizontal-padding: 16px;
       height: 100%;
     }
   }
+}
+
+.--open-modal {
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 @keyframes modalIn {

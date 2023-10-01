@@ -1,9 +1,35 @@
-.--subtle {
-  color: rgb(126, 126, 126);
+@import "../../styles/variables.scss";
+
+.--headline1 {
+  font-size: 32px;
 }
 
-.--ultraSubtle {
-  color: rgb(198, 198, 198);
+.--headline2 {
+  font-size: 24px;
+}
+
+.--headline3 {
+  font-size: 22px;
+}
+
+.--headline4 {
+  font-size: 20px;
+}
+
+.--headline5 {
+  font-size: 18px;
+}
+
+.--small {
+  font-size: 16px;
+}
+
+.--subtle {
+  color: $color-primary-75;
+}
+
+.--ultra-subtle {
+  color: $color-primary-75;
 }
 
 .--text {

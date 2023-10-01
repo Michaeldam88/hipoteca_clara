@@ -8,81 +8,70 @@ button.--primary,
 button.--primary-ghost,
 button.--default,
 button.--link {
-  text-align: center;
-  transition: all 0.35s;
   width: 100%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.875rem;
   border: solid 1px;
+  border-radius: 6px;
   &[disabled] {
     cursor: not-allowed;
   }
-
-  &.--size-medium {
-    height: 48px;
+  &.--size-normal {
+    height: 42px;
     font-size: 1rem;
   }
 
+  &.--size-medium {
+    height: 60px;
+    font-size: 1.125rem;
+  }
+
   &.--size-big {
-    height: 56px;
-    font-size: 1.1rem;
+    height: 80px;
+    font-size: 1.25rem;
   }
   &__element + &__element {
     padding-left: 8px;
   }
 }
 
+button.--has-title {
+  text-align: center;
+  font-weight: bold;
+}
+
 button.--default {
-  color: $--primaryColor;
-  background-color: $--primaryBackgroundColor;
+  color: $text-color;
+  background-color: $color-primary-200;
 }
 
 button.--primary {
-  color: $--primaryColor;
-  border-color: $--primaryColor;
-  background-color: $--primaryBackgroundColor;
+  color: $text-color;
+  border-color: $color-primary-200;
+  background-color: $color-primary-200;
 
   &[disabled] {
-    color: $--primaryColor;
+    color: $color-primary-100;
     opacity: 0.65;
   }
 
   &:not([disabled]):hover {
-    opacity: 0.9;
-    color: $--primaryColor;
-    background-color: $--primaryBackgroundColor;
+    opacity: 0.8;
+    color: $text-color;
+    background-color: $color-primary-200;
+  }
+
+  &:not([disabled]):active {
+    opacity: 0.7;
+    color: $text-color;
+    background-color: $color-primary-200;
   }
 }
 
-button.--primary-ghost {
-  background: transparent;
-  color: $--primaryColor-ghost;
-  border-color: $--primaryColor-ghost;
-  &[disabled] {
-    opacity: 0.4;
-    color: $--primaryColor-ghost;
-  }
-
-  &:not([disabled]):hover {
-    opacity: 0.5;
-    color: $--primaryColor-ghost;
-    border-color: $--primaryColor-ghost;
-    background-color: transparent;
-  }
-}
-
-button.--link {
-  border: 0;
-  background: transparent;
-  color: $--primaryColor-ghost;
-  &:not([disabled]):hover {
-    background: transparent;
-    color: $--primaryColor-ghost;
-  }
-  &[disabled] {
-    opacity: 0.5;
-  }
+button.--primary-ghost{
+  background-color: transparent;
+  border: 1px solid $color-primary-350;
+  color: $text-color;
 }
