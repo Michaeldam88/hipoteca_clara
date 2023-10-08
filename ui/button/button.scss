@@ -1,7 +1,8 @@
 @import "../../styles/variables.scss";
+
 button {
   padding: 6px 12px;
-  border-radius: 8px;
+  border-radius: $radius-small;
 }
 
 button.--primary,
@@ -14,7 +15,6 @@ button.--link {
   align-items: center;
   justify-content: center;
   border: solid 1px;
-  border-radius: 6px;
   &[disabled] {
     cursor: not-allowed;
   }
@@ -70,7 +70,7 @@ button.--primary {
   }
 }
 
-button.--primary-ghost{
+button.--primary-ghost {
   background-color: transparent;
   border: 1px solid $color-primary-350;
   color: $text-color;

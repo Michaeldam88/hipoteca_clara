@@ -1,0 +1,17 @@
+@import "../../styles/variables.scss";
+
+.list-element {
+  padding: 10px 0;
+  
+  &--first {
+    border-top: none;
+  }
+}
+
+.list-element--normal {
+  border-top: 1px solid $color-primary-175;
+}
+
+.list-element--subtle {
+  border-top: 2px solid $color-primary-225;
+}
