@@ -1,0 +1,14 @@
+@import "../../styles/variables.scss";
+
+.select-button {
+  background-color: transparent;
+  border: 1px solid $color-primary-350;
+  color: $text-color;
+  height: 60px;
+  font-size: 1rem;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}

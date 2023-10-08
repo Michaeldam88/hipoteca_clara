@@ -1,31 +1,38 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import Text from "@/ui/text/text";
-import Button from "@/ui/button/button";
 import Spacer from "@/ui/spacer/spacer";
 import Modal from "@/ui/modal/modal";
 import List from "@/ui/list/list";
+import "./selectModal.scss";
 
-const SelectModal = ({ elements }: { elements: string[] }) => {
+const SelectModal = ({
+  options,
+  setOption,
+}: {
+  options: {
+    id: number;
+    value: string;
+  }[];
+  setOption: (value: string) => void;
+}) => {
   const [modal, setModal] = useState(false);
-  const [buttonText, setButtonText] = useState("-- Choose a country --");
   const [startClosingModal, setStartClosingModal] = useState(false);
 
-  const handleClick = (value:string) => {
+  const [buttonText, setButtonText] = useState("-- Choose a country --");
+
+  const handleClick = (value: string) => {
     setButtonText(value);
-    setStartClosingModal(true);    
+    setStartClosingModal(true);
+    setOption(value);
   };
 
   return (
     <>
       <Text text="Choose a Country:" preset="small" />
       <Spacer />
-      <Button
-        text={buttonText}
-        preset="primary-ghost"
-        type="button"
-        size="medium"
-        onClick={() => setModal(true)}
-      />
+      <button className="select-button" onClick={() => setModal(true)}>
+        {buttonText}
+      </button>
 
       {modal && (
         <Modal
@@ -41,11 +48,7 @@ const SelectModal = ({ elements }: { elements: string[] }) => {
             />
           }
           content={
-            <List
-              elements={elements}
-              color="subtle"
-              extraAction={handleClick}
-            />
+            <List elements={options} color="subtle" extraAction={handleClick} />
           }
           startClosing={startClosingModal}
         />

@@ -1,7 +1,7 @@
 "use client";
 
 import Spacer from "@/ui/spacer/spacer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./seeComponents.scss";
 import Text from "@/ui/text/text";
 import Button from "@/ui/button/button";
@@ -12,18 +12,41 @@ import SelectModal from "@/ui/selectModal/selectModal";
 import List from "@/ui/list/list";
 
 export default function SeeComponents() {
-  const options = [
-    { label: "Yes", subLabel: "All the little details" },
-    { label: "No", subLabel: "All the little details" },
-    { label: "Unknown", subLabel: "" },
+  const radioOptions = [
+    { id: 1001, label: "Yes", subLabel: "All the little details" },
+    { id: 1002, label: "No", subLabel: "All the little details" },
+    { id: 1003, label: "Unknown" },
   ];
 
-  const countryOptions = ["Spain", "Italy", "Portugal", "Germany"];
+  const countryOptions = [
+    { id: 2001, value: "Spain" },
+    { id: 2002, value: "Italy" },
+    { id: 2003, value: "Portugal" },
+    { id: 2004, value: "Germany" },
+  ];
 
-  const [option, setOption] = useState("");
+  const [radioOption, setRadioOption] = useState("");
   const [countryOption, setCountryOption] = useState("");
+  const [countryOptionModal, setCountryOptionModal] = useState("");
+
   const [modal, setModal] = useState(false);
   const [startClosingModal, setStartClosingModal] = useState(false);
+
+  const getRadioOption = (value: string) => {
+    setRadioOption(value);
+  };
+
+  const getCountryOption = (value: string) => {
+    setCountryOption(value);
+  };
+
+  const getCountryOptionModal = (value: string) => {
+    setCountryOptionModal(value);
+  };
+
+  useEffect(() => {
+    console.log(radioOption, countryOption, countryOptionModal);
+  }, [radioOption, countryOption, countryOptionModal]);
 
   return (
     <main className="container">
@@ -98,9 +121,9 @@ export default function SeeComponents() {
       <p>Radio Button</p>
       <Spacer />
       <RadioButton
-        options={options}
+        options={radioOptions}
         name="Confirm Radio"
-        setOption={setOption}
+        setOption={getRadioOption}
       />
       <Spacer />
       <p>Select</p>
@@ -108,12 +131,12 @@ export default function SeeComponents() {
       <Select
         name="country-select"
         options={countryOptions}
-        setOption={setCountryOption}
+        setOption={getCountryOption}
       />
       <Spacer />
       <p>Modal Select</p>
       <Spacer />
-      <SelectModal elements={countryOptions} />
+      <SelectModal options={countryOptions} setOption={getCountryOptionModal} />
       <Spacer />
       <p>Modal</p>
       <Spacer />

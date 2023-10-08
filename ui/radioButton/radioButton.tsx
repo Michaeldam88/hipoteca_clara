@@ -6,12 +6,9 @@ const RadioButton = ({
   name,
   setOption,
 }: {
-  options: {
-    label: string;
-    subLabel: string;
-  }[];
+  options: { id: number; label: string; subLabel?: string }[];
   name: string;
-  setOption: React.Dispatch<React.SetStateAction<string>>;
+  setOption: (value: string) => void;
 }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setOption(event.target.value);
@@ -20,7 +17,7 @@ const RadioButton = ({
   return (
     <div className="radio-input" onChange={handleChange}>
       {options.map((option) => (
-        <label className="radio-label" key={option.label}>
+        <label className="radio-label" key={option.id}>
           <div>
             <p className="radio-label__main">{option.label}</p>
             {option.subLabel && (

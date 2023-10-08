@@ -5,9 +5,9 @@ const Select = ({
   name,
   setOption,
 }: {
-  options: string[];
+  options: { id: number; value: string }[];
   name: string;
-  setOption: React.Dispatch<React.SetStateAction<string>>;
+  setOption: (value: string) => void;
 }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setOption(event.target.value);
@@ -22,8 +22,12 @@ const Select = ({
             -- Choose a country --
           </option>
           {options.map((option) => (
-            <option className="select-option" value={option} key={option}>
-              {option}
+            <option
+              className="select-option"
+              value={option.value}
+              key={option.id}
+            >
+              {option.value}
             </option>
           ))}
         </select>
