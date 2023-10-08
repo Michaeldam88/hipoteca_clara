@@ -10,6 +10,7 @@ import Select from "@/ui/select/select";
 import Modal from "@/ui/modal/modal";
 import SelectModal from "@/ui/selectModal/selectModal";
 import List from "@/ui/list/list";
+import Input from "@/ui/textInput/input";
 
 export default function SeeComponents() {
   const radioOptions = [
@@ -28,6 +29,7 @@ export default function SeeComponents() {
   const [radioOption, setRadioOption] = useState("");
   const [countryOption, setCountryOption] = useState("");
   const [countryOptionModal, setCountryOptionModal] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
   const [modal, setModal] = useState(false);
   const [startClosingModal, setStartClosingModal] = useState(false);
@@ -44,9 +46,15 @@ export default function SeeComponents() {
     setCountryOptionModal(value);
   };
 
+  const inputRight = "€";
+
+  const getInputValue = (value: string) => {
+    setInputValue(value);
+  };
+
   useEffect(() => {
-    console.log(radioOption, countryOption, countryOptionModal);
-  }, [radioOption, countryOption, countryOptionModal]);
+    console.log(radioOption, countryOption, countryOptionModal, inputValue);
+  }, [radioOption, countryOption, countryOptionModal, inputValue]);
 
   return (
     <main className="container">
@@ -172,6 +180,25 @@ export default function SeeComponents() {
           startClosing={startClosingModal}
         />
       )}
+      <Spacer />
+      <p>Text Input Placeholder</p>
+      <Spacer />
+      <Input
+        setValue={getInputValue}
+        placeholder="Precio vivienda"
+        right={inputRight}
+        type="text"
+      />
+      <Spacer />     
+      <p>Text Input Label</p>
+      <Spacer />
+      <Input
+        setValue={getInputValue}
+        label="Precio vivienda"
+        right={inputRight}
+        type="text"
+      />
+      <Spacer />
     </main>
   );
 }
