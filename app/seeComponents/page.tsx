@@ -185,18 +185,17 @@ export default function SeeComponents() {
       <Spacer />
       <Input
         setValue={getInputValue}
-        placeholder="Precio vivienda"
-        right={inputRight}
+        placeholder="Nombre Presupuesto"
         type="text"
       />
-      <Spacer />     
+      <Spacer />
       <p>Text Input Label</p>
       <Spacer />
       <Input
         setValue={getInputValue}
         label="Precio vivienda"
         right={inputRight}
-        type="text"
+        type="number"
       />
       <Spacer />
     </main>

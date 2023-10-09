@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 import "./input.scss";
 
 const Input = ({
@@ -12,7 +12,7 @@ const Input = ({
   label?: string;
   placeholder?: string;
   type: "text" | "number";
-  right?: string;
+  right?: ReactNode;
 }) => {
   const [inputValue, setInputValue] = useState("");
   const [focus, setFocus] = useState(false);
@@ -34,9 +34,7 @@ const Input = ({
 
   return (
     <div
-      className={
-        focus ? "input-container input-container--focused" : "input-container"
-      }
+      className={`input-container ${focus ? "input-container--focused" : ""}`}
     >
       {label && (
         <label
@@ -54,10 +52,9 @@ const Input = ({
         onChange={handleInput}
         value={inputValue}
         placeholder={placeholder && placeholder}
-        className="text-input"
+        className="custom-input"
         onFocus={handleLabelFocus}
         onBlur={handleLabelUnfocus}
-        
       />
       {right && <p>{right}</p>}
     </div>
