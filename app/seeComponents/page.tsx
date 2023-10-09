@@ -1,8 +1,9 @@
 "use client";
 
+import "./seeComponents.scss";
+
 import Spacer from "@/ui/spacer/spacer";
 import { useEffect, useState } from "react";
-import "./seeComponents.scss";
 import Text from "@/ui/text/text";
 import Button from "@/ui/button/button";
 import RadioButton from "@/ui/radioButton/radioButton";
@@ -10,7 +11,7 @@ import Select from "@/ui/select/select";
 import Modal from "@/ui/modal/modal";
 import SelectModal from "@/ui/selectModal/selectModal";
 import List from "@/ui/list/list";
-import Input from "@/ui/textInput/input";
+import Input from "@/ui/customInput/input";
 
 export default function SeeComponents() {
   const radioOptions = [
@@ -57,7 +58,7 @@ export default function SeeComponents() {
   }, [radioOption, countryOption, countryOptionModal, inputValue]);
 
   return (
-    <main className="container">
+    <section className="seeComponents-container">
       <h1>Components</h1>
       <Spacer />
       <p>Header H1</p>
@@ -198,6 +199,6 @@ export default function SeeComponents() {
         type="number"
       />
       <Spacer />
-    </main>
+    </section>
   );
 }

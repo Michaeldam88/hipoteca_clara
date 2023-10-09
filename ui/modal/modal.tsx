@@ -1,5 +1,3 @@
-"use client";
-
 import { ReactNode, useEffect } from "react";
 import { useSignal } from "@preact/signals-react";
 import "./modal.scss";
@@ -25,8 +23,6 @@ const Modal = ({
   startClosing,
   onClose,
 }: ModalProps) => {
-  const animationDuration = 0.25 * 1000;
-
   const startingPoint = useSignal<number | null>(null);
   const positionY = useSignal<number | null | undefined>(null);
   const wrapperHeight = useSignal<
@@ -38,6 +34,8 @@ const Modal = ({
   const overflow = useSignal<"hidden" | "auto">("auto");
   const initialWrapElementHeight = useSignal<number>(0);
   const initialTimeStamp = useSignal<number>(0);
+
+  const animationDuration = 0.25 * 1000;
 
   const html = document?.querySelector("html");
   const modalId = `--open-modal`;
@@ -118,14 +116,14 @@ const Modal = ({
       opacity = opacity > 0.7 ? 0.7 : opacity;
 
       backdropOpacity.value = opacity;
-    }  
+    }
 
     // upper extend
     if (movement < 0 && (wrapElement?.getBoundingClientRect()?.y || 0) > 0) {
       // this will lock the scroll upward until when the modal is at fullscreen
       if (wrapElementHeight < window?.innerHeight) {
         overflow.value = "hidden";
-      } 
+      }
 
       const newMaxHeight =
         wrapElementHeight + ((startingPoint.value || 0) - touchPositionY);
