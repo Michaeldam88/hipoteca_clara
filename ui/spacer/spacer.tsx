@@ -1,6 +1,6 @@
 import "./spacer.scss";
 
-const Spacer = (props: {
+const Spacer = ({size}: {
   size?:
     | "tiny"
     | "smaller"
@@ -13,7 +13,7 @@ const Spacer = (props: {
     | "giant"
     | "enormous";
 }) => {
-  return <div className={`--spacer-${props?.size || "small"}`}></div>;
+  return <div className={`--spacer-${size || "small"}`}></div>;
 };
 
 export default Spacer;

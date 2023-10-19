@@ -12,6 +12,8 @@ import Modal from "@/ui/modal/modal";
 import SelectModal from "@/ui/selectModal/selectModal";
 import List from "@/ui/list/list";
 import Input from "@/ui/customInput/input";
+import Stepper from "@/ui/stepper/stepper";
+import Pagination from "@/ui/pagination/pagination";
 
 export default function SeeComponents() {
   const radioOptions = [
@@ -31,6 +33,8 @@ export default function SeeComponents() {
   const [countryOption, setCountryOption] = useState("");
   const [countryOptionModal, setCountryOptionModal] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const [activeStep, setActiveStep] = useState(0);
+  const [page, setPage] = useState(1);
 
   const [modal, setModal] = useState(false);
   const [startClosingModal, setStartClosingModal] = useState(false);
@@ -52,6 +56,37 @@ export default function SeeComponents() {
   const getInputValue = (value: string) => {
     setInputValue(value);
   };
+
+  const handleNextPage = () => {
+    setPage(page + 1);
+    setActiveStep(activeStep + 1);
+  };
+
+  const handlePreviousPage = () => {
+    setPage(page - 1);
+    setActiveStep(activeStep - 1);
+  };
+
+  const steps = [
+    {
+      id: 0,
+      title: "Presupuesto",
+    },
+    {
+      id: 1,
+      title: "Datos",
+    },
+    {
+      id: 2,
+      title: "Resumen",
+      subTitle: "escribe  tu presupuesto",
+    },
+    {
+      id: 3,
+      title: "Confirmación",
+      subTitle: "Confirma los detalles",
+    },
+  ];
 
   useEffect(() => {
     console.log(radioOption, countryOption, countryOptionModal, inputValue);
@@ -197,6 +232,19 @@ export default function SeeComponents() {
         label="Precio vivienda"
         right={inputRight}
         type="number"
+      />
+      <Spacer />
+      <p>Stepper</p>
+      <Spacer />
+      <Stepper<number> activeStep={activeStep} steps={steps} />
+      <Spacer size="large"/>      
+      <p>Pagination</p>
+      <Spacer />
+      <Pagination
+        page={page}
+        totalPages={steps.length}
+        handlePreviousPage={handlePreviousPage}
+        handleNextPage={handleNextPage}
       />
       <Spacer />
     </section>

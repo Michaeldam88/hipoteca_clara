@@ -1,0 +1,25 @@
+@import "../../styles/variables.scss";
+
+.stepper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &__steps-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }  
+
+  &__step {
+    background-color: $color-primary-200;
+    width: 100%;
+    height: 5px;
+    margin: 0 3px;
+    border-radius: 3px;
+
+    &--completed {
+      background-color: $color-primary-275;
+    }
+  }
+}

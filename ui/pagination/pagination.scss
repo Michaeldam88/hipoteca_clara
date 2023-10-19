@@ -1,0 +1,26 @@
+@import "../../styles/variables.scss";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  &__button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px;
+    color: $text-color;
+    border-color: $color-primary-200;
+    background-color: $color-primary-200;
+    margin-right: 1rem;
+
+    &[disabled] {
+      cursor: not-allowed;
+      color: $color-primary-100;
+      opacity: 0.65;
+    }
+  }
+}
