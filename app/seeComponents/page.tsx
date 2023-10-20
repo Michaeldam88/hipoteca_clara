@@ -93,7 +93,7 @@ export default function SeeComponents() {
   }, [radioOption, countryOption, countryOptionModal, inputValue]);
 
   return (
-    <section className="seeComponents-container">
+    <section className="see-components-container">
       <h1>Components</h1>
       <Spacer />
       <p>Header H1</p>
@@ -237,7 +237,7 @@ export default function SeeComponents() {
       <p>Stepper</p>
       <Spacer />
       <Stepper<number> activeStep={activeStep} steps={steps} />
-      <Spacer size="large"/>      
+      <Spacer size="large" />
       <p>Pagination</p>
       <Spacer />
       <Pagination

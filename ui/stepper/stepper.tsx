@@ -13,14 +13,19 @@ function Stepper<T>({
   }[];
   activeStep: T;
 }) {
-  const current = steps.find((s) => s.id === activeStep);
+  const currentPosition = steps.findIndex(
+    (element) => element.id === activeStep
+  );
 
-  const currentPosition =
-    steps.findIndex((element) => element.id === activeStep) + 1;
+  const current = steps[currentPosition];
 
   return (
     <div className="stepper">
-      <Text preset="smaller" text={`Paso ${currentPosition}`} color="subtle" />
+      <Text
+        preset="smaller"
+        text={`Paso ${currentPosition + 1}`}
+        color="subtle"
+      />
       <Spacer size="tiny" />
       <Text preset="headline5" text={current?.title || ""} />
       <Spacer size="smaller" />
@@ -29,7 +34,7 @@ function Stepper<T>({
 
       <div className="stepper__steps-container">
         {steps.map((element, i) =>
-          i <= currentPosition - 1 ? (
+          i <= currentPosition ? (
             <div
               key={i}
               className="stepper__step stepper__step--completed"
