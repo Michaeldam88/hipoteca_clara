@@ -1,8 +1,9 @@
 "use client";
 
+import "./seeComponents.scss";
+
 import Spacer from "@/ui/spacer/spacer";
 import { useEffect, useState } from "react";
-import "./seeComponents.scss";
 import Text from "@/ui/text/text";
 import Button from "@/ui/button/button";
 import RadioButton from "@/ui/radioButton/radioButton";
@@ -10,7 +11,9 @@ import Select from "@/ui/select/select";
 import Modal from "@/ui/modal/modal";
 import SelectModal from "@/ui/selectModal/selectModal";
 import List from "@/ui/list/list";
-import Input from "@/ui/textInput/input";
+import Input from "@/ui/customInput/input";
+import Stepper from "@/ui/stepper/stepper";
+import Pagination from "@/ui/pagination/pagination";
 
 export default function SeeComponents() {
   const radioOptions = [
@@ -30,6 +33,8 @@ export default function SeeComponents() {
   const [countryOption, setCountryOption] = useState("");
   const [countryOptionModal, setCountryOptionModal] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const [activeStep, setActiveStep] = useState(0);
+  const [page, setPage] = useState(1);
 
   const [modal, setModal] = useState(false);
   const [startClosingModal, setStartClosingModal] = useState(false);
@@ -52,12 +57,43 @@ export default function SeeComponents() {
     setInputValue(value);
   };
 
+  const handleNextPage = () => {
+    setPage(page + 1);
+    setActiveStep(activeStep + 1);
+  };
+
+  const handlePreviousPage = () => {
+    setPage(page - 1);
+    setActiveStep(activeStep - 1);
+  };
+
+  const steps = [
+    {
+      id: 0,
+      title: "Presupuesto",
+    },
+    {
+      id: 1,
+      title: "Datos",
+    },
+    {
+      id: 2,
+      title: "Resumen",
+      subTitle: "escribe  tu presupuesto",
+    },
+    {
+      id: 3,
+      title: "Confirmación",
+      subTitle: "Confirma los detalles",
+    },
+  ];
+
   useEffect(() => {
     console.log(radioOption, countryOption, countryOptionModal, inputValue);
   }, [radioOption, countryOption, countryOptionModal, inputValue]);
 
   return (
-    <main className="container">
+    <section className="see-components-container">
       <h1>Components</h1>
       <Spacer />
       <p>Header H1</p>
@@ -198,6 +234,19 @@ export default function SeeComponents() {
         type="number"
       />
       <Spacer />
-    </main>
+      <p>Stepper</p>
+      <Spacer />
+      <Stepper<number> activeStep={activeStep} steps={steps} />
+      <Spacer size="large" />
+      <p>Pagination</p>
+      <Spacer />
+      <Pagination
+        page={page}
+        totalPages={steps.length}
+        handlePreviousPage={handlePreviousPage}
+        handleNextPage={handleNextPage}
+      />
+      <Spacer />
+    </section>
   );
 }
