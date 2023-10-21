@@ -261,14 +261,14 @@ export default function SeeComponents() {
       <RangeInput
         value={rangeValue}
         setValue={handleRangeValue}
-        name="totalAmount-range"
+        name="total-amount-range"
         labelText="Select total amount"
         topFormattedValue={new Intl.NumberFormat("es-ES", {
           style: "currency",
           currency: "EUR",
         }).format(rangeValue)}
         middleFormattedValue="Text"
-        bottomFormattedValue={`% ${percentage}`}
+        bottomFormattedValue={`${percentage} %`}
         limitColor={true}
         min={min}
         max={max}

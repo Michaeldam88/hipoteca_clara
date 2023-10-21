@@ -30,7 +30,7 @@ const RangeInput = ({
 }) => {
   const percentage = ((value - min) / (max - min)) * 100;
 
-  const cssRoot = document.querySelector(":root");
+  const cssRoot: HTMLElement = document.querySelector(":root")!!;
 
   let trackWidth = percentage;
 
