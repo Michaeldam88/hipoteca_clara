@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import "./rangeInput.scss";
 
-// https://www.falldowngoboone.com/blog/share-variables-between-javascript-and-css/
-
 const RangeInput = ({
   name,
   value,
@@ -30,7 +28,7 @@ const RangeInput = ({
 }) => {
   const percentage = ((value - min) / (max - min)) * 100;
 
-  const cssRoot: HTMLElement = document.querySelector(":root")!!;
+  const cssRoot: HTMLElement = document?.querySelector(":root")!!;
 
   let trackWidth = percentage;
 

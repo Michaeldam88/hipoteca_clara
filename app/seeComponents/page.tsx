@@ -89,13 +89,13 @@ export default function SeeComponents() {
     },
   ];
 
-    const min = 0;
-    const max = 100000;
-    const [rangeValue, setRangeValue] = useState(30000);
-    const percentage = Math.round((rangeValue / max) * 100);
-    const handleRangeValue = (value: number) => {
-      setRangeValue(value);
-    };
+  const min = 0;
+  const max = 100000;
+  const [rangeValue, setRangeValue] = useState(30000);
+  const percentage = Math.round((rangeValue / max) * 100);
+  const handleRangeValue = (value: number) => {
+    setRangeValue(value);
+  };
 
   useEffect(() => {
     console.log(radioOption, countryOption, countryOptionModal, inputValue);
