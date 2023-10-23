@@ -14,6 +14,7 @@ import List from "@/ui/list/list";
 import Input from "@/ui/customInput/input";
 import Stepper from "@/ui/stepper/stepper";
 import Pagination from "@/ui/pagination/pagination";
+import RangeInput from "@/ui/rangeInput/rangeInput";
 
 export default function SeeComponents() {
   const radioOptions = [
@@ -88,6 +89,14 @@ export default function SeeComponents() {
     },
   ];
 
+  const min = 0;
+  const max = 100000;
+  const [rangeValue, setRangeValue] = useState(30000);
+  const percentage = Math.round((rangeValue / max) * 100);
+  const handleRangeValue = (value: number) => {
+    setRangeValue(value);
+  };
+
   useEffect(() => {
     console.log(radioOption, countryOption, countryOptionModal, inputValue);
   }, [radioOption, countryOption, countryOptionModal, inputValue]);
@@ -103,23 +112,23 @@ export default function SeeComponents() {
         text={"Calculadora de hipotecas"}
         weight="bold"
       />
-      <Spacer />
+      <Spacer size="large" />
       <p>Header H2</p>
       <Spacer />
       <Text preset="headline2" text={"Calculadora de hipotecas"} />
-      <Spacer />
+      <Spacer size="large" />
       <p>Header H3</p>
       <Spacer />
       <Text preset="headline3" text={"Calculadora de hipotecas"} />
-      <Spacer />
+      <Spacer size="large" />
       <p>Header H4</p>
       <Spacer />
       <Text preset="headline4" text={"Calculadora de hipotecas"} />
-      <Spacer />
+      <Spacer size="large" />
       <p>Header H5</p>
       <Spacer />
       <Text preset="headline5" text={"Calculadora de hipotecas"} />
-      <Spacer />
+      <Spacer size="large" />
       <p>Paragraph</p>
       <Spacer />
       <Text
@@ -128,7 +137,7 @@ export default function SeeComponents() {
           "total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y confía en tu futuro."
         }
       />
-      <Spacer />
+      <Spacer size="large" />
       <p>Paragraph Subtle</p>
       <Spacer />
       <Text
@@ -138,7 +147,7 @@ export default function SeeComponents() {
         }
         color="subtle"
       />
-      <Spacer />
+      <Spacer size="large" />
       <p>Button</p>
       <Spacer />
       <Button
@@ -147,7 +156,7 @@ export default function SeeComponents() {
         type="button"
         size="medium"
       />
-      <Spacer />
+      <Spacer size="large" />
       <p>Button Disabled</p>
       <Spacer />
       <Button
@@ -157,11 +166,11 @@ export default function SeeComponents() {
         size="medium"
         disabled
       />
-      <Spacer />
+      <Spacer size="large" />
       <p>List</p>
       <List elements={countryOptions} />
       <Spacer />
-      <Spacer />
+      <Spacer size="large" />
       <p>Radio Button</p>
       <Spacer />
       <RadioButton
@@ -169,7 +178,7 @@ export default function SeeComponents() {
         name="Confirm Radio"
         setOption={getRadioOption}
       />
-      <Spacer />
+      <Spacer size="large" />
       <p>Select</p>
       <Spacer />
       <Select
@@ -177,11 +186,11 @@ export default function SeeComponents() {
         options={countryOptions}
         setOption={getCountryOption}
       />
-      <Spacer />
+      <Spacer size="large" />
       <p>Modal Select</p>
       <Spacer />
       <SelectModal options={countryOptions} setOption={getCountryOptionModal} />
-      <Spacer />
+      <Spacer size="large" />
       <p>Modal</p>
       <Spacer />
       <Button
@@ -216,7 +225,7 @@ export default function SeeComponents() {
           startClosing={startClosingModal}
         />
       )}
-      <Spacer />
+      <Spacer size="large" />
       <p>Text Input Placeholder</p>
       <Spacer />
       <Input
@@ -224,7 +233,7 @@ export default function SeeComponents() {
         placeholder="Nombre Presupuesto"
         type="text"
       />
-      <Spacer />
+      <Spacer size="large" />
       <p>Text Input Label</p>
       <Spacer />
       <Input
@@ -233,7 +242,7 @@ export default function SeeComponents() {
         right={inputRight}
         type="number"
       />
-      <Spacer />
+      <Spacer size="large" />
       <p>Stepper</p>
       <Spacer />
       <Stepper<number> activeStep={activeStep} steps={steps} />
@@ -246,7 +255,27 @@ export default function SeeComponents() {
         handlePreviousPage={handlePreviousPage}
         handleNextPage={handleNextPage}
       />
+      <Spacer size="large" />
+      <p>Range Input</p>
       <Spacer />
+      <RangeInput
+        value={rangeValue}
+        setValue={handleRangeValue}
+        name="total-amount-range"
+        labelText="Select total amount"
+        topFormattedValue={new Intl.NumberFormat("es-ES", {
+          style: "currency",
+          currency: "EUR",
+        }).format(rangeValue)}
+        middleFormattedValue="Text"
+        bottomFormattedValue={`${percentage} %`}
+        limitColor={true}
+        min={min}
+        max={max}
+        step={1000}
+      />
+      <Spacer size="huge" />
+      <Spacer size="huge" />
     </section>
   );
 }
