@@ -1,4 +1,3 @@
-"use client";
 import { useEffect } from "react";
 import "./rangeInput.scss";
 
@@ -29,11 +28,10 @@ const RangeInput = ({
 }) => {
   const percentage = ((value - min) / (max - min)) * 100;
 
-  const cssRoot: HTMLElement = document?.querySelector(":root")!!;
-
   let trackWidth = percentage;
 
   //this help to hide the before bar when below 40%
+  const cssRoot: HTMLElement = document?.querySelector(":root")!!;
   if (percentage > 0 && percentage <= 40) trackWidth = percentage + 2;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
