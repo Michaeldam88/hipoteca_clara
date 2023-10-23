@@ -31,7 +31,6 @@ const RangeInput = ({
   let trackWidth = percentage;
 
   //this help to hide the before bar when below 40%
-  const cssRoot: HTMLElement = document?.querySelector(":root")!!;
   if (percentage > 0 && percentage <= 40) trackWidth = percentage + 2;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,17 +38,18 @@ const RangeInput = ({
   };
 
   useEffect(() => {
+    const cssRoot: HTMLElement = document?.querySelector(":root")!!;
     cssRoot?.style.setProperty("--track-width", trackWidth + "%");
 
     const barWidth = document
       ?.querySelector(".range__bottom-container")
       ?.getBoundingClientRect()?.width;
 
-    const bottomBoxPositiobn = ((barWidth || 0) / 100) * percentage;
+    const bottomBoxPosition = ((barWidth || 0) / 100) * percentage;
 
     cssRoot?.style.setProperty(
       "--bottom-box-position",
-      bottomBoxPositiobn + "px"
+      bottomBoxPosition + "px"
     );
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
