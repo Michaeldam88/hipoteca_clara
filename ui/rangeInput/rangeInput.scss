@@ -96,8 +96,8 @@ $slider-thumb-size: 20px;
     position: absolute;
     top: 40px;
     //change based on the size of the slider thumb
-    left: $slider-thumb-size / 2;
-    right: $slider-thumb-size / 2;
+    left: $slider-thumb-size / 2 + 2px;
+    right: $slider-thumb-size / 2 +2px;
   }
 
   &__bottom-box {

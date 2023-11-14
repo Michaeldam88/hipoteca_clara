@@ -1,9 +1,7 @@
 @import "../styles/variables.scss";
 
-.home-container {
+.main-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
+  flex-direction: column; 
+  align-items: center;   
 }
