@@ -1,4 +1,3 @@
-import Avatar from "@/ui/avatar/avatar";
 import Text from "@/ui/text/text";
 import Image from "next/image";
 import Link from "next/link";
