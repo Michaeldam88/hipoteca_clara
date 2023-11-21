@@ -1,0 +1,28 @@
+@import "../styles/variables.scss";
+
+
+.landing-container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landing-detail-box {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  margin-bottom: 16px;
+  &__left {
+    margin-right: 20px;
+  }
+}
+
+.start-link {
+  width: 100%;
+  text-decoration: none;
+}
+
+

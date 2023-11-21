@@ -1,0 +1,24 @@
+@import "../../styles/variables.scss";
+
+.nav {
+  box-sizing: border-box;
+  background-color: $color-primary-200;
+  height: 63px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 20px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  &__text {
+    width: 100%;
+    margin-left: 12px;
+  }
+  &__user-logo {
+    position: relative;
+    width: 30px;
+    height: 30px;
+  }
+}
