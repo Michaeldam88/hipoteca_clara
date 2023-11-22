@@ -8,17 +8,21 @@ import "./selectModal.scss";
 const SelectModal = ({
   options,
   setOption,
+  name = "",
+  buttonName,
 }: {
   options: {
     id: number;
     value: string;
   }[];
   setOption: (value: string) => void;
+  name?: string;
+  buttonName: string;
 }) => {
   const [modal, setModal] = useState(false);
   const [startClosingModal, setStartClosingModal] = useState(false);
 
-  const [buttonText, setButtonText] = useState("-- Choose a country --");
+  const [buttonText, setButtonText] = useState(buttonName);
 
   const handleClick = (value: string) => {
     setButtonText(value);
@@ -28,7 +32,7 @@ const SelectModal = ({
 
   return (
     <>
-      <Text text="Choose a Country:" preset="small" />
+      <Text text={name} preset="small" />
       <Spacer />
       <button className="select-button" onClick={() => setModal(true)}>
         {buttonText}

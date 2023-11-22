@@ -189,7 +189,12 @@ export default function SeeComponents() {
       <Spacer size="large" />
       <p>Modal Select</p>
       <Spacer />
-      <SelectModal options={countryOptions} setOption={getCountryOptionModal} />
+      <SelectModal
+        options={countryOptions}
+        setOption={getCountryOptionModal}
+        name="Choose a Country:"
+        buttonName="-- Choose a country --"
+      />
       <Spacer size="large" />
       <p>Modal</p>
       <Spacer />

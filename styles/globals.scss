@@ -6,6 +6,8 @@ body {
   background-color: $color-primary-150;
   line-height: 24px;
   box-sizing: border-box;
+  position: relative;
+  height: 100dvh;  
 }
 
 h1,
@@ -61,4 +63,5 @@ h6 {
   box-sizing: border-box;
   position: relative;
   padding: 63px 16px;
+  height: 100%;
 }
