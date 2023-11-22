@@ -13,8 +13,7 @@ const Spacer = ({
     | "huge"
     | "xhuge"
     | "giant"
-    | "enormous"
-    | "full-width";
+    | "enormous";
 }) => {
   return <div className={`--spacer-${size || "small"}`}></div>;
 };

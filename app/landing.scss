@@ -1,24 +1,16 @@
 @import "../styles/variables.scss";
 
-.main-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-  position: relative;
-}
 
-.home-container {
+.landing-container {
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
-  padding: 63px 16px;
+  height: 100%;  
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.home-detail-box {
+.landing-detail-box {
   display: flex;
   align-items: center;
   align-self: flex-start;
@@ -27,4 +19,10 @@
     margin-right: 20px;
   }
 }
+
+.start-link {
+  width: 100%;
+  text-decoration: none;
+}
+
 
