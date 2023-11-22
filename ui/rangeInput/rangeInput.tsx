@@ -28,18 +28,24 @@ const RangeInput = ({
 }) => {
   const percentage = ((value - min) / (max - min)) * 100;
 
-  let trackWidth = percentage;
-
-  //this help to hide the before bar when below 40%
-  if (percentage > 0 && percentage <= 40) trackWidth = percentage + 2;
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(+event.target.value);
   };
 
   useEffect(() => {
     const cssRoot: HTMLElement = document?.querySelector(":root")!!;
-    cssRoot?.style.setProperty("--track-width", trackWidth + "%");
+
+    const sliderThumbSize =
+      document
+        ?.querySelector(".range__input ::-webkit-slider-thumb")
+        ?.getBoundingClientRect()?.width || 0;
+
+    cssRoot?.style.setProperty(
+      "--track-width",
+      percentage > 0 && percentage <= 50
+        ? `calc(${percentage}% + ${sliderThumbSize / 2}px)`
+        : `${percentage}%`
+    );
 
     const barWidth = document
       ?.querySelector(".range__bottom-container")

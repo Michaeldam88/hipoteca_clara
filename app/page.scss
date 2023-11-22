@@ -1,0 +1,30 @@
+@import "../styles/variables.scss";
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.home-container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 63px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-detail-box {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  margin-bottom: 16px;
+  &__left {
+    margin-right: 20px;
+  }
+}
+
