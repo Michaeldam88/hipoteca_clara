@@ -9,8 +9,11 @@ import RadioButton from "@/ui/radioButton/radioButton";
 import SelectModal from "@/ui/selectModal/selectModal";
 import data from "../../data/rates.json";
 import Button from "@/ui/button/button";
+import PopUp from "@/ui/popUp/popUp";
 
 export default function Form() {
+  const [popUp, setPopUp] = useState("");
+
   const enum FormSteps {
     PROVINCE = "PROVINCE",
     PRICE = "PRICE",
@@ -68,31 +71,58 @@ export default function Form() {
     setProvince(value);
   };
 
+  const dataCheck = () => {
+    if (!isPricedRadioOption) {
+      setPopUp("Selecciona si está tasada");
+      return;
+    }
+
+    if (!province) {
+      setPopUp("Selecciona una comunidad");
+      return;
+    }
+
+    setStep(FormSteps.PRICE);
+  };
+
   return (
     <div className="form-container">
       <Spacer size="xhuge" />
       <Stepper<FormSteps> steps={steps} activeStep={step} />
       <Spacer size="xhuge" />
 
-      <div>
-        <Text preset="small" text="¿La vivienda está tasada?" color="subtle" />
-        <Spacer size="huge" />
-        <RadioButton
-          name="is-priced"
-          options={isPricedRadioOptions}
-          setOption={getIsPricedRadioOption}
-        />
-        <Spacer size="giant" />
-        <SelectModal
-          options={provinces}
-          setOption={getProvince}
-          name="Seleccione una comunidad"
-          buttonName="Seleccionar"
-        />
-        <div className="form-button">
-          <Button text="Continuar" preset="primary" size="medium" />
+      {popUp && <PopUp handleClose={() => setPopUp("")} text={popUp} />}
+
+      {step === FormSteps.PROVINCE && (
+        <div>
+          <Text
+            preset="small"
+            text="¿La vivienda está tasada?"
+            color="subtle"
+          />
+          <Spacer size="huge" />
+          <RadioButton
+            name="is-priced"
+            options={isPricedRadioOptions}
+            setOption={getIsPricedRadioOption}
+          />
+          <Spacer size="giant" />
+          <SelectModal
+            options={provinces}
+            setOption={getProvince}
+            name="Seleccione una comunidad"
+            buttonName="Seleccionar"
+          />
+          <div className="form-button">
+            <Button
+              text="Continuar"
+              preset="primary"
+              size="medium"
+              onClick={dataCheck}
+            />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

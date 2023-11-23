@@ -1,0 +1,47 @@
+@import "../../styles/variables.scss";
+
+.popUp {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  &__backdrop {
+    background-color: black;
+    opacity: 0.4;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 80%;
+    border-radius: 16px;
+    z-index: 1;
+    padding: 15px;
+  }
+  &--primary {
+    color: $text-color;
+    background-color: $color-primary-175;
+  }
+
+  &--primary-ghost {
+    color: $text-color;
+    background-color: $color-primary-175;
+  }
+
+  &--warning {
+    color: $text-color;
+    background-color: $color-primary-175;
+  }
+}
