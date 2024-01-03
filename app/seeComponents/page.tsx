@@ -194,8 +194,9 @@ export default function SeeComponents() {
       <SelectModal
         options={countryOptions}
         setOption={getCountryOptionModal}
-        name="Choose a Country:"
-        buttonName="-- Choose a country --"
+        selectName="Choose a Country:"
+        initialButtonText="-- Choose a country --"
+        modalHeader="Texto custom"
       />
       <Spacer size="large" />
       <p>Modal</p>

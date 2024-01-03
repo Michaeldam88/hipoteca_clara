@@ -8,21 +8,23 @@ import "./selectModal.scss";
 const SelectModal = ({
   options,
   setOption,
-  name = "",
-  buttonName,
+  selectName = "",
+  modalHeader = "",
+  initialButtonText,
 }: {
   options: {
     id: number;
     value: string;
   }[];
   setOption: (value: string) => void;
-  name?: string;
-  buttonName: string;
+  selectName?: string;
+  initialButtonText: string;
+  modalHeader?: string;
 }) => {
   const [modal, setModal] = useState(false);
   const [startClosingModal, setStartClosingModal] = useState(false);
 
-  const [buttonText, setButtonText] = useState(buttonName);
+  const [buttonText, setButtonText] = useState(initialButtonText);
 
   const handleClick = (value: string) => {
     setButtonText(value);
@@ -32,7 +34,7 @@ const SelectModal = ({
 
   return (
     <>
-      <Text text={name} preset="small" />
+      <Text text={selectName} preset="small" />
       <Spacer />
       <button className="select-button" onClick={() => setModal(true)}>
         {buttonText}
@@ -44,13 +46,7 @@ const SelectModal = ({
             setStartClosingModal(false);
             setModal(false);
           }}
-          header={
-            <Text
-              text="Seleccionar Provincia"
-              preset="headline4"
-              weight="bold"
-            />
-          }
+          header={<Text text={modalHeader} preset="headline4" weight="bold" />}
           content={
             <List elements={options} color="subtle" extraAction={handleClick} />
           }

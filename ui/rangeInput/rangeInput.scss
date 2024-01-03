@@ -94,7 +94,7 @@ $slider-thumb-size: 20px;
   }
   &__bottom-container {
     position: absolute;
-    top: 40px;
+    top: 30px;
     //change based on the size of the slider thumb
     left: $slider-thumb-size / 2 + 2px;
     right: $slider-thumb-size / 2 +2px;
@@ -102,7 +102,7 @@ $slider-thumb-size: 20px;
 
   &__bottom-box {
     width: fit-content;
-    padding: 0.4rem;
+    padding: 0.2rem 0.4rem;
     background: $color-primary-200;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import "./rangeInput.scss";
 
 const RangeInput = ({
@@ -10,6 +10,8 @@ const RangeInput = ({
   step = 1,
   labelText = "",
   limitColor = false,
+  limitColorMin = 20,
+  limitColorMax = 80,
   topFormattedValue,
   middleFormattedValue,
   bottomFormattedValue,
@@ -22,9 +24,11 @@ const RangeInput = ({
   step?: number;
   labelText?: string;
   limitColor?: boolean;
-  topFormattedValue?: string;
-  middleFormattedValue?: string;
-  bottomFormattedValue?: string;
+  limitColorMin?: number;
+  limitColorMax?: number;
+  topFormattedValue?: ReactNode;
+  middleFormattedValue?: ReactNode;
+  bottomFormattedValue?: ReactNode;
 }) => {
   const percentage = ((value - min) / (max - min)) * 100;
 
@@ -76,7 +80,8 @@ const RangeInput = ({
             <input
               onChange={handleChange}
               className={`range__input ${
-                limitColor && (percentage > 80 || percentage < 20)
+                limitColor &&
+                (percentage > limitColorMax || percentage < limitColorMin)
                   ? "range__input--limit"
                   : ""
               }`}
