@@ -31,8 +31,8 @@ export default function Form() {
   const [step, setStep] = useState<FormSteps>(FormSteps.PROVINCE);
   const [isPricedRadioOption, setIsPricedRadioOption] = useState("");
   const [province, setProvince] = useState("");
-  const [housePrice, setHousePrice] = useState("50000");
-  const [appraisalPrice, setAppraisalPrice] = useState("10000000");
+  const [housePrice, setHousePrice] = useState("");
+  const [appraisalPrice, setAppraisalPrice] = useState("");
   const [amountFinanced, setAmountFinanced] = useState(10000);
   const [yearsMortgage, setYearsMortgage] = useState(25);
 
@@ -112,6 +112,7 @@ export default function Form() {
 
       {popUp && <PopUp handleClose={() => setPopUp("")} text={popUp} />}
 
+      {/* first Step ---------------------- */}
       {step === FormSteps.PROVINCE && (
         <div>
           <Text
@@ -145,21 +146,26 @@ export default function Form() {
         </div>
       )}
 
+      {/* Second Step ---------------------- */}
       {step === FormSteps.PRICE && (
         <div>
           <Input
-            type="number"
+            type="text"
             label="Precio Vivienda"
             setValue={setHousePrice}
+            value={housePrice}
             right="€"
+            moneyFormat={true}
           />
 
           <Spacer size="xhuge" />
           <Input
-            type="number"
+            type="text"
             label="Valor de la Tasación"
             setValue={setAppraisalPrice}
+            value={appraisalPrice}
             right="€"
+            moneyFormat={true}
           />
           <Spacer size="xhuge" />
           <RangeInput
@@ -167,9 +173,10 @@ export default function Form() {
             setValue={setAmountFinanced}
             value={+amountFinanced}
             max={+appraisalPrice > +housePrice ? +housePrice : +appraisalPrice}
-            step={1000}
+            step={1}
             labelText="Importe a financiar"
             topFormattedValue={new Intl.NumberFormat("es-ES", {
+              maximumFractionDigits: 0,
               style: "currency",
               currency: "EUR",
             }).format(amountFinanced)}
@@ -190,6 +197,9 @@ export default function Form() {
             bottomFormattedValue={yearsMortgage}
           />
 
+          {/* Third Step ---------------------- */}
+
+          {/* Next step Button ---------------------- */}
           <div className="form-button">
             <Button
               text="Continuar"
