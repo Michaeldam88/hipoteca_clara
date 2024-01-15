@@ -33,8 +33,9 @@ export default function Form() {
   const [province, setProvince] = useState("");
   const [housePrice, setHousePrice] = useState("");
   const [appraisalPrice, setAppraisalPrice] = useState("");
-  const [amountFinanced, setAmountFinanced] = useState(10000);
+  const [amountFinanced, setAmountFinanced] = useState(0);
   const [yearsMortgage, setYearsMortgage] = useState(25);
+  const [mortgagePercentage, setMortgagePercentage] = useState(0);
 
   const steps: StepItem<FormSteps>[] = [
     {
@@ -75,11 +76,9 @@ export default function Form() {
     setProvince(value);
   };
 
-  const mortgagePercentage = Math.round(
-    (amountFinanced /
-      (+appraisalPrice > +housePrice ? +housePrice : +appraisalPrice)) *
-      100
-  );
+  const getMortgagePercentage = (value: number) => {
+    setMortgagePercentage(Math.round(value));
+  };
 
   const dataCheck = (nextStep: FormSteps) => {
     if (!isPricedRadioOption) {
@@ -171,8 +170,12 @@ export default function Form() {
           <RangeInput
             name="amountFinanced"
             setValue={setAmountFinanced}
-            value={+amountFinanced}
-            max={+appraisalPrice > +housePrice ? +housePrice : +appraisalPrice}
+            value={amountFinanced}
+            max={
+              appraisalPrice && +appraisalPrice < +housePrice
+                ? +appraisalPrice
+                : +housePrice
+            }
             step={1}
             labelText="Importe a financiar"
             topFormattedValue={new Intl.NumberFormat("es-ES", {
@@ -180,6 +183,7 @@ export default function Form() {
               style: "currency",
               currency: "EUR",
             }).format(amountFinanced)}
+            setPercentage={getMortgagePercentage}
             bottomFormattedValue={`${mortgagePercentage} %`}
             limitColor={true}
             limitColorMin={20}
@@ -195,28 +199,20 @@ export default function Form() {
             max={40}
             labelText="Años de financiación"
             bottomFormattedValue={yearsMortgage}
+            bottomStartFormattedValue={9}
+            bottomEndFormattedValue={40}
           />
 
-          {/* Third Step ---------------------- */}
-
-          {/* Next step Button ---------------------- */}
           <div className="form-button">
             <Button
               text="Continuar"
               preset="primary"
               size="medium"
-              // onClick={() => dataCheck(FormSteps.MORTGAGE_TYPE)}
-              onClick={() =>
-                console.log(
-                  housePrice,
-                  appraisalPrice,
-                  amountFinanced,
-                  mortgagePercentage,
-                  yearsMortgage
-                )
-              }
+              //onClick={() => dataCheck(FormSteps.MORTGAGE_TYPE)}
             />
           </div>
+
+          {/* Third Step ---------------------- */}
         </div>
       )}
     </div>

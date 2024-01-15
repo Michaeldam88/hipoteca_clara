@@ -2,11 +2,6 @@
 
 $slider-thumb-size: 20px;
 
-:root {
-  --track-width: 0%;
-  --bottom-box-position: 0px;
-}
-
 .range {
   display: flex;
   flex-direction: column;
@@ -89,18 +84,36 @@ $slider-thumb-size: 20px;
       }
     }
     &:focus::-webkit-slider-thumb {
-      box-shadow: 0 0 0 6px $color-primary-250;
+      box-shadow: 0 0 0 4px $color-primary-250;
     }
   }
   &__bottom-container {
+    display: flex;
+    justify-content: space-between;
     position: absolute;
-    top: 30px;
+    top: 28px;
     //change based on the size of the slider thumb
     left: $slider-thumb-size / 2 + 2px;
-    right: $slider-thumb-size / 2 +2px;
+    right: $slider-thumb-size / 2 + 2px;
+  }
+
+  &__bottom-end,
+  &__bottom-start {
+    color: #f3b14e;
+    font-size: 15px;
+    margin-top: -8px;
+  }
+
+  &__bottom-start {
+    margin-left: -5px;
+  }
+
+  &__bottom-end {
+    margin-right: -5px;
   }
 
   &__bottom-box {
+    position: absolute;
     width: fit-content;
     padding: 0.2rem 0.4rem;
     background: $color-primary-200;
