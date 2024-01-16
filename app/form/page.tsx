@@ -36,6 +36,7 @@ export default function Form() {
   const [amountFinanced, setAmountFinanced] = useState(0);
   const [yearsMortgage, setYearsMortgage] = useState(25);
   const [mortgagePercentage, setMortgagePercentage] = useState(0);
+  const [mortgageOption, setMortgageOption] = useState("");
 
   const steps: StepItem<FormSteps>[] = [
     {
@@ -61,6 +62,20 @@ export default function Form() {
     { id: 1002, label: "No" },
   ];
 
+  const mortgageOptions = [
+    {
+      id: 2001,
+      label: "Variable",
+      subLabel: "Toda la hipoteca con interes variable",
+    },
+    {
+      id: 2002,
+      label: "Mixta",
+      subLabel: "Primera parte con interes fijo y el resto variable",
+    },
+    { id: 2003, label: "Fija", subLabel: "Toda la hipoteca con interes fijo " },
+  ];
+
   const getIsPricedRadioOption = (value: string) => {
     setIsPricedRadioOption(value);
   };
@@ -80,16 +95,48 @@ export default function Form() {
     setMortgagePercentage(Math.round(value));
   };
 
-  const dataCheck = (nextStep: FormSteps) => {
-    if (!isPricedRadioOption) {
-      setPopUp("Selecciona si está tasada");
-      return;
-    }
+  const getMortgageType = (value: string) => {
+    setMortgageOption(value);
+  };
 
-    if (!province) {
-      setPopUp("Selecciona una comunidad");
-      return;
-    }
+  const dataCheck = (nextStep: FormSteps) => {
+    //checks first step
+    // if (step === FormSteps.PROVINCE && !isPricedRadioOption) {
+    //   setPopUp("Selecciona si está tasada");
+    //   return;
+    // }
+
+    // if (step === FormSteps.PROVINCE && !province) {
+    //   setPopUp("Selecciona una comunidad");
+    //   return;
+    // }
+
+    //checks second step
+    // if (step === FormSteps.PRICE && !housePrice) {
+    //   setPopUp("Indica el precio de la vivienda");
+    //   return;
+    // }
+
+    // if (
+    //   step === FormSteps.PRICE &&
+    //   isPricedRadioOption === "Yes" &&
+    //   !appraisalPrice
+    // ) {
+    //   setPopUp("Indica el precio de tasación");
+    //   return;
+    // }
+
+    // if (step === FormSteps.PRICE && !amountFinanced) {
+    //   setPopUp("Indica el importe a financiar");
+    //   return;
+    // }
+
+    //checks third step
+
+    // if (step === FormSteps.MORTGAGE_TYPE && !mortgageOption) {
+    //   setPopUp("Indica el tipo de financiación");
+    //   return;
+    // }
 
     setStep(nextStep);
   };
@@ -156,23 +203,29 @@ export default function Form() {
             right="€"
             moneyFormat={true}
           />
+          {isPricedRadioOption === "Yes" && (
+            <>
+              <Spacer size="xhuge" />
+              <Input
+                type="text"
+                label="Valor de la Tasación"
+                setValue={setAppraisalPrice}
+                value={appraisalPrice}
+                right="€"
+                moneyFormat={true}
+              />
+            </>
+          )}
 
-          <Spacer size="xhuge" />
-          <Input
-            type="text"
-            label="Valor de la Tasación"
-            setValue={setAppraisalPrice}
-            value={appraisalPrice}
-            right="€"
-            moneyFormat={true}
-          />
           <Spacer size="xhuge" />
           <RangeInput
             name="amountFinanced"
             setValue={setAmountFinanced}
             value={amountFinanced}
             max={
-              appraisalPrice && +appraisalPrice < +housePrice
+              appraisalPrice &&
+              +appraisalPrice < +housePrice &&
+              isPricedRadioOption === "Yes"
                 ? +appraisalPrice
                 : +housePrice
             }
@@ -208,11 +261,30 @@ export default function Form() {
               text="Continuar"
               preset="primary"
               size="medium"
-              //onClick={() => dataCheck(FormSteps.MORTGAGE_TYPE)}
+              onClick={() => dataCheck(FormSteps.MORTGAGE_TYPE)}
             />
           </div>
+        </div>
+      )}
 
-          {/* Third Step ---------------------- */}
+      {/* Third Step ---------------------- */}
+      {step === FormSteps.MORTGAGE_TYPE && (
+        <div>
+          <RadioButton
+            name="mortgage-option"
+            options={mortgageOptions}
+            selectedOption={mortgageOption}
+            setOption={getMortgageType}
+          />
+
+          <div className="form-button">
+            <Button
+              text="Continuar"
+              preset="primary"
+              size="medium"
+              onClick={() => dataCheck(FormSteps.YEARS)}
+            />
+          </div>
         </div>
       )}
     </div>

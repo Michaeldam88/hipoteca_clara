@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import "./popUp.scss";
 
 type ButtonTypePreset = "primary" | "primary-ghost" | "warning";
@@ -7,7 +8,7 @@ const PopUp = ({
   preset = "primary",
   handleClose,
 }: {
-  text: string;
+  text: ReactNode;
   preset?: ButtonTypePreset;
   handleClose: () => void;
 }) => {
