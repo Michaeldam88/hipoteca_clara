@@ -9,6 +9,7 @@ const Input = ({
   right,
   value,
   moneyFormat = false,
+  decimals = 0,
 }: {
   setValue: (value: string) => void;
   label?: string;
@@ -17,16 +18,20 @@ const Input = ({
   right?: ReactNode;
   value?: string | number;
   moneyFormat?: boolean;
+  decimals?: number;
 }) => {
   const [focus, setFocus] = useState(false);
   const [showedValue, setShowedValue] = useState(value);
 
   //if we will use the MoneyFormat the input has to be a text type and the value a String
   const handleInput = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    if (moneyFormat && Number.isNaN(+ev.target.value)) {
+    if (
+      (moneyFormat && Number.isNaN(+ev.target.value)) ||
+      +ev.target.value === 0
+    ) {
       setValue("");
     } else {
-      setValue(Math.round(+ev.target.value).toString());
+      setValue((+ev.target.value).toFixed(decimals).toString());
     }
     setShowedValue(ev.target.value);
   };
@@ -81,7 +86,7 @@ const Input = ({
         onFocus={handleLabelFocus}
         onBlur={handleLabelUnfocused}
       />
-      {right && <p>{right}</p>}
+      {right && <p className="input-right">{right}</p>}
     </div>
   );
 };

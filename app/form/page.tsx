@@ -20,7 +20,7 @@ export default function Form() {
     PROVINCE = "PROVINCE",
     PRICE = "PRICE",
     MORTGAGE_TYPE = "MORTGAGE_TYPE",
-    YEARS = "YEARS",
+    TINTAE = "TINTAE",
   }
 
   interface StepItem<T> {
@@ -35,8 +35,13 @@ export default function Form() {
   const [appraisalPrice, setAppraisalPrice] = useState("");
   const [amountFinanced, setAmountFinanced] = useState(0);
   const [yearsMortgage, setYearsMortgage] = useState(25);
+  const [yearsFixedMortgage, setYearsFixedMortgage] = useState(1);
   const [mortgagePercentage, setMortgagePercentage] = useState(0);
   const [mortgageOption, setMortgageOption] = useState("");
+  const [fixedTin, setFixedTin] = useState("");
+  const [fixedTae, setFixedTae] = useState("");
+  const [variableTin, setVariableTin] = useState("");
+  const [variableTae, setVariableTae] = useState("");
 
   const steps: StepItem<FormSteps>[] = [
     {
@@ -52,8 +57,8 @@ export default function Form() {
       title: "Tipo de hipoteca",
     },
     {
-      id: FormSteps.YEARS,
-      title: "Años de hipoteca, TIN y TAE",
+      id: FormSteps.TINTAE,
+      title: "TIN y TAE",
     },
   ];
 
@@ -101,42 +106,72 @@ export default function Form() {
 
   const dataCheck = (nextStep: FormSteps) => {
     //checks first step
-    // if (step === FormSteps.PROVINCE && !isPricedRadioOption) {
-    //   setPopUp("Selecciona si está tasada");
-    //   return;
-    // }
+    if (step === FormSteps.PROVINCE && !isPricedRadioOption) {
+      setPopUp("Selecciona si está tasada");
+      return;
+    }
 
-    // if (step === FormSteps.PROVINCE && !province) {
-    //   setPopUp("Selecciona una comunidad");
-    //   return;
-    // }
+    if (step === FormSteps.PROVINCE && !province) {
+      setPopUp("Selecciona una comunidad");
+      return;
+    }
 
     //checks second step
-    // if (step === FormSteps.PRICE && !housePrice) {
-    //   setPopUp("Indica el precio de la vivienda");
-    //   return;
-    // }
+    if (step === FormSteps.PRICE && !housePrice) {
+      setPopUp("Indica el precio de la vivienda");
+      return;
+    }
 
-    // if (
-    //   step === FormSteps.PRICE &&
-    //   isPricedRadioOption === "Yes" &&
-    //   !appraisalPrice
-    // ) {
-    //   setPopUp("Indica el precio de tasación");
-    //   return;
-    // }
+    if (
+      step === FormSteps.PRICE &&
+      isPricedRadioOption === "Yes" &&
+      !appraisalPrice
+    ) {
+      setPopUp("Indica el precio de tasación");
+      return;
+    }
 
-    // if (step === FormSteps.PRICE && !amountFinanced) {
-    //   setPopUp("Indica el importe a financiar");
-    //   return;
-    // }
+    if (step === FormSteps.PRICE && !amountFinanced) {
+      setPopUp("Indica el importe a financiar");
+      return;
+    }
 
     //checks third step
 
-    // if (step === FormSteps.MORTGAGE_TYPE && !mortgageOption) {
-    //   setPopUp("Indica el tipo de financiación");
-    //   return;
-    // }
+    if (step === FormSteps.MORTGAGE_TYPE && !mortgageOption) {
+      setPopUp("Indica el tipo de financiación");
+      return;
+    }
+
+    //checks fourth step
+
+    if (step === FormSteps.TINTAE && !fixedTin) {
+      setPopUp("Indica el TIN fijo");
+      return;
+    }
+
+    if (step === FormSteps.TINTAE && !fixedTae) {
+      setPopUp("Indica el TAE fijo");
+      return;
+    }
+
+    if (
+      step === FormSteps.TINTAE &&
+      mortgageOption !== "Fija" &&
+      !variableTin
+    ) {
+      setPopUp("Indica el TIN variable");
+      return;
+    }
+
+    if (
+      step === FormSteps.TINTAE &&
+      mortgageOption !== "Fija" &&
+      !variableTae
+    ) {
+      setPopUp("Indica el TAE variable");
+      return;
+    }
 
     setStep(nextStep);
   };
@@ -148,9 +183,9 @@ export default function Form() {
 
   return (
     <div className="form-container">
-      <Spacer size="xhuge" />
+      <Spacer size="huge" />
       <Stepper<FormSteps> steps={steps} activeStep={step} />
-      <Spacer size="xhuge" />
+      <Spacer size="huge" />
 
       {step !== FormSteps.PROVINCE && (
         <button className="prev-btn" onClick={previousStep}>{`<-`}</button>
@@ -242,7 +277,7 @@ export default function Form() {
             limitColorMin={20}
             limitColorMax={80}
           />
-          <Spacer size="xhuge" />
+          <Spacer size="giant" />
           <RangeInput
             name="yearsMortgage"
             setValue={setYearsMortgage}
@@ -282,7 +317,100 @@ export default function Form() {
               text="Continuar"
               preset="primary"
               size="medium"
-              onClick={() => dataCheck(FormSteps.YEARS)}
+              onClick={() => dataCheck(FormSteps.TINTAE)}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Fourth Step ---------------------- */}
+      {step === FormSteps.TINTAE && (
+        <div>
+          {mortgageOption === "Mixta" && (
+            <>
+              <RangeInput
+                name="yearsFixedMortgage"
+                setValue={setYearsFixedMortgage}
+                value={yearsFixedMortgage}
+                step={1}
+                min={1}
+                max={yearsMortgage - 1}
+                labelText="Años de hipoteca fija"
+                bottomFormattedValue={yearsFixedMortgage}
+                bottomStartFormattedValue={1}
+                bottomEndFormattedValue={yearsMortgage - 1}
+              />
+              <Spacer size="giant" />
+            </>
+          )}
+
+          <Text
+            preset="smaller"
+            text={
+              mortgageOption === "Mixta"
+                ? "Parte Fija"
+                : mortgageOption === "Variable"
+                ? "Primer año"
+                : ""
+            }
+          />
+
+          <Spacer size="smaller" />
+
+          <Input
+            type="number"
+            placeholder="TIN"
+            setValue={setFixedTin}
+            value={fixedTin}
+            right="%"
+            decimals={1}
+          />
+
+          <Spacer size="smaller" />
+
+          <Input
+            type="number"
+            placeholder="TAE"
+            setValue={setFixedTae}
+            value={fixedTae}
+            right="%"
+            decimals={1}
+          />
+
+          <Spacer size="large" />
+
+          {mortgageOption !== "Fija" && (
+            <>
+              <Text preset="smaller" text="Resto de años" />
+
+              <Spacer size="smaller" />
+              <Input
+                type="number"
+                placeholder="TIN"
+                setValue={setVariableTin}
+                value={variableTin}
+                right="% + Euribor"
+                decimals={1}
+              />
+
+              <Spacer size="smaller" />
+
+              <Input
+                type="number"
+                placeholder="TAE"
+                setValue={setVariableTae}
+                value={variableTae}
+                right="% + Euribor"
+                decimals={1}
+              />
+            </>
+          )}
+          <div className="form-button">
+            <Button
+              text="Continuar"
+              preset="primary"
+              size="medium"
+              onClick={() => dataCheck(FormSteps.TINTAE)}
             />
           </div>
         </div>
