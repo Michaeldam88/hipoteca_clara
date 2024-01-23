@@ -45,7 +45,7 @@ total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y conf
             <Text preset="small" text="Herramienta gratuita" />
             <Text
               preset="smaller"
-              color="subtle"
+              color="ultra-subtle"
               text="Calcular tu hipoteca es gratis."
             />
           </div>
@@ -63,7 +63,7 @@ total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y conf
             <Text preset="small" text="En poco pasos." />
             <Text
               preset="smaller"
-              color="subtle"
+              color="ultra-subtle"
               text="En solo 4 pasos tendrás los resultados."
             />
           </div>
@@ -81,13 +81,12 @@ total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y conf
             <Text preset="small" text="Análisis detallado." />
             <Text
               preset="smaller"
-              color="subtle"
+              color="ultra-subtle"
               text="¡Que no se te escape ni un solo gasto!"
             />
           </div>
         </div>
       </div>
-      <Spacer size="xhuge" />
 
       <Link className="start-link" href="/form">
         <Button text="Empezar" preset="primary" size="medium" />

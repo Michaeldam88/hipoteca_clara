@@ -3,12 +3,14 @@ import "./radioButton.scss";
 
 const RadioButton = ({
   options,
+  selectedOption,
   name,
   setOption,
 }: {
   options: { id: number; label: string; subLabel?: string }[];
   name: string;
   setOption: (value: string) => void;
+  selectedOption?: string;
 }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setOption(event.target.value);
@@ -29,6 +31,7 @@ const RadioButton = ({
             type="radio"
             value={option.label}
             name={name}
+            checked={option.label === selectedOption}
           />
         </label>
       ))}

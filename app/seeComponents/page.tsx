@@ -15,6 +15,7 @@ import Input from "@/ui/customInput/input";
 import Stepper from "@/ui/stepper/stepper";
 import Pagination from "@/ui/pagination/pagination";
 import RangeInput from "@/ui/rangeInput/rangeInput";
+import PopUp from "@/ui/popUp/popUp";
 
 export default function SeeComponents() {
   const radioOptions = [
@@ -38,6 +39,7 @@ export default function SeeComponents() {
   const [page, setPage] = useState(1);
 
   const [modal, setModal] = useState(false);
+  const [popUp, setPopUp] = useState(false);
   const [startClosingModal, setStartClosingModal] = useState(false);
 
   const getRadioOption = (value: string) => {
@@ -189,7 +191,13 @@ export default function SeeComponents() {
       <Spacer size="large" />
       <p>Modal Select</p>
       <Spacer />
-      <SelectModal options={countryOptions} setOption={getCountryOptionModal} />
+      <SelectModal
+        options={countryOptions}
+        setOption={getCountryOptionModal}
+        selectName="Choose a Country:"
+        initialButtonText="-- Choose a country --"
+        modalHeader="Texto custom"
+      />
       <Spacer size="large" />
       <p>Modal</p>
       <Spacer />
@@ -274,6 +282,22 @@ export default function SeeComponents() {
         max={max}
         step={1000}
       />
+      <Spacer size="large" />
+      <p>Pop UP</p>
+      <Spacer />
+      <Button
+        text="Open PopUp"
+        preset="primary"
+        type="button"
+        size="medium"
+        onClick={() => setPopUp(true)}
+      />
+      {popUp && (
+        <PopUp
+          text="Un texto de prueba que es lo que podriamos tener"
+          handleClose={() => setPopUp(false)}
+        />
+      )}
       <Spacer size="huge" />
       <Spacer size="huge" />
     </section>

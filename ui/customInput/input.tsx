@@ -7,26 +7,56 @@ const Input = ({
   placeholder,
   type,
   right,
+  value,
+  moneyFormat = false,
+  decimals = 0,
 }: {
   setValue: (value: string) => void;
   label?: string;
   placeholder?: string;
   type: "text" | "number";
   right?: ReactNode;
+  value?: string | number;
+  moneyFormat?: boolean;
+  decimals?: number;
 }) => {
-  const [inputValue, setInputValue] = useState("");
   const [focus, setFocus] = useState(false);
+  const [showedValue, setShowedValue] = useState(value);
 
+  //if we will use the MoneyFormat the input has to be a text type and the value a String
   const handleInput = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(ev.target.value);
-    setValue(ev.target.value);
+    if (
+      (moneyFormat && Number.isNaN(+ev.target.value)) ||
+      +ev.target.value === 0
+    ) {
+      setValue("");
+    } else {
+      setValue((+ev.target.value).toFixed(decimals).toString());
+    }
+    setShowedValue(ev.target.value);
   };
 
   const handleLabelFocus = () => {
+    if (moneyFormat) setShowedValue(value);
     if (label) setFocus(true);
   };
 
-  const handleLabelUnfocus = () => {
+  const handleLabelUnfocused = () => {
+    if (moneyFormat && showedValue) {
+      if (Number.isNaN(+showedValue)) {
+        setShowedValue("Indica un número valido");
+      }
+
+      if (value) {
+        setShowedValue(
+          new Intl.NumberFormat("es-ES", {
+            style: "decimal",
+            maximumFractionDigits: 0,
+          }).format(+value)
+        );
+      }
+    }
+
     if (label) {
       setFocus(false);
     }
@@ -39,7 +69,7 @@ const Input = ({
       {label && (
         <label
           className={`custom-label ${focus && "custom-label--focused"} ${
-            !focus && inputValue && "custom-label--with-value"
+            !focus && showedValue && "custom-label--with-value"
           }`}
           htmlFor={`customInput${label}`}
         >
@@ -50,13 +80,13 @@ const Input = ({
         id={`customInput${label}`}
         type={type}
         onChange={handleInput}
-        value={inputValue}
+        value={showedValue}
         placeholder={placeholder && placeholder}
         className="custom-input"
         onFocus={handleLabelFocus}
-        onBlur={handleLabelUnfocus}
+        onBlur={handleLabelUnfocused}
       />
-      {right && <p>{right}</p>}
+      {right && <p className="input-right">{right}</p>}
     </div>
   );
 };
