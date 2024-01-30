@@ -7,33 +7,17 @@ const Nav = () => {
   return (
     <nav className="nav">
       <Link href="/">
-        <Image
-          src="/assets/main-logo.png"
-          width="32"
-          height="29"
-          alt="Main Logo"
-          style={{
-            maxWidth: "100%",
-            height: "auto",
-          }}
-        />
+        <div className="nav__home-logo">
+          <Image src="/assets/main-logo.png" alt="Main Logo" fill={true}/>
+        </div>
       </Link>
-      
+
       <div className="nav__text">
         <Text preset="small" text="Hipoteca Clara" weight="bold" />
       </div>
-      <Link href="/seeComponents">
+      <Link href="/">
         <div className="nav__user-logo">
-          <Image
-            src="/assets/user-logo.png"
-            alt="User Logo"
-            fill
-            sizes="100vw"
-            style={{
-              objectFit: "cover",
-              objectPosition: "center",
-            }}
-          />
+          <Image src="/assets/user-logo.png" alt="User Logo" fill={true} />
         </div>
       </Link>
     </nav>

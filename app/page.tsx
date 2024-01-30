@@ -8,19 +8,16 @@ import Link from "next/link";
 export default function Landing() {
   return (
     <div className="landing-container">
-      <Spacer size="xhuge" />
+      <Spacer size="smaller" />
 
       <Image
         src="/assets/landing-logo.png"
-        alt="User Logo"
-        height="151"
-        width="151"
-        style={{
-          maxWidth: "100%",
-          height: "auto"
-        }} />
+        alt="Landing Logo"
+        height="136"
+        width="136"
+      />
 
-      <Spacer size="huge" />
+      <Spacer size="large" />
 
       <Text preset="headline4" text="Calculadora de hipotecas" />
 
@@ -33,7 +30,7 @@ export default function Landing() {
 total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y confía en tu futuro. "
       />
 
-      <Spacer size="xhuge" />
+      <Spacer size="huge" />
       <div>
         <div className="landing-detail-box">
           <div className="landing-detail-box__left">
@@ -41,11 +38,8 @@ total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y conf
               src="/assets/money.png"
               alt="Money Logo"
               height="18"
-              width="18"
-              style={{
-                maxWidth: "100%",
-                height: "auto"
-              }}></Image>
+              width="18"              
+            ></Image>
           </div>
           <div className="landing-detail-box__right">
             <Text preset="small" text="Herramienta gratuita" />
@@ -62,11 +56,8 @@ total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y conf
               src="/assets/pen.png"
               alt="Money Logo"
               height="18"
-              width="18"
-              style={{
-                maxWidth: "100%",
-                height: "auto"
-              }}></Image>
+              width="18"              
+            ></Image>
           </div>
           <div className="landing-detail-box__right">
             <Text preset="small" text="En poco pasos." />
@@ -83,11 +74,8 @@ total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y conf
               src="/assets/sheet.png"
               alt="Money Logo"
               height="18"
-              width="18"
-              style={{
-                maxWidth: "100%",
-                height: "auto"
-              }}></Image>
+              width="18"              
+            ></Image>
           </div>
           <div className="landing-detail-box__right">
             <Text preset="small" text="Análisis detallado." />
