@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import "./avatar.scss";
 
 interface ImageProps {
@@ -23,7 +23,10 @@ const Avatar = ({
       width={width}
       height={height}
       className={`avatar --roundness-${roundness}`}
-    ></Image>
+      style={{
+        maxWidth: "100%",
+        height: "auto"
+      }}></Image>
   );
 };
 

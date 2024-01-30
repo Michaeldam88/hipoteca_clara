@@ -1,5 +1,5 @@
 import "./footer.scss";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -7,9 +7,11 @@ const Footer = () => {
       <Image
         src="/assets/publi.png"
         alt="Publicidad"
-        layout="fill"
-        objectPosition="center"
-      />
+        fill
+        sizes="100vw"
+        style={{
+          objectPosition: "center"
+        }} />
     </footer>
   );
 };

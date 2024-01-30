@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import "./landing.scss";
 import Button from "@/ui/button/button";
 import Text from "@/ui/text/text";
@@ -15,7 +15,10 @@ export default function Landing() {
         alt="User Logo"
         height="151"
         width="151"
-      />
+        style={{
+          maxWidth: "100%",
+          height: "auto"
+        }} />
 
       <Spacer size="huge" />
 
@@ -39,7 +42,10 @@ total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y conf
               alt="Money Logo"
               height="18"
               width="18"
-            ></Image>
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }}></Image>
           </div>
           <div className="landing-detail-box__right">
             <Text preset="small" text="Herramienta gratuita" />
@@ -57,7 +63,10 @@ total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y conf
               alt="Money Logo"
               height="18"
               width="18"
-            ></Image>
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }}></Image>
           </div>
           <div className="landing-detail-box__right">
             <Text preset="small" text="En poco pasos." />
@@ -75,7 +84,10 @@ total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y conf
               alt="Money Logo"
               height="18"
               width="18"
-            ></Image>
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }}></Image>
           </div>
           <div className="landing-detail-box__right">
             <Text preset="small" text="Análisis detallado." />

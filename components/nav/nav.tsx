@@ -1,5 +1,5 @@
 import Text from "@/ui/text/text";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import "./nav.scss";
 
@@ -12,25 +12,30 @@ const Nav = () => {
           width="32"
           height="29"
           alt="Main Logo"
+          style={{
+            maxWidth: "100%",
+            height: "auto",
+          }}
         />
       </Link>
       
       <div className="nav__text">
         <Text preset="small" text="Hipoteca Clara" weight="bold" />
       </div>
-
       <Link href="/seeComponents">
         <div className="nav__user-logo">
           <Image
             src="/assets/user-logo.png"
             alt="User Logo"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
           />
         </div>
       </Link>
-
     </nav>
   );
 };
