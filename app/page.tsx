@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import "./landing.scss";
 import Button from "@/ui/button/button";
 import Text from "@/ui/text/text";

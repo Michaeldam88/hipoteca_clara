@@ -1,5 +1,5 @@
 import Text from "@/ui/text/text";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import "./nav.scss";
 

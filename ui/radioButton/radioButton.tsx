@@ -31,7 +31,7 @@ const RadioButton = ({
             type="radio"
             value={option.label}
             name={name}
-            checked={option.label === selectedOption}
+            defaultChecked={option.label === selectedOption}
           />
         </label>
       ))}
