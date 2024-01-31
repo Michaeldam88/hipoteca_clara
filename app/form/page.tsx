@@ -11,7 +11,7 @@ import SecondStep from "@/components/secondStep/secondStep";
 import ThirdStep from "@/components/thirdStep/thirdStep";
 import FourthStep from "@/components/fourthStep/fourthStep";
 
-export const enum FormSteps {
+export enum FormSteps {
   PROVINCE = "PROVINCE",
   PRICE = "PRICE",
   MORTGAGE_TYPE = "MORTGAGE_TYPE",

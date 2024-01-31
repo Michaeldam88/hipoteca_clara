@@ -43,7 +43,7 @@ const FourthStep = ({
             bottomStartFormattedValue={1}
             bottomEndFormattedValue={yearsMortgage - 1}
           />
-          <Spacer size="giant" />
+          <Spacer size="medium" />
         </>
       )}
 
@@ -58,22 +58,22 @@ const FourthStep = ({
         }
       />
 
-      <Spacer size="smaller" />
+      <Spacer size="medium" />
 
       <Input
         type="number"
-        placeholder="TIN"
+        label="TIN"
         setValue={setFixedTin}
         value={fixedTin}
         right="%"
         decimals={1}
       />
 
-      <Spacer size="smaller" />
+      <Spacer size="medium" />
 
       <Input
         type="number"
-        placeholder="TAE"
+        label="TAE"
         setValue={setFixedTae}
         value={fixedTae}
         right="%"
@@ -86,21 +86,21 @@ const FourthStep = ({
         <>
           <Text preset="smaller" text="Resto de años" />
 
-          <Spacer size="smaller" />
+          <Spacer size="medium" />
           <Input
             type="number"
-            placeholder="TIN"
+            label="TIN"
             setValue={setVariableTin}
             value={variableTin}
             right="% + Euribor"
             decimals={1}
           />
 
-          <Spacer size="smaller" />
+          <Spacer size="medium" />
 
           <Input
             type="number"
-            placeholder="TAE"
+            label="TAE"
             setValue={setVariableTae}
             value={variableTae}
             right="% + Euribor"

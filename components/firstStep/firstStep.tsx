@@ -29,7 +29,7 @@ const FirstStep = ({
       id: element.id,
       value: element.name,
     };
-  });
+  });  
 
   const getProvince = (value: string) => {
     setProvince(value);

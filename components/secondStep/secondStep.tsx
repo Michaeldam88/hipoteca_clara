@@ -31,6 +31,7 @@ const SecondStep = ({
 
   return (
     <div>
+      <Spacer size="small" />
       <Input
         type="text"
         label="Precio Vivienda"
@@ -41,7 +42,7 @@ const SecondStep = ({
       />
       {isPricedRadioOption === "Si" && (
         <>
-          <Spacer size="xhuge" />
+          <Spacer size="huge" />
           <Input
             type="text"
             label="Valor de la Tasación"
@@ -78,7 +79,7 @@ const SecondStep = ({
         limitColorMin={20}
         limitColorMax={80}
       />
-      <Spacer size="giant" />
+      <Spacer size="medium" />
       <RangeInput
         name="yearsMortgage"
         setValue={setYearsMortgage}
