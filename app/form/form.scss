@@ -1,6 +1,6 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
-.form-container {  
+.form-container {
   width: 100%;
   height: 100%;
   display: flex;
@@ -10,9 +10,11 @@
 }
 
 .form-button {
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0;
+  left: 0;
+  padding: 0 16px 16px;
 }
 
 .prev-btn {

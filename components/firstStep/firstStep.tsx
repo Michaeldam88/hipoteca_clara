@@ -54,6 +54,9 @@ const FirstStep = ({
         initialButtonText={province ? province : 'Seleccionar'}
         modalHeader='Selecciona una comunidad'
       />
+      <Spacer size='huge' />
+      <Spacer size='huge' />
+      <Spacer size='huge' />
       <div className='form-button'>
         <Button
           text='Continuar'
