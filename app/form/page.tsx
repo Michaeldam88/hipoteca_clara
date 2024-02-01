@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import Stepper from "@/ui/stepper/stepper";
-import "./form.scss";
-import { useState } from "react";
-import Spacer from "@/ui/spacer/spacer";
-import PopUp from "@/ui/popUp/popUp";
-import { useStepStore } from "@/store/zustand";
-import FirstStep from "@/components/firstStep/firstStep";
-import SecondStep from "@/components/secondStep/secondStep";
-import ThirdStep from "@/components/thirdStep/thirdStep";
-import FourthStep from "@/components/fourthStep/fourthStep";
+import Stepper from '@/ui/stepper/stepper';
+import './form.scss';
+import { useState } from 'react';
+import Spacer from '@/ui/spacer/spacer';
+import PopUp from '@/ui/popUp/popUp';
+import { useStepStore } from '@/store/zustand';
+import FirstStep from '@/components/firstStep/firstStep';
+import SecondStep from '@/components/secondStep/secondStep';
+import ThirdStep from '@/components/thirdStep/thirdStep';
+import FourthStep from '@/components/fourthStep/fourthStep';
 
 export enum FormSteps {
-  PROVINCE = "PROVINCE",
-  PRICE = "PRICE",
-  MORTGAGE_TYPE = "MORTGAGE_TYPE",
-  TINTAE = "TINTAE",
+  PROVINCE = 'PROVINCE',
+  PRICE = 'PRICE',
+  MORTGAGE_TYPE = 'MORTGAGE_TYPE',
+  TINTAE = 'TINTAE',
 }
 
 export default function Form() {
@@ -31,7 +31,7 @@ export default function Form() {
     variableTin,
     variableTae,
   } = useStepStore();
-  const [popUp, setPopUp] = useState("");
+  const [popUp, setPopUp] = useState('');
 
   interface StepItem<T> {
     title: string;
@@ -43,88 +43,88 @@ export default function Form() {
   const steps: StepItem<FormSteps>[] = [
     {
       id: FormSteps.PROVINCE,
-      title: "Tasación y provincia",
+      title: 'Tasación y provincia',
     },
     {
       id: FormSteps.PRICE,
-      title: "Precio y financiación",
+      title: 'Precio y financiación',
     },
     {
       id: FormSteps.MORTGAGE_TYPE,
-      title: "Tipo de hipoteca",
+      title: 'Tipo de hipoteca',
     },
     {
       id: FormSteps.TINTAE,
-      title: "TIN y TAE",
+      title: 'TIN y TAE',
     },
   ];
 
   const dataCheck = (nextStep: FormSteps) => {
     //checks first step
     if (step === FormSteps.PROVINCE && !isPricedRadioOption) {
-      setPopUp("Selecciona si está tasada");
+      setPopUp('Selecciona si está tasada');
       return;
     }
 
     if (step === FormSteps.PROVINCE && !province) {
-      setPopUp("Selecciona una comunidad");
+      setPopUp('Selecciona una comunidad');
       return;
     }
 
     //checks second step
     if (step === FormSteps.PRICE && !housePrice) {
-      setPopUp("Indica el precio de la vivienda");
+      setPopUp('Indica el precio de la vivienda');
       return;
     }
 
     if (
       step === FormSteps.PRICE &&
-      isPricedRadioOption === "Si" &&
+      isPricedRadioOption === 'Si' &&
       !appraisalPrice
     ) {
-      setPopUp("Indica el precio de tasación");
+      setPopUp('Indica el precio de tasación');
       return;
     }
 
     if (step === FormSteps.PRICE && !amountFinanced) {
-      setPopUp("Indica el importe a financiar");
+      setPopUp('Indica el importe a financiar');
       return;
     }
 
     //checks third step
 
     if (step === FormSteps.MORTGAGE_TYPE && !mortgageOption) {
-      setPopUp("Indica el tipo de financiación");
+      setPopUp('Indica el tipo de financiación');
       return;
     }
 
     //checks fourth step
 
     if (step === FormSteps.TINTAE && !fixedTin) {
-      setPopUp("Indica el TIN fijo");
+      setPopUp('Indica el TIN fijo');
       return;
     }
 
     if (step === FormSteps.TINTAE && !fixedTae) {
-      setPopUp("Indica el TAE fijo");
+      setPopUp('Indica el TAE fijo');
       return;
     }
 
     if (
       step === FormSteps.TINTAE &&
-      mortgageOption !== "Fija" &&
+      mortgageOption !== 'Fija' &&
       !variableTin
     ) {
-      setPopUp("Indica el TIN variable");
+      setPopUp('Indica el TIN variable');
       return;
     }
 
     if (
       step === FormSteps.TINTAE &&
-      mortgageOption !== "Fija" &&
+      mortgageOption !== 'Fija' &&
       !variableTae
     ) {
-      setPopUp("Indica el TAE variable");
+      setPopUp('Indica el TAE variable');
       return;
     }
 
@@ -137,16 +137,16 @@ export default function Form() {
   };
 
   return (
-    <div className="form-container">
-      <Spacer size="huge" />
+    <div className='form-container'>
+      <Spacer size='huge' />
       <Stepper<FormSteps> steps={steps} activeStep={step} />
-      <Spacer size="huge" />
+      <Spacer size='huge' />
 
       {step !== FormSteps.PROVINCE && (
-        <button className="prev-btn" onClick={previousStep}>{`<-`}</button>
+        <button className='prev-btn' onClick={previousStep}>{`<-`}</button>
       )}
 
-      {popUp && <PopUp handleClose={() => setPopUp("")} text={popUp} />}
+      {popUp && <PopUp handleClose={() => setPopUp('')} text={popUp} />}
 
       {/* first Step ---------------------- */}
       {step === FormSteps.PROVINCE && <FirstStep dataCheck={dataCheck} />}
