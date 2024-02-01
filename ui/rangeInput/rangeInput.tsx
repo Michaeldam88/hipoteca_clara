@@ -1,5 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
-//import "./rangeInput.scss";
+import { ReactNode, useEffect,  } from "react";
 import "./rangeInput.scss";
 
 const RangeInput = ({
