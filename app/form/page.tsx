@@ -10,13 +10,7 @@ import FirstStep from '@/components/firstStep/firstStep';
 import SecondStep from '@/components/secondStep/secondStep';
 import ThirdStep from '@/components/thirdStep/thirdStep';
 import FourthStep from '@/components/fourthStep/fourthStep';
-
-export enum FormSteps {
-  PROVINCE = 'PROVINCE',
-  PRICE = 'PRICE',
-  MORTGAGE_TYPE = 'MORTGAGE_TYPE',
-  TINTAE = 'TINTAE',
-}
+import { FormSteps } from '../types';
 
 export default function Form() {
   const {

@@ -4,8 +4,9 @@ import RadioButton from '@/ui/radioButton/radioButton';
 import SelectModal from '@/ui/selectModal/selectModal';
 import Button from '@/ui/button/button';
 import data from '../../data/rates.json';
-import { FormSteps } from '@/app/form/page';
+
 import { useStepStore } from '@/store/zustand';
+import { FormSteps } from '@/app/types';
 
 const FirstStep = ({
   dataCheck,
