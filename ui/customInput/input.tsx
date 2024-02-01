@@ -1,5 +1,5 @@
-import { ReactNode, useRef, useState } from "react";
-import "./input.scss";
+import { ReactNode, useState } from 'react';
+import './input.scss';
 
 const Input = ({
   setValue,
@@ -14,7 +14,7 @@ const Input = ({
   setValue: (value: string) => void;
   label?: string;
   placeholder?: string;
-  type: "text" | "number";
+  type: 'text' | 'number';
   right?: ReactNode;
   value?: string | number;
   moneyFormat?: boolean;
@@ -29,7 +29,7 @@ const Input = ({
       (moneyFormat && Number.isNaN(+ev.target.value)) ||
       +ev.target.value === 0
     ) {
-      setValue("");
+      setValue('');
     } else {
       setValue((+ev.target.value).toFixed(decimals).toString());
     }
@@ -44,13 +44,13 @@ const Input = ({
   const handleLabelUnfocused = () => {
     if (moneyFormat && showedValue) {
       if (Number.isNaN(+showedValue)) {
-        setShowedValue("Indica un número valido");
+        setShowedValue('Indica un número valido');
       }
 
       if (value) {
         setShowedValue(
-          new Intl.NumberFormat("es-ES", {
-            style: "decimal",
+          new Intl.NumberFormat('es-ES', {
+            style: 'decimal',
             maximumFractionDigits: 0,
           }).format(+value)
         );
@@ -64,12 +64,12 @@ const Input = ({
 
   return (
     <div
-      className={`input-container ${focus ? "input-container--focused" : ""}`}
+      className={`input-container ${focus ? 'input-container--focused' : ''}`}
     >
       {label && (
         <label
-          className={`custom-label ${focus && "custom-label--focused"} ${
-            !focus && showedValue && "custom-label--with-value"
+          className={`custom-label ${focus && 'custom-label--focused'} ${
+            !focus && showedValue && 'custom-label--with-value'
           }`}
           htmlFor={`customInput${label}`}
         >
@@ -82,11 +82,11 @@ const Input = ({
         onChange={handleInput}
         value={showedValue}
         placeholder={placeholder && placeholder}
-        className="custom-input"
+        className='custom-input'
         onFocus={handleLabelFocus}
         onBlur={handleLabelUnfocused}
       />
-      {right && <p className="input-right">{right}</p>}
+      {right && <p className='input-right'>{right}</p>}
     </div>
   );
 };

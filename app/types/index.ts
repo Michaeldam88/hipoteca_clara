@@ -1,0 +1,6 @@
+export enum FormSteps {
+  PROVINCE = 'PROVINCE',
+  PRICE = 'PRICE',
+  MORTGAGE_TYPE = 'MORTGAGE_TYPE',
+  TINTAE = 'TINTAE',
+}

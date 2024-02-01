@@ -1,15 +1,15 @@
-import { useState } from "react";
-import Text from "@/ui/text/text";
-import Spacer from "@/ui/spacer/spacer";
-import Modal from "@/ui/modal/modal";
-import List from "@/ui/list/list";
-import "./selectModal.scss";
+import { useState } from 'react';
+import Text from '@/ui/text/text';
+import Spacer from '@/ui/spacer/spacer';
+import Modal from '@/ui/modal/modal';
+import List from '@/ui/list/list';
+import './selectModal.scss';
 
 const SelectModal = ({
   options,
   setOption,
-  selectName = "",
-  modalHeader = "",
+  selectName = '',
+  modalHeader = '',
   initialButtonText,
 }: {
   options: {
@@ -34,21 +34,20 @@ const SelectModal = ({
 
   return (
     <>
-      <Text text={selectName} preset="small" />
+      <Text text={selectName} preset='small' />
       <Spacer />
-      <button className="select-button" onClick={() => setModal(true)}>
+      <button className='select-button' onClick={() => setModal(true)}>
         {buttonText}
       </button>
-
       {modal && (
         <Modal
           onClose={() => {
             setStartClosingModal(false);
             setModal(false);
           }}
-          header={<Text text={modalHeader} preset="headline4" weight="bold" />}
+          header={<Text text={modalHeader} preset='headline4' weight='bold' />}
           content={
-            <List elements={options} color="subtle" extraAction={handleClick} />
+            <List elements={options} color='subtle' extraAction={handleClick} />
           }
           startClosing={startClosingModal}
         />
