@@ -1,3 +1,5 @@
+"use client"
+
 import './seeComponents.scss';
 
 import Spacer from '@/ui/spacer/spacer';
