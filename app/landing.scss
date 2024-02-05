@@ -23,6 +23,9 @@
 .start-link {
   text-decoration: none;
   width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  padding: 16px 16px;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(25, 58, 72, 0.139) 0%, rgba(25,58,72,1) 50%);
 }

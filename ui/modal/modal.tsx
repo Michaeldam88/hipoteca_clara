@@ -1,12 +1,12 @@
-import { ReactNode, useEffect, useState } from 'react';
-import './modal.scss';
+import { ReactNode, useEffect, useState } from "react";
+import "./modal.scss";
 
 interface ModalProps {
   handler?: boolean;
   header?: ReactNode;
   content?: ReactNode;
   footer?: ReactNode;
-  height?: 'auto' | 'fill';
+  height?: "auto" | "fill";
   startClosing?: boolean;
   closeOnBackdropClick?: boolean;
   onClose: () => void;
@@ -25,21 +25,21 @@ const Modal = ({
   const [startingPoint, setStartingPoint] = useState<number | null>(null);
   const [positionY, setPositionY] = useState<number | null | undefined>(null);
   const [wrapperHeight, setWrapperHeight] = useState<
-    number | null | undefined | '100dvh' | '80dvh'
+    number | null | undefined | "100dvh" | "80dvh"
   >(null);
   const [upperFreeSpace, setUpperFreeSpace] = useState<
     number | null | undefined
   >(null);
   const [backdropOpacity, setBackdropOpacity] = useState(0.7);
   const [activateCSSAnimations, setActivateCSSAnimations] = useState(false);
-  const [overflow, setOverflow] = useState<'hidden' | 'auto'>('auto');
+  const [overflow, setOverflow] = useState<"hidden" | "auto">("auto");
   const [initialWrapElementHeight, setInitialWrapElementHeight] =
     useState<number>(0);
   const [initialTimeStamp, setInitialTimeStamp] = useState<number>(0);
 
   const animationDuration = 0.25 * 1000;
 
-  const html = document?.querySelector('html');
+  const html = document?.querySelector("html");
   const modalId = `--open-modal`;
 
   const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -47,7 +47,7 @@ const Modal = ({
 
     setInitialTimeStamp(e?.timeStamp);
 
-    const wrapElement = document?.querySelector('.modal__wrapper');
+    const wrapElement = document?.querySelector(".modal__wrapper");
     setInitialWrapElementHeight(
       wrapElement?.getBoundingClientRect()?.height || 0
     );
@@ -60,7 +60,7 @@ const Modal = ({
     const touch = e?.touches[0];
     handlePosition(touch?.clientY, opts);
     e?.target?.addEventListener(
-      'touchend',
+      "touchend",
       handleTouchEnd as EventListenerOrEventListenerObject
     );
   };
@@ -89,8 +89,8 @@ const Modal = ({
     touchPositionY: number,
     opts?: { force?: boolean }
   ) => {
-    const contentElem = document?.querySelector('.modal__content');
-    const wrapElement = document?.querySelector('.modal__wrapper');
+    const contentElem = document?.querySelector(".modal__content");
+    const wrapElement = document?.querySelector(".modal__wrapper");
 
     const wrapElementHeight = wrapElement?.getBoundingClientRect()?.height || 0;
     setUpperFreeSpace(window?.innerHeight - wrapElementHeight);
@@ -101,13 +101,13 @@ const Modal = ({
     if (movement > 0) {
       //if there is a scroll, it takes as starting point the end of the scroll position
       if (contentElem?.scrollTop !== 0 && !shouldForce) {
-        setPositionY(startingPoint);
+        setStartingPoint(touchPositionY);
         return;
       }
 
       const newMaxHeight =
         wrapElementHeight + ((startingPoint || 0) - touchPositionY);
-      setPositionY(touchPositionY);
+      setStartingPoint(touchPositionY);
       setWrapperHeight(Math.round(newMaxHeight));
 
       let opacity = +(
@@ -125,7 +125,7 @@ const Modal = ({
     if (movement < 0 && (wrapElement?.getBoundingClientRect()?.y || 0) > 0) {
       // this will lock the scroll upward until when the modal is at fullscreen
       if (wrapElementHeight < window?.innerHeight) {
-        setOverflow('hidden');
+        setOverflow("hidden");
       }
 
       const newMaxHeight =
@@ -140,7 +140,7 @@ const Modal = ({
     const topNoReturnPoint = getTopNoReturnPoint();
     const lowNoReturnPoint = getLowNoReturnPoint();
 
-    const wrapElement = document?.querySelector('.modal__wrapper');
+    const wrapElement = document?.querySelector(".modal__wrapper");
     const wrapElementHeight = wrapElement?.getBoundingClientRect()?.height || 0;
 
     const currentModalPosition = upperFreeSpace || 0;
@@ -148,9 +148,9 @@ const Modal = ({
     // If it has reached the top no-returning point the height go to 100%
     if (currentModalPosition < topNoReturnPoint) {
       enableCSSAnimations();
-      setWrapperHeight('100dvh');
+      setWrapperHeight("100dvh");
       setBackdropOpacity(0.7);
-      setOverflow('auto');
+      setOverflow("auto");
     }
 
     // If it has not reached the low or top no-returning point when the touch ends
@@ -160,9 +160,9 @@ const Modal = ({
       currentModalPosition > topNoReturnPoint
     ) {
       enableCSSAnimations();
-      setWrapperHeight('80dvh');
+      setWrapperHeight("80dvh");
       setBackdropOpacity(0.7);
-      setOverflow('auto');
+      setOverflow("auto");
     }
 
     // If the modal reaches the not returning point it is moved to the bottom of the screen and closed when the animation is finished
@@ -179,7 +179,7 @@ const Modal = ({
     }
 
     e?.target?.removeEventListener(
-      'touchend',
+      "touchend",
       handleTouchEnd as EventListenerOrEventListenerObject
     );
   };
@@ -191,13 +191,14 @@ const Modal = ({
     return () => {
       html?.classList?.remove(modalId);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startClosing, handleClose]);
 
   const modalYPosition = () =>
     !isNaN(positionY || 0) ? `${positionY}px` : positionY;
 
   const modalHeight = () => {
-    if (wrapperHeight === '100dvh' || wrapperHeight === '80dvh') {
+    if (wrapperHeight === "100dvh" || wrapperHeight === "80dvh") {
       return wrapperHeight;
     } else {
       return !isNaN(wrapperHeight || 0) ? `${wrapperHeight}px` : wrapperHeight;
@@ -206,19 +207,19 @@ const Modal = ({
 
   return (
     <div
-      className={`modal${activateCSSAnimations ? ' --css-animated' : ''}${
-        height === 'fill' ? ' --fill-height' : ''
+      className={`modal${activateCSSAnimations ? " --css-animated" : ""}${
+        height === "fill" ? " --fill-height" : ""
       }`}
     >
       <div
-        className='modal__backdrop'
+        className="modal__backdrop"
         onClick={closeOnBackdropClick ? () => handleClose() : () => false}
         style={{
           opacity: backdropOpacity,
         }}
       ></div>
       <div
-        className='modal__wrapper'
+        className="modal__wrapper"
         style={{
           transform: `translate(${0}px, ${modalYPosition()} )`,
           maxHeight: `${modalHeight()}`,
@@ -226,7 +227,7 @@ const Modal = ({
       >
         {handler && (
           <div
-            className='modal__handler --flex --justify-center'
+            className="modal__handler --flex --justify-center"
             onTouchStart={touchStart}
             onTouchMove={(e) => handleTouchMove(e, { force: true })}
           >
@@ -235,7 +236,7 @@ const Modal = ({
         )}
         {header && (
           <div
-            className='modal__header'
+            className="modal__header"
             onTouchStart={touchStart}
             onTouchMove={(e) => handleTouchMove(e, { force: true })}
           >
@@ -244,7 +245,7 @@ const Modal = ({
         )}
         {content && (
           <div
-            className='modal__content'
+            className="modal__content"
             onTouchStart={touchStart}
             onTouchMove={(e) => handleTouchMove(e, { force: false })}
             style={{
@@ -254,7 +255,7 @@ const Modal = ({
             {content}
           </div>
         )}
-        {footer && <div className='modal__footer'>{footer}</div>}{' '}
+        {footer && <div className="modal__footer">{footer}</div>}{" "}
       </div>
     </div>
   );

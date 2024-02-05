@@ -132,7 +132,7 @@ export default function Form() {
 
   return (
     <div className='form-container'>
-      <Spacer size='huge' />
+      
       <Stepper<FormSteps> steps={steps} activeStep={step} />
       <Spacer size='huge' />
 

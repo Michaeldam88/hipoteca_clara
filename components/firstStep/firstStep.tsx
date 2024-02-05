@@ -39,30 +39,30 @@ const FirstStep = ({
 
   return (
     <div>
-      <Text preset='small' text='¿La vivienda está tasada?' color='subtle' />
-      <Spacer size='huge' />
+      <Text preset="small" text="¿La vivienda está tasada?" color="subtle" />
+      <Spacer size="huge" />
       <RadioButton
-        name='is-priced'
+        name="is-priced"
         options={isPricedRadioOptions}
         selectedOption={isPricedRadioOption}
         setOption={getIsPricedRadioOption}
       />
-      <Spacer size='giant' />
+      <Spacer size="giant" />
       <SelectModal
         options={provinces}
         setOption={getProvince}
-        selectName='¿Donde esta la casa?'
-        initialButtonText={province ? province : 'Seleccionar'}
-        modalHeader='Selecciona una comunidad'
+        selectName="¿Donde esta la casa?"
+        initialButtonText={province ? province : "Seleccionar"}
+        modalHeader="Selecciona una comunidad"
       />
-      <Spacer size='huge' />
-      <Spacer size='huge' />
-      <Spacer size='huge' />
-      <div className='form-button'>
+      <Spacer size="enormous" />
+      <Spacer size="medium" />
+
+      <div className="form-button">
         <Button
-          text='Continuar'
-          preset='primary'
-          size='medium'
+          text="Continuar"
+          preset="primary"
+          size="medium"
           onClick={() => dataCheck(FormSteps.PRICE)}
         />
       </div>
