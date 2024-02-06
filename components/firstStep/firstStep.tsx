@@ -28,8 +28,8 @@ const FirstStep = ({
   ];
 
   const isNewRadioOptions = [
-    { id: 1001, label: "Si" },
-    { id: 1002, label: "No" },
+    { id: 1003, label: "Si" },
+    { id: 1004, label: "No" },
   ];
 
   const getIsPricedRadioOption = (value: string) => {

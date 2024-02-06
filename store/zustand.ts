@@ -33,7 +33,7 @@ export const useStepStore = create<StepsStore>((set) => ({
   isPricedRadioOption: "",
   setIsPricedRadioOption: (value) => set({ isPricedRadioOption: value }),
   isNewRadioOption: "",
-  setIsNewRadioOption: (value) => set({ isPricedRadioOption: value }),
+  setIsNewRadioOption: (value) => set({ isNewRadioOption: value }),
   province: "",
   setProvince: (value) => set({ province: value }),
   housePrice: "",
