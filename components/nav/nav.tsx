@@ -7,30 +7,19 @@ const Nav = () => {
   return (
     <nav className="nav">
       <Link href="/">
-        <Image
-          src="/assets/main-logo.png"
-          width="32"
-          height="29"
-          alt="Main Logo"
-        />
-      </Link>
-      
-      <div className="nav__text">
-        <Text preset="small" text="Hipoteca Clara" weight="bold" />
-      </div>
-
-      <Link href="/seeComponents">
-        <div className="nav__user-logo">
-          <Image
-            src="/assets/user-logo.png"
-            alt="User Logo"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-          />
+        <div className="nav__home-logo">
+          <Image src="/assets/main-logo.png" alt="Main Logo" fill={true}/>
         </div>
       </Link>
 
+      <div className="nav__text">
+        <Text preset="small" text="Hipoteca Clara" weight="bold" />
+      </div>
+      <Link href="/">
+        <div className="nav__user-logo">
+          <Image src="/assets/user-logo.png" alt="User Logo" fill={true} />
+        </div>
+      </Link>
     </nav>
   );
 };

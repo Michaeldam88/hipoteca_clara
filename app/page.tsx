@@ -8,20 +8,19 @@ import Link from "next/link";
 export default function Landing() {
   return (
     <div className="landing-container">
-      <Spacer size="xhuge" />
-
+            
       <Image
         src="/assets/landing-logo.png"
-        alt="User Logo"
-        height="151"
-        width="151"
+        alt="Landing Logo"
+        height="136"
+        width="136"
       />
 
       <Spacer size="huge" />
 
       <Text preset="headline4" text="Calculadora de hipotecas" />
 
-      <Spacer size="medium" />
+      <Spacer size="huge" />
 
       <Text
         preset="small"
@@ -30,7 +29,7 @@ export default function Landing() {
 total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y confía en tu futuro. "
       />
 
-      <Spacer size="xhuge" />
+      <Spacer size="huge" />
       <div>
         <div className="landing-detail-box">
           <div className="landing-detail-box__left">
@@ -87,6 +86,8 @@ total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y conf
           </div>
         </div>
       </div>
+
+      <Spacer size="enormous" />
 
       <Link className="start-link" href="/form">
         <Button text="Empezar" preset="primary" size="medium" />

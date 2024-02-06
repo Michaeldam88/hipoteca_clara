@@ -1,11 +1,11 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 $slider-thumb-size: 20px;
 
 .range {
   display: flex;
   flex-direction: column;
-
+  margin-bottom: 46px;
   &__top {
     display: flex;
     justify-content: space-between;
@@ -45,7 +45,7 @@ $slider-thumb-size: 20px;
     width: 100%;
     cursor: pointer;
     outline: none;
-    height: 10px;
+    height: 12px;
     background-color: transparent;
     border: solid 1px $color-primary-350;
     border-radius: 16px;
@@ -53,8 +53,8 @@ $slider-thumb-size: 20px;
 
     &::before {
       position: absolute;
-      content: "";
-      height: 10px;
+      content: '';
+      height: 10.5px;
       border-radius: 14px;
       background-color: $color-primary-225;
       width: var(--track-width);
@@ -124,7 +124,7 @@ $slider-thumb-size: 20px;
   }
 
   &__bottom-box:before {
-    content: "";
+    content: '';
     position: absolute;
     right: calc(50% - 8px);
     top: -8px;
