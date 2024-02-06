@@ -1,5 +1,7 @@
-import { ReactNode, useEffect,  } from "react";
+import { ReactNode, useEffect } from "react";
+
 import "./rangeInput.scss";
+import Spacer from "../spacer/spacer";
 
 const RangeInput = ({
   name,
@@ -13,6 +15,7 @@ const RangeInput = ({
   limitColor = false,
   limitColorMin = 20,
   limitColorMax = 80,
+  topEndFormattedValue,
   topFormattedValue,
   middleFormattedValue,
   bottomFormattedValue,
@@ -30,9 +33,10 @@ const RangeInput = ({
   limitColor?: boolean;
   limitColorMin?: number;
   limitColorMax?: number;
-  topFormattedValue?: ReactNode;
+  topEndFormattedValue?: ReactNode;
   middleFormattedValue?: ReactNode;
   bottomFormattedValue?: ReactNode;
+  topFormattedValue?: ReactNode;
   bottomStartFormattedValue?: ReactNode;
   bottomEndFormattedValue?: ReactNode;
 }) => {
@@ -70,6 +74,12 @@ const RangeInput = ({
       `${bottomBoxPosition}px`
     );
 
+    const topBox: HTMLElement = document?.querySelector(
+      `.range__top-box-${name}`
+    )!!;
+
+    topBox?.style.setProperty("--top-box-position", `${bottomBoxPosition}px`);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
@@ -78,10 +88,20 @@ const RangeInput = ({
       <label>
         <div className="range__top">
           {labelText && <p className="range__label-text">{labelText}</p>}
-          {topFormattedValue && (
-            <p className="range__top-formatted">{topFormattedValue}</p>
+          {topEndFormattedValue && (
+            <p className="range__top-end-formatted">{topEndFormattedValue}</p>
           )}
         </div>
+        {topFormattedValue && (
+          <>
+            <Spacer size="huge" />
+            <div className="range__top-formatted-container">
+              <div className={`range__top-box range__top-box-${name}`}>
+                <p className="range__top-formatted">{topFormattedValue}</p>
+              </div>
+            </div>
+          </>
+        )}
 
         <div className={"range__middle-container"}>
           <div className={"range__middle-left"}>
@@ -116,7 +136,7 @@ const RangeInput = ({
                 </div>
               )}
 
-              {bottomStartFormattedValue && (
+              {bottomEndFormattedValue && (
                 <div className="range__bottom-end">
                   {bottomEndFormattedValue}
                 </div>
@@ -127,6 +147,9 @@ const RangeInput = ({
             <p className="range__middle-right">{middleFormattedValue}</p>
           )}
         </div>
+        {(bottomEndFormattedValue ||
+          bottomFormattedValue ||
+          bottomStartFormattedValue) && <Spacer size="huge" />}
       </label>
     </div>
   );
