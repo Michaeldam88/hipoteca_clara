@@ -14,6 +14,7 @@ import { FormSteps } from '../types';
 
 export default function Form() {
   const {
+    isNewRadioOption,
     isPricedRadioOption,
     province,
     housePrice,
@@ -24,6 +25,7 @@ export default function Form() {
     fixedTae,
     variableTin,
     variableTae,
+
   } = useStepStore();
   const [popUp, setPopUp] = useState('');
 
@@ -55,6 +57,12 @@ export default function Form() {
 
   const dataCheck = (nextStep: FormSteps) => {
     //checks first step
+
+    if (step === FormSteps.PROVINCE && !isNewRadioOption) {
+      setPopUp("Selecciona si es nueva");
+      return;
+    }
+
     if (step === FormSteps.PROVINCE && !isPricedRadioOption) {
       setPopUp('Selecciona si está tasada');
       return;

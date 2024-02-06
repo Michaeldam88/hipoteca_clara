@@ -29,6 +29,17 @@
         "0,1 % para préstamos destinados a la eliminación de barreras arquitectónicas y adaptación funcional de la vivienda habitual de las personas con discapacidad."
       ]
     },
+
+    {
+      "id": 18,
+      "name": "Asturias",
+      "itp-prcg": 10,
+      "itp-reduction": ["3 % para viviendas de protección oficial."],
+      "adj-prcg": 1.2,
+      "adj-reduction": [
+        "0,3 % para compra de viviendas efectuada por beneficiarios de ayudas económicas de la Administración para la adquisición de vivienda habitual."
+      ]
+    },
     {
       "id": 3,
       "name": "Canarias",
@@ -106,56 +117,7 @@
         "50% de bonificación si el registro que deba proceder a la inscripción radique en Ceuta."
       ]
     },
-    {
-      "id": 9,
-      "name": "Melilla",
-      "itp-prcg": 6,
-      "itp-reduction": [
-        "50 % de bonificación si el inmueble está situado en Melilla."
-      ],
-      "adj-prcg": 1.5,
-      "adj-reduction": [
-        "50% de bonificación si el registro que deba proceder a la inscripción radique en Melilla."
-      ]
-    },
-    {
-      "id": 10,
-      "name": "Madrid",
-      "itp-prcg": 6,
-      "itp-reduction": [
-        "4 % para la compra de una vivienda habitual destinada a familia numerosa.",
-        "10 % de bonificación si se trata de la compra de una vivienda habitual."
-      ],
-      "adj-prcg": 0.75,
-      "adj-reduction": [
-        "0,2 % para VPO con una superficie de 90m2 cuando no cumplan los requisitos para la exención.",
-        "0,4 % para viviendas de nueva construcción e hipotecas inferiores a 120.000 €.",
-        "0,5 % para viviendas de nueva construcción e hipotecas inferiores a 180.000 €."
-      ]
-    },
-    {
-      "id": 11,
-      "name": "Navarra",
-      "itp-prcg": 6,
-      "itp-reduction": [
-        "5 % para los primeros 180.303,63 € de una vivienda habitual destinada para familias de dos o más hijos."
-      ],
-      "adj-prcg": 0.5,
-      "adj-reduction": ["No tiene tipo reducido."]
-    },
-    {
-      "id": 12,
-      "name": "Valenciana",
-      "itp-prcg": 10,
-      "itp-reduction": [
-        "8 % para viviendas de protección pública de régimen general o primera vivienda habitual de menores de 35 años.",
-        "4% para viviendas habituales de protección oficial de régimen especial, familias numerosas o personas con un grado de minusvalía física superior al 65 % o psíquico superior al 33 %."
-      ],
-      "adj-prcg": 1.5,
-      "adj-reduction": [
-        "0,1 % para vivienda habitual y préstamos hipotecarios para vivienda habitual de familias numerosas y personas con un grado de discapacidad físico del 65 % o psíquico del 33 %."
-      ]
-    },
+
     {
       "id": 13,
       "name": "Extremadura",
@@ -170,6 +132,7 @@
         "0,1 % cuando se trate de viviendas con protección pública calificadas como viviendas medias, con las mismas limitaciones de renta."
       ]
     },
+
     {
       "id": 14,
       "name": "Galicia",
@@ -196,6 +159,7 @@
         "1,2 % para viviendas con un valor real inferior a 200.000 €."
       ]
     },
+
     {
       "id": 16,
       "name": "La Rioja",
@@ -210,23 +174,30 @@
       ]
     },
     {
-      "id": 17,
-      "name": "País Vasco",
-      "itp-prcg": 7,
+      "id": 10,
+      "name": "Madrid",
+      "itp-prcg": 6,
       "itp-reduction": [
-        "2,50 % para familias numerosas, viviendas de no más de 120 m2 (o 300m2 de parcela en unifamiliares) y compra de vivienda habitual."
+        "4 % para la compra de una vivienda habitual destinada a familia numerosa.",
+        "10 % de bonificación si se trata de la compra de una vivienda habitual."
       ],
-      "adj-prcg": 0.5,
-      "adj-reduction": ["No tiene tipo reducido."]
+      "adj-prcg": 0.75,
+      "adj-reduction": [
+        "0,2 % para VPO con una superficie de 90m2 cuando no cumplan los requisitos para la exención.",
+        "0,4 % para viviendas de nueva construcción e hipotecas inferiores a 120.000 €.",
+        "0,5 % para viviendas de nueva construcción e hipotecas inferiores a 180.000 €."
+      ]
     },
     {
-      "id": 18,
-      "name": "Asturias",
-      "itp-prcg": 10,
-      "itp-reduction": ["3 % para viviendas de protección oficial."],
-      "adj-prcg": 1.2,
+      "id": 9,
+      "name": "Melilla",
+      "itp-prcg": 6,
+      "itp-reduction": [
+        "50 % de bonificación si el inmueble está situado en Melilla."
+      ],
+      "adj-prcg": 1.5,
       "adj-reduction": [
-        "0,3 % para compra de viviendas efectuada por beneficiarios de ayudas económicas de la Administración para la adquisición de vivienda habitual."
+        "50% de bonificación si el registro que deba proceder a la inscripción radique en Melilla."
       ]
     },
     {
@@ -240,6 +211,39 @@
       "adj-prcg": 1.5,
       "adj-reduction": [
         "0,1 % cuando se financie la primera transmisión de viviendas acogidas al Plan de vivienda joven de la Región de Murcia."
+      ]
+    },
+
+    {
+      "id": 11,
+      "name": "Navarra",
+      "itp-prcg": 6,
+      "itp-reduction": [
+        "5 % para los primeros 180.303,63 € de una vivienda habitual destinada para familias de dos o más hijos."
+      ],
+      "adj-prcg": 0.5,
+      "adj-reduction": ["No tiene tipo reducido."]
+    },{
+      "id": 17,
+      "name": "País Vasco",
+      "itp-prcg": 7,
+      "itp-reduction": [
+        "2,50 % para familias numerosas, viviendas de no más de 120 m2 (o 300m2 de parcela en unifamiliares) y compra de vivienda habitual."
+      ],
+      "adj-prcg": 0.5,
+      "adj-reduction": ["No tiene tipo reducido."]
+    },
+    {
+      "id": 12,
+      "name": "Valenciana",
+      "itp-prcg": 10,
+      "itp-reduction": [
+        "8 % para viviendas de protección pública de régimen general o primera vivienda habitual de menores de 35 años.",
+        "4% para viviendas habituales de protección oficial de régimen especial, familias numerosas o personas con un grado de minusvalía física superior al 65 % o psíquico superior al 33 %."
+      ],
+      "adj-prcg": 1.5,
+      "adj-reduction": [
+        "0,1 % para vivienda habitual y préstamos hipotecarios para vivienda habitual de familias numerosas y personas con un grado de discapacidad físico del 65 % o psíquico del 33 %."
       ]
     }
   ]

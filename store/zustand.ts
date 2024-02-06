@@ -3,6 +3,8 @@ import { create } from "zustand";
 type StepsStore = {
   isPricedRadioOption: string;
   setIsPricedRadioOption: (data: string) => void;
+  isNewRadioOption: string;
+  setIsNewRadioOption: (data: string) => void;
   province: string;
   setProvince: (data: string) => void;
   housePrice: string;
@@ -30,6 +32,8 @@ type StepsStore = {
 export const useStepStore = create<StepsStore>((set) => ({
   isPricedRadioOption: "",
   setIsPricedRadioOption: (value) => set({ isPricedRadioOption: value }),
+  isNewRadioOption: "",
+  setIsNewRadioOption: (value) => set({ isPricedRadioOption: value }),
   province: "",
   setProvince: (value) => set({ province: value }),
   housePrice: "",
