@@ -30,21 +30,18 @@ const FourthStep = ({
   return (
     <div>
       {mortgageOption === "Mixta" && (
-        <>
-          <RangeInput
-            name="yearsFixedMortgage"
-            setValue={setYearsFixedMortgage}
-            value={yearsFixedMortgage}
-            step={1}
-            min={1}
-            max={yearsMortgage - 1}
-            labelText="Años de hipoteca fija"
-            bottomFormattedValue={yearsFixedMortgage}
-            bottomStartFormattedValue={1}
-            bottomEndFormattedValue={yearsMortgage - 1}
-          />
-          <Spacer size="medium" />
-        </>
+        <RangeInput
+          name="yearsFixedMortgage"
+          setValue={setYearsFixedMortgage}
+          value={yearsFixedMortgage}
+          step={1}
+          min={1}
+          max={yearsMortgage - 1}
+          labelText="Años de hipoteca fija"
+          topFormattedValue={yearsFixedMortgage}
+          bottomStartFormattedValue={1}
+          bottomEndFormattedValue={yearsMortgage - 1}
+        />
       )}
 
       <Text

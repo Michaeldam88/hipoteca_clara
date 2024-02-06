@@ -1,11 +1,12 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 $slider-thumb-size: 20px;
 
 .range {
   display: flex;
   flex-direction: column;
-  margin-bottom: 46px;
+  margin-bottom: 16px;
+  position: relative;
   &__top {
     display: flex;
     justify-content: space-between;
@@ -17,7 +18,7 @@ $slider-thumb-size: 20px;
     color: $color-primary-25;
   }
 
-  &__top-formatted {
+  &__top-end-formatted {
     color: $color-primary-275;
     font-size: 15px;
   }
@@ -53,7 +54,7 @@ $slider-thumb-size: 20px;
 
     &::before {
       position: absolute;
-      content: '';
+      content: "";
       height: 10.5px;
       border-radius: 14px;
       background-color: $color-primary-225;
@@ -124,7 +125,7 @@ $slider-thumb-size: 20px;
   }
 
   &__bottom-box:before {
-    content: '';
+    content: "";
     position: absolute;
     right: calc(50% - 8px);
     top: -8px;
@@ -134,8 +135,39 @@ $slider-thumb-size: 20px;
     border-right: 8px solid transparent;
     border-bottom: 8px solid $color-primary-200;
   }
+  &__top-formatted-container {
+    position: absolute;
+    top: 27px;
+    //change based on the size of the slider thumb
+    left: $slider-thumb-size / 2 + 2px;
+    right: $slider-thumb-size / 2 + 2px;
+  }
 
-  &__bottom-formatted {
+  &__top-box {
+    position: absolute;
+    width: fit-content;
+    padding: 0.2rem 0.4rem;
+    background: $color-primary-200;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 4px;
+    transform: translateX(calc(var(--top-box-position) - 50%));
+  }
+
+  &__top-box:before {
+    content: "";
+    position: absolute;
+    right: calc(50% - 8px);
+    bottom: -8px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid $color-primary-200;
+  }
+
+  &__bottom-formatted,
+  &__top-formatted {
     margin: 0;
     font-size: 12px;
     color: $color-primary-275;
