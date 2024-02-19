@@ -4,7 +4,7 @@ import { ReactNode, useEffect, useRef } from "react";
 import "./donutChart.scss";
 
 const DonutsChart = ({
-  chartName,
+  
   width,
   data,
   type = "full",
@@ -14,9 +14,9 @@ const DonutsChart = ({
   strokeColor,
   innerElem = "",
 }: {
-  chartName: string;
+  
   width: number;
-  data: { color: string; firstValue: string; secondValue: string }[];
+  data: { color: string; firstValue: number; secondValue: string }[];
   type?: "full" | "semi";
   innerRadius?: number;
   padAngle?: number;
@@ -26,7 +26,7 @@ const DonutsChart = ({
 }) => {
   const color = d3
     .scaleOrdinal()
-    .domain(data.map((d) => d.firstValue))
+    .domain(data.map((d) => d.firstValue.toString()))
     .range(data.map((d) => d.color));
 
   const height = type === "full" ? width : width / 2;
@@ -72,7 +72,7 @@ const DonutsChart = ({
   });
 
   return (
-    <div id={`chart-${chartName}`} className={"donutChart-container"}>
+    <div className={"donutChart-container"}>
       {innerElem && (
         <div
           className={"donutChart-info"}

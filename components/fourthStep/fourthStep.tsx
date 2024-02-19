@@ -64,7 +64,7 @@ const FourthStep = ({
         setValue={setFixedTin}
         value={fixedTin}
         right="%"
-        decimals={1}
+        decimals={2}
       />
 
       <Spacer size="medium" />
@@ -75,7 +75,7 @@ const FourthStep = ({
         setValue={setFixedTae}
         value={fixedTae}
         right="%"
-        decimals={1}
+        decimals={2}
       />
 
       <Spacer size="large" />
@@ -91,7 +91,7 @@ const FourthStep = ({
             setValue={setVariableTin}
             value={variableTin}
             right="% + Euribor"
-            decimals={1}
+            decimals={2}
           />
 
           <Spacer size="medium" />
@@ -102,7 +102,7 @@ const FourthStep = ({
             setValue={setVariableTae}
             value={variableTae}
             right="% + Euribor"
-            decimals={1}
+            decimals={2}
           />
         </>
       )}

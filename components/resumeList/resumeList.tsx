@@ -5,12 +5,12 @@ const ResumeList = ({
 }: {
   data: {
     color: string;
-    firstValue: string;
+    firstValue: number;
     secondValue: string;
   }[];
 }) => {
   return (
-    <ul>
+    <ul className="resume-list">
       {data.map((element, i) => (
         <li
           className={
@@ -25,7 +25,13 @@ const ResumeList = ({
             style={{ backgroundColor: element.color }}
           ></div>
           <div>
-            <p className="list-element__firstValue">{element.firstValue}</p>
+            <p className="list-element__firstValue">
+              {new Intl.NumberFormat("es-ES", {
+                maximumFractionDigits: 2,
+                style: "currency",
+                currency: "EUR",
+              }).format(element.firstValue)}
+            </p>
             <p className="list-element__secondValue">{element.secondValue}</p>
           </div>
         </li>

@@ -1,5 +1,9 @@
 @import "../../styles/variables.scss";
 
+.resume-list {
+  width: 100%;
+}
+
 .list-element {
   &__container {
     display: flex;
