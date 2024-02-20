@@ -93,17 +93,6 @@ const FourthStep = ({
             right="% + Euribor"
             decimals={2}
           />
-
-          <Spacer size="medium" />
-
-          <Input
-            type="number"
-            label="TAE"
-            setValue={setVariableTae}
-            value={variableTae}
-            right="% + Euribor"
-            decimals={2}
-          />
         </>
       )}
       <Spacer size="enormous" />

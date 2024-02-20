@@ -7,20 +7,18 @@ import "./results.scss";
 import DonutsChart from "@/components/donutChart/donutChart";
 import { useStepStore } from "@/store/zustand";
 import data from "../../data/rates.json";
+import euriborData from "../../data/euribor.json";
 
 export default function Results() {
   const {
     isNewRadioOption,
-    isPricedRadioOption,
     province,
     housePrice,
-    appraisalPrice,
     amountFinanced,
     mortgageOption,
     fixedTin,
     fixedTae,
     variableTin,
-    variableTae,
     yearsMortgage,
   } = useStepStore();
 
@@ -56,6 +54,41 @@ export default function Results() {
     };
   }
 
+  const euribor = 3.648;
+
+  function findInterestRate(
+    loanAmount: number,
+    monthlyPayment: number,
+    periods: number
+  ) {
+    let annualInterestRate = 0;
+    let monthlyInterestRate = 0;
+    let tolerance = amountFinanced * 0.0001; // Tolerance for comparison
+
+    // Start with an initial guess for the interest rate
+    for (
+      annualInterestRate = +variableTin + euribor;
+      annualInterestRate < 20;
+      annualInterestRate += 0.01
+    ) {
+      monthlyInterestRate = annualInterestRate / 12 / 100;
+
+      // Calculate the monthly payment using the guessed interest rate
+      let calculatedPayment =
+        loanAmount *
+        (monthlyInterestRate /
+          (1 - Math.pow(1 + monthlyInterestRate, -periods)));
+
+      // Check if the calculated payment is close enough to the known payment
+      if (Math.abs(calculatedPayment - monthlyPayment) < tolerance) {
+        // If it is, break out of the loop and return the interest rate
+        break;
+      }
+    }
+
+    return annualInterestRate.toFixed(2);
+  }
+
   const provinceData = data["autonomous-region"]?.find(
     (element) => element.name === province
   );
@@ -65,6 +98,21 @@ export default function Results() {
     +fixedTin,
     +fixedTae,
     yearsMortgage
+  );
+
+  const variableMortgageResults = calculateMortgage(
+    amountFinanced,
+    +variableTin + euribor,
+    +fixedTae,
+    yearsMortgage
+  );
+
+  const variableInterestRate = findInterestRate(
+    amountFinanced,
+    variableMortgageResults.monthlyTinPayment +
+      mortgageResults.monthlyTaePayment -
+      mortgageResults.monthlyTinPayment,
+    mortgageResults.totalPeriods
   );
 
   const mortgageData = [
@@ -80,7 +128,20 @@ export default function Results() {
       color: "#193A48",
       firstValue:
         mortgageResults.monthlyTaePayment - mortgageResults.monthlyTinPayment,
-      secondValue: `Intereses y Gastos (TAE ${fixedTae}%)`,
+      secondValue: `Seguros y Gastos (TAE ${fixedTae}%)`,
+    },
+    {
+      color: "#193A48",
+      firstValue: variableMortgageResults.monthlyTinPayment,
+      secondValue: `Cuota parte variable (Tin ${variableTin}% + Euribor ${euribor.toFixed(
+        2
+      )}%)`,
+    },
+    {
+      color: "#193A48",
+      firstValue:
+        mortgageResults.monthlyTaePayment - mortgageResults.monthlyTinPayment,
+      secondValue: `Seguros y Gastos (TAE Variable ${variableInterestRate}%)`,
     },
   ];
 
@@ -92,7 +153,9 @@ export default function Results() {
           ? +housePrice * 0.1
           : (+housePrice * (provinceData?.["itp-prcg"] || 0)) / 100,
       secondValue:
-        isNewRadioOption === "Si" ? "Impuestos IVA 10%" : `Impuestos ITP ${provinceData?.["itp-prcg"]}%`,
+        isNewRadioOption === "Si"
+          ? "Impuestos IVA 10%"
+          : `Impuestos ITP ${provinceData?.["itp-prcg"]}%`,
     },
     {
       color: "#87A1A2",

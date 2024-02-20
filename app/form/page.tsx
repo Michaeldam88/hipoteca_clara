@@ -25,7 +25,6 @@ export default function Form() {
     fixedTin,
     fixedTae,
     variableTin,
-    variableTae,
   } = useStepStore();
   const [popUp, setPopUp] = useState("");
 
@@ -120,15 +119,6 @@ export default function Form() {
       !variableTin
     ) {
       setPopUp("Indica el TIN variable");
-      return;
-    }
-
-    if (
-      step === FormSteps.TINTAE &&
-      mortgageOption !== "Fija" &&
-      !variableTae
-    ) {
-      setPopUp("Indica el TAE variable");
       return;
     }
 
