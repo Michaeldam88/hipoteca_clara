@@ -2,11 +2,10 @@ import { useStepStore } from "@/store/zustand";
 import Input from "@/ui/customInput/input";
 import RangeInput from "@/ui/rangeInput/rangeInput";
 import Spacer from "@/ui/spacer/spacer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Text from "@/ui/text/text";
 import Button from "@/ui/button/button";
 import { FormSteps } from "@/app/types";
-import Link from "next/link";
 
 const FourthStep = ({
   dataCheck,
@@ -24,9 +23,17 @@ const FourthStep = ({
     fixedTae,
     setVariableTin,
     variableTin,
-    setVariableTae,
-    variableTae,
   } = useStepStore();
+
+  useEffect(() => {
+    if (mortgageOption === "Variable") {
+      setYearsFixedMortgage(1);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mortgageOption]);
+  
+
+  
 
   return (
     <div>

@@ -27,6 +27,22 @@ type StepsStore = {
   setVariableTae: (data: string) => void;
   yearsFixedMortgage: number;
   setYearsFixedMortgage: (data: number) => void;
+  mortgageResults: {
+    monthlyTinPayment: number;
+    monthlyTaePayment: number;
+    totalPaidTin: number;
+    totalPaidTae: number;
+    totalPeriods: number;
+  };
+  setMortgageResults: (data: {
+    monthlyTinPayment: number;
+    monthlyTaePayment: number;
+    totalPaidTin: number;
+    totalPaidTae: number;
+    totalPeriods: number;
+  }) => void;
+  totalExpenses: number;
+  setTotalExpenses: (data: number) => void;
 };
 
 export const useStepStore = create<StepsStore>((set) => ({
@@ -56,4 +72,14 @@ export const useStepStore = create<StepsStore>((set) => ({
   setVariableTae: (value) => set({ variableTae: value }),
   yearsFixedMortgage: 1,
   setYearsFixedMortgage: (value) => set({ yearsFixedMortgage: value }),
+  mortgageResults: {
+    monthlyTinPayment: 0,
+    monthlyTaePayment: 0,
+    totalPaidTin: 0,
+    totalPaidTae: 0,
+    totalPeriods: 0,
+  },
+  setMortgageResults: (value) => set({ mortgageResults: value }),
+  totalExpenses: 0,
+  setTotalExpenses: (value) => set({ totalExpenses: value }),
 }));

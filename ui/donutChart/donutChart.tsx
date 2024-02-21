@@ -1,4 +1,3 @@
-"use client";
 import * as d3 from "d3";
 import { ReactNode, useEffect, useRef } from "react";
 import "./donutChart.scss";
