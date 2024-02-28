@@ -15,11 +15,11 @@ const Nav = () => {
       <div className="nav__text">
         <Text preset="small" text="Hipoteca Clara" weight="bold" />
       </div>
-      <Link href="/">
+      {/* <Link href="/">
         <div className="nav__user-logo">
           <Image src="/assets/user-logo.png" alt="User Logo" fill={true} />
         </div>
-      </Link>
+      </Link> */}
     </nav>
   );
 };

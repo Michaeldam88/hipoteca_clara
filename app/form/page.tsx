@@ -2,7 +2,7 @@
 
 import Stepper from "@/ui/stepper/stepper";
 import "./form.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Spacer from "@/ui/spacer/spacer";
 import PopUp from "@/ui/popUp/popUp";
 import { useStepStore } from "@/store/zustand";
@@ -12,6 +12,7 @@ import ThirdStep from "@/components/thirdStep/thirdStep";
 import FourthStep from "@/components/fourthStep/fourthStep";
 import { FormSteps } from "../types";
 import { useRouter } from "next/navigation";
+import { initializeFromSessionStorage } from "@/store/zustand";
 
 export default function Form() {
   const {
@@ -27,7 +28,7 @@ export default function Form() {
     variableTin,
   } = useStepStore();
   const [popUp, setPopUp] = useState("");
-
+  
   interface StepItem<T> {
     title: string;
     id: T;
@@ -132,6 +133,10 @@ export default function Form() {
     const currentPosition = steps.findIndex((element) => element.id === step);
     setStep(steps[currentPosition - 1].id);
   };
+
+  useEffect(() => {    
+    useStepStore.setState(initializeFromSessionStorage());
+  }, []);
 
   return (
     <div className="form-container">

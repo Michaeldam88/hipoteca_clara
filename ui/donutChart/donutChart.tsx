@@ -2,6 +2,12 @@ import * as d3 from "d3";
 import { ReactNode, useEffect, useRef } from "react";
 import "./donutChart.scss";
 
+interface DataItem {
+  color: string;
+  firstValue: number;
+  secondValue: string;
+}
+
 const DonutsChart = ({
   
   width,
@@ -23,6 +29,8 @@ const DonutsChart = ({
   strokeSize?: number;
   innerElem?: ReactNode;
 }) => {
+
+
   const color = d3
     .scaleOrdinal()
     .domain(data.map((d) => d.firstValue.toString()))
@@ -40,7 +48,7 @@ const DonutsChart = ({
     const svg = d3.select(svgRef.current);
 
     const pie = d3
-      .pie()
+      .pie<DataItem>()
       .padAngle(padAngle)
       .startAngle(type === "full" ? 0 : Math.PI)
       .sort((a, b) => a.firstValue - b.firstValue)
@@ -54,7 +62,7 @@ const DonutsChart = ({
       .attr(
         "d",
         d3
-          .arc()
+          .arc<d3.PieArcDatum<DataItem>>()
           .innerRadius(innerRadius * radius)
           .outerRadius(radius)
       )

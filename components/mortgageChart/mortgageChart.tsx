@@ -148,7 +148,7 @@ const MortgageChart = ({}: {}) => {
   useEffect(() => {
     setMortgageResults(mortgageResults);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [amountFinanced]);
 
   return (
     <div className="data-container">

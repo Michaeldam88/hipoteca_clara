@@ -37,7 +37,7 @@ const NewSearchChart = () => {
             width="24"
           ></Image>
         </li>
-        <li className="newSearch-listElement">
+        {/* <li className="newSearch-listElement">
           <p>Guardar</p>
           <Image
             src="/assets/saveSearch.png"
@@ -45,7 +45,7 @@ const NewSearchChart = () => {
             height="30"
             width="30"
           ></Image>
-        </li>
+        </li> */}
       </ul>
     </div>
   );
