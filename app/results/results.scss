@@ -37,23 +37,35 @@
   }
 }
 
-.new-search-container {
+.newSearch-listContainer{
+  width: 100%;
 }
 
-.donutChart-info__title{
+.newSearch-listElement {
+  color: $color-primary-150;
+  border-top: 2px solid $color-primary-300;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;  
+
+  &--first {
+    border-top: none;
+  }
+}
+
+.donutChart-info__title {
   font-size: 10px;
   line-height: 12px;
-
 }
 
-.donutChart-info__sub-title{
+.donutChart-info__sub-title {
   font-size: 12px;
   font-weight: 800;
 }
 
-.mortgageChart-text{
+.mortgageChart-text {
   align-self: flex-start;
   font-size: 12px;
   font-weight: 800;
-  color:$color-primary-150
+  color: $color-primary-150;
 }

@@ -1,13 +1,9 @@
 import { useStepStore } from "@/store/zustand";
 import ResumeList from "@/ui/resumeList/resumeList";
 
-const ResumeChart = ({}: {}) => {
-  const {
-    amountFinanced,
-    mortgageResults,
-    housePrice,
-    totalExpenses,
-  } = useStepStore();
+const ResumeChart = () => {
+  const { amountFinanced, mortgageResults, housePrice, totalExpenses } =
+    useStepStore();
 
   const resumeData = [
     {
