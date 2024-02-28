@@ -43,43 +43,51 @@ type StepsStore = {
   }) => void;
   totalExpenses: number;
   setTotalExpenses: (data: number) => void;
+  reset: () => void;
 };
 
-export const useStepStore = create<StepsStore>((set) => ({
-  isPricedRadioOption: "",
-  setIsPricedRadioOption: (value) => set({ isPricedRadioOption: value }),
-  isNewRadioOption: "",
-  setIsNewRadioOption: (value) => set({ isNewRadioOption: value }),
-  province: "",
-  setProvince: (value) => set({ province: value }),
-  housePrice: "",
-  setHousePrice: (value) => set({ housePrice: value }),
-  appraisalPrice: "",
-  setAppraisalPrice: (value) => set({ appraisalPrice: value }),
-  amountFinanced: 0,
-  setAmountFinanced: (value) => set({ amountFinanced: value }),
-  yearsMortgage: 25,
-  setYearsMortgage: (value) => set({ yearsMortgage: value }),
-  mortgageOption: "",
-  setMortgageOption: (value) => set({ mortgageOption: value }),
-  fixedTin: "",
-  setFixedTin: (value) => set({ fixedTin: value }),
-  fixedTae: "",
-  setFixedTae: (value) => set({ fixedTae: value }),
-  variableTin: "",
-  setVariableTin: (value) => set({ variableTin: value }),
-  variableTae: "",
-  setVariableTae: (value) => set({ variableTae: value }),
-  yearsFixedMortgage: 1,
-  setYearsFixedMortgage: (value) => set({ yearsFixedMortgage: value }),
-  mortgageResults: {
-    monthlyTinPayment: 0,
-    monthlyTaePayment: 0,
-    totalPaidTin: 0,
-    totalPaidTae: 0,
-    totalPeriods: 0,
-  },
-  setMortgageResults: (value) => set({ mortgageResults: value }),
-  totalExpenses: 0,
-  setTotalExpenses: (value) => set({ totalExpenses: value }),
-}));
+export const useStepStore = create<StepsStore>((set) => {
+  const initialState: Omit<StepsStore, "reset"> = {
+    isPricedRadioOption: "",
+    setIsPricedRadioOption: (value) => set({ isPricedRadioOption: value }),
+    isNewRadioOption: "",
+    setIsNewRadioOption: (value) => set({ isNewRadioOption: value }),
+    province: "",
+    setProvince: (value) => set({ province: value }),
+    housePrice: "",
+    setHousePrice: (value) => set({ housePrice: value }),
+    appraisalPrice: "",
+    setAppraisalPrice: (value) => set({ appraisalPrice: value }),
+    amountFinanced: 0,
+    setAmountFinanced: (value) => set({ amountFinanced: value }),
+    yearsMortgage: 25,
+    setYearsMortgage: (value) => set({ yearsMortgage: value }),
+    mortgageOption: "",
+    setMortgageOption: (value) => set({ mortgageOption: value }),
+    fixedTin: "",
+    setFixedTin: (value) => set({ fixedTin: value }),
+    fixedTae: "",
+    setFixedTae: (value) => set({ fixedTae: value }),
+    variableTin: "",
+    setVariableTin: (value) => set({ variableTin: value }),
+    variableTae: "",
+    setVariableTae: (value) => set({ variableTae: value }),
+    yearsFixedMortgage: 1,
+    setYearsFixedMortgage: (value) => set({ yearsFixedMortgage: value }),
+    mortgageResults: {
+      monthlyTinPayment: 0,
+      monthlyTaePayment: 0,
+      totalPaidTin: 0,
+      totalPaidTae: 0,
+      totalPeriods: 0,
+    },
+    setMortgageResults: (value) => set({ mortgageResults: value }),
+    totalExpenses: 0,
+    setTotalExpenses: (value) => set({ totalExpenses: value }),
+  };
+
+  return {
+    ...initialState,
+    reset: () => set(initialState),
+  };
+});
