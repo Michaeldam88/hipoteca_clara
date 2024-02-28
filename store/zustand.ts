@@ -161,5 +161,8 @@ export const initializeFromSessionStorage = () => {
     });
   } catch (error) {
     console.error('Error loading from session storage:', error);
+    return {};
   }
+
+  return null;
 };
