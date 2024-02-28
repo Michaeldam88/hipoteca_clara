@@ -44,7 +44,7 @@ const Input = ({
   const handleLabelUnfocused = () => {
     if (moneyFormat && showedValue) {
       if (Number.isNaN(+showedValue)) {
-        setShowedValue('Indica un número valido');
+        setShowedValue('Por favor indique un número valido.');
       }
 
       if (value) {

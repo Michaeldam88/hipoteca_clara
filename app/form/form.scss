@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 .form-container {
   width: 100%;
@@ -7,30 +7,21 @@
   flex-direction: column;
   position: relative;
   padding-bottom: 76px;
-}
 
-.form-button {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  padding: 16px 16px;
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    180deg,
-    rgba(25, 58, 72, 0.139) 0%,
-    rgba(25, 58, 72, 1) 50%
-  );
-  z-index: 3;
-}
+  &__go-back {
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    opacity: 0.9;
+    transition: all 0.3s;
+    cursor: pointer;
 
-.prev-btn {
-  background-color: $color-primary-200;
-  color: $text-color;
-  width: 50px;
-  height: 40px;
-  border: none;
-  position: absolute;
-  top: 10px;
-  right: 0;
+    &:hover {
+      opacity: 1;
+    }
+
+    @media (min-width: $bk-desktop) {
+      padding: 8px 0 16px;
+    }
+  }
 }

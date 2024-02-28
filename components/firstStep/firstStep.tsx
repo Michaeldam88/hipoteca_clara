@@ -1,12 +1,12 @@
-import Spacer from "@/ui/spacer/spacer";
-import Text from "@/ui/text/text";
-import RadioButton from "@/ui/radioButton/radioButton";
-import SelectModal from "@/ui/selectModal/selectModal";
-import Button from "@/ui/button/button";
-import data from "../../data/rates.json";
+import Spacer from '@/ui/spacer/spacer';
+import Text from '@/ui/text/text';
+import RadioButton from '@/ui/radioButton/radioButton';
+import SelectModal from '@/ui/selectModal/selectModal';
+import Button from '@/ui/button/button';
+import data from '../../data/rates.json';
 
-import { useStepStore } from "@/store/zustand";
-import { FormSteps } from "@/app/types";
+import { useStepStore } from '@/store/zustand';
+import { FormSteps } from '@/app/types';
 
 const FirstStep = ({
   dataCheck,
@@ -23,13 +23,13 @@ const FirstStep = ({
   } = useStepStore();
 
   const isPricedRadioOptions = [
-    { id: 1001, label: "Si" },
-    { id: 1002, label: "No" },
+    { id: 1001, label: 'Si' },
+    { id: 1002, label: 'No' },
   ];
 
   const isNewRadioOptions = [
-    { id: 1003, label: "Si" },
-    { id: 1004, label: "No" },
+    { id: 1003, label: 'Si' },
+    { id: 1004, label: 'No' },
   ];
 
   const getIsPricedRadioOption = (value: string) => {
@@ -41,7 +41,7 @@ const FirstStep = ({
   };
 
   const provinces =
-    data["autonomous-region"]?.map((element) => {
+    data['autonomous-region']?.map((element) => {
       return {
         id: element.id,
         value: element.name,
@@ -54,40 +54,40 @@ const FirstStep = ({
 
   return (
     <div>
-      <Text preset="small" text="¿La vivienda es nueva?" color="subtle" />
-      <Spacer size="medium" />
+      <Text preset='small' text='¿La vivienda es nueva?' color='subtle' />
+      <Spacer size='medium' />
       <RadioButton
-        name="is-new"
+        name='is-new'
         options={isNewRadioOptions}
         selectedOption={isNewRadioOption}
         setOption={getIsNewRadioOption}
       />
-      <Spacer size="medium" />
-      <Text preset="small" text="¿La vivienda está tasada?" color="subtle" />
-      <Spacer size="medium" />
+      <Spacer size='medium' />
+      <Text preset='small' text='¿La vivienda está tasada?' color='subtle' />
+      <Spacer size='medium' />
       <RadioButton
-        name="is-priced"
+        name='is-priced'
         options={isPricedRadioOptions}
         selectedOption={isPricedRadioOption}
         setOption={getIsPricedRadioOption}
       />
-      <Spacer size="medium" />
+      <Spacer size='medium' />
 
       <SelectModal
         options={provinces}
         setOption={getProvince}
-        selectName="¿Donde esta la casa?"
-        initialButtonText={province ? province : "Seleccionar"}
-        modalHeader="Selecciona una comunidad"
+        selectName='¿Donde esta la casa?'
+        initialButtonText={province ? province : 'Seleccionar'}
+        modalHeader='Selecciona una comunidad'
       />
-      <Spacer size="enormous" />
-      <Spacer size="medium" />
+      <Spacer size='enormous' />
+      <Spacer size='medium' />
 
-      <div className="form-button">
+      <div className='button-on-bottom'>
         <Button
-          text="Continuar"
-          preset="primary"
-          size="medium"
+          text='Continuar'
+          preset='primary'
+          size='medium'
           onClick={() => dataCheck(FormSteps.PRICE)}
         />
       </div>

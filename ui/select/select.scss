@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 .select-label {
   display: flex;
@@ -9,7 +9,7 @@
 .select-container {
   appearance: none;
   margin-top: 10px;
-  height: 56px;
+  height: $form-height;
   width: 100%;
   border: 1px solid $color-primary-350;
   border-radius: $radius-small;

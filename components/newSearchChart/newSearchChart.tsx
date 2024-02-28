@@ -1,41 +1,43 @@
-"use client";
+'use client';
 
-import { useStepStore } from "@/store/zustand";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useStepStore } from '@/store/zustand';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 const NewSearchChart = () => {
   const { reset } = useStepStore();
   const router = useRouter();
 
   return (
-    <div className="data-container">
-      <ul className="newSearch-listContainer">
+    <div className='data-container'>
+      <ul className='newSearch-listContainer'>
         <li
-          className="newSearch-listElement newSearch-listElement--first"
+          className='newSearch-listElement newSearch-listElement--first'
           onClick={() => {
-            router.push("/form");
+            router.push('/form');
             reset();
           }}
         >
           <p>Nuevo cálculo</p>
           <Image
-            src="/assets/newSearch.png"
-            alt="Nuevo cálculo Logo"
-            height="30"
-            width="30"
-          ></Image>
+            src='/assets/newSearch.png'
+            alt='Nuevo cálculo Logo'
+            height='30'
+            width='30'
+            unoptimized
+          />
         </li>
         <li
-          className="newSearch-listElement"
-          onClick={() => router.push("/form")}
+          className='newSearch-listElement'
+          onClick={() => router.push('/form')}
         >
           <p>Editar datos</p>
           <Image
-            src="/assets/editSearch.png"
-            alt="Editar datos Logo"
-            height="24"
-            width="24"
-          ></Image>
+            src='/assets/editSearch.png'
+            alt='Editar datos Logo'
+            height='24'
+            width='24'
+            unoptimized
+          />
         </li>
         {/* <li className="newSearch-listElement">
           <p>Guardar</p>

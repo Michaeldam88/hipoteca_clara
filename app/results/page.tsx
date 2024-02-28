@@ -22,12 +22,10 @@ export default function Results() {
       <Spacer size='large' />
       <MortgageChart />
       <Spacer size='xhuge' />
-
       <Text preset='headline4' text='Gastos no financiables' />
       <Spacer size='large' />
       <ExpensesChart />
       <Spacer size='xhuge' />
-
       <Text preset='headline4' text='Resumen' />
       <Spacer size='large' />
       <ResumeChart />

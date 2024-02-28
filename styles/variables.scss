@@ -44,9 +44,9 @@ $color-neutral-950: rgb(255, 255, 255);
 
 $text-color: #ffffff;
 
-//$color-primary-0: #FFFFFF;
+$color-primary-0: #ffffff;
 $color-primary-25: #f8fcfc;
-//$color-primary-50: #DDEEEF;
+$color-primary-50: #ddeeef;
 $color-primary-75: #87a1a3;
 $color-primary-100: #4f7476;
 $color-primary-125: #9dbfce;
@@ -56,13 +56,13 @@ $color-primary-200: #081318;
 $color-primary-225: #32636d;
 $color-primary-250: #87a1a386;
 $color-primary-275: #f3b14e;
-$color-primary-300: #DAEAEB;
+$color-primary-300: #daeaeb;
 //$color-primary-325: #DBEEF8;
 $color-primary-350: #e0e0e0;
 //$color-primary-375: #190422;
 //$color-primary-400: #060108;
 
-$color-warning: #CD463E;
+$color-warning: #cd463e;
 
 $bk-tablet-sm: 576px;
 $bk-tablet: 768px;
@@ -78,6 +78,10 @@ $radius-large: 12px;
 $app-border-radius: 8px;
 
 // Form and button heights
-$form-height-small: 44px;
-$form-height-medium: 48px;
-$form-height-big: 56px;
+$form-height: 56px;
+
+$max-content-width: 760px;
+$app-sides-padding: 28px;
+
+$navbar-height: 68px;
+$navbar-height-desktop: 78px;

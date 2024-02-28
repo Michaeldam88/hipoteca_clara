@@ -1,21 +1,32 @@
-import { ReactNode } from "react";
-import "./popUp.scss";
+import { ReactNode } from 'react';
+import './popUp.scss';
+import Button from '../button/button';
 
-type ButtonTypePreset = "primary" | "primary-ghost" | "warning";
+type ButtonTypePreset = 'white' | 'primary' | 'primary-ghost' | 'warning';
 
 const PopUp = ({
+  title,
   text,
-  preset = "primary",
+  preset = 'white',
   handleClose,
 }: {
+  title?: string | ReactNode;
   text: ReactNode;
   preset?: ButtonTypePreset;
   handleClose: () => void;
 }) => {
   return (
-    <div className="popUp">
-      <div className="popUp__backdrop" onClick={() => handleClose()}></div>
-      <div className={`popUp__wrapper popUp--${preset}`}>{text}</div>
+    <div className='pop-up'>
+      <div className='pop-up__backdrop' onClick={handleClose}></div>
+      <div className={`pop-up__wrapper pop-up--${preset}`}>
+        <div className='pop-up__wrapper__content'>
+          {title ? <div className='pop-up__wrapper__title'>{title}</div> : null}
+          <div className='pop-up__wrapper__text'>{text}</div>
+        </div>
+        <div className='pop-up__wrapper__footer'>
+          <Button text='Ok!' preset='primary' onClick={handleClose} />
+        </div>
+      </div>
     </div>
   );
 };
