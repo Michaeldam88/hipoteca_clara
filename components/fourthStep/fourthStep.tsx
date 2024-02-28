@@ -2,7 +2,7 @@ import { useStepStore } from "@/store/zustand";
 import Input from "@/ui/customInput/input";
 import RangeInput from "@/ui/rangeInput/rangeInput";
 import Spacer from "@/ui/spacer/spacer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Text from "@/ui/text/text";
 import Button from "@/ui/button/button";
 import { FormSteps } from "@/app/types";
@@ -23,9 +23,17 @@ const FourthStep = ({
     fixedTae,
     setVariableTin,
     variableTin,
-    setVariableTae,
-    variableTae,
   } = useStepStore();
+
+  useEffect(() => {
+    if (mortgageOption === "Variable") {
+      setYearsFixedMortgage(1);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mortgageOption]);
+  
+
+  
 
   return (
     <div>
@@ -63,7 +71,7 @@ const FourthStep = ({
         setValue={setFixedTin}
         value={fixedTin}
         right="%"
-        decimals={1}
+        decimals={2}
       />
 
       <Spacer size="medium" />
@@ -74,7 +82,7 @@ const FourthStep = ({
         setValue={setFixedTae}
         value={fixedTae}
         right="%"
-        decimals={1}
+        decimals={2}
       />
 
       <Spacer size="large" />
@@ -90,18 +98,7 @@ const FourthStep = ({
             setValue={setVariableTin}
             value={variableTin}
             right="% + Euribor"
-            decimals={1}
-          />
-
-          <Spacer size="medium" />
-
-          <Input
-            type="number"
-            label="TAE"
-            setValue={setVariableTae}
-            value={variableTae}
-            right="% + Euribor"
-            decimals={1}
+            decimals={2}
           />
         </>
       )}
