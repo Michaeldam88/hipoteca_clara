@@ -154,7 +154,7 @@ const MortgageChart = ({}: {}) => {
     <div className="data-container">
       <Spacer size="huge" />
       <DonutsChart
-        data={variableMortgageData}
+        data={mortgageData}
         width={180}
         strokeColor="#fff"
         innerRadius={0.65}

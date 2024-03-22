@@ -1,21 +1,18 @@
-'use client';
+"use client";
 
-import Stepper from '@/ui/stepper/stepper';
-import './form.scss';
-import { useEffect, useState } from 'react';
-import Spacer from '@/ui/spacer/spacer';
-import PopUp from '@/ui/popUp/popUp';
-import { useStepStore } from '@/store/zustand';
-import FirstStep from '@/components/firstStep/firstStep';
-import SecondStep from '@/components/secondStep/secondStep';
-import ThirdStep from '@/components/thirdStep/thirdStep';
-import FourthStep from '@/components/fourthStep/fourthStep';
-import { FormSteps } from '../types';
-import { useRouter } from 'next/navigation';
-import { initializeFromSessionStorage } from '@/store/zustand';
-import Button from '@/ui/button/button';
-import Text from '@/ui/text/text';
-import { ArrowLeft } from '@/ui/icons';
+import Stepper from "@/ui/stepper/stepper";
+import "./form.scss";
+import { useEffect, useState } from "react";
+import Spacer from "@/ui/spacer/spacer";
+import PopUp from "@/ui/popUp/popUp";
+import { useStepStore, initializeFromSessionStorage } from "@/store/zustand";
+import FirstStep from "@/components/firstStep/firstStep";
+import SecondStep from "@/components/secondStep/secondStep";
+import ThirdStep from "@/components/thirdStep/thirdStep";
+import FourthStep from "@/components/fourthStep/fourthStep";
+import { FormSteps } from "../types";
+import { useRouter } from "next/navigation";
+import { ArrowLeft } from "@/ui/icons";
 
 export default function Form() {
   const {
@@ -30,7 +27,7 @@ export default function Form() {
     fixedTae,
     variableTin,
   } = useStepStore();
-  const [popUp, setPopUp] = useState('');
+  const [popUp, setPopUp] = useState("");
 
   interface StepItem<T> {
     title: string;
@@ -44,19 +41,19 @@ export default function Form() {
   const steps: StepItem<FormSteps>[] = [
     {
       id: FormSteps.PROVINCE,
-      title: 'Tasación y provincia',
+      title: "Tasación y provincia",
     },
     {
       id: FormSteps.PRICE,
-      title: 'Precio y financiación',
+      title: "Precio y financiación",
     },
     {
       id: FormSteps.MORTGAGE_TYPE,
-      title: 'Tipo de hipoteca',
+      title: "Tipo de hipoteca",
     },
     {
       id: FormSteps.TINTAE,
-      title: 'TIN y TAE',
+      title: "TIN y TAE",
     },
   ];
 
@@ -64,71 +61,71 @@ export default function Form() {
     //checks first step
 
     if (step === FormSteps.PROVINCE && !isNewRadioOption) {
-      setPopUp('Por favor selecciona si la vivienda es nueva.');
+      setPopUp("Por favor selecciona si la vivienda es nueva.");
       return;
     }
 
     if (step === FormSteps.PROVINCE && !isPricedRadioOption) {
-      setPopUp('Por favor seleccione si la vivienda está tasada.');
+      setPopUp("Por favor seleccione si la vivienda está tasada.");
       return;
     }
 
     if (step === FormSteps.PROVINCE && !province) {
-      setPopUp('Por favor seleccione una comunidad.');
+      setPopUp("Por favor seleccione una comunidad.");
       return;
     }
 
     //checks second step
     if (step === FormSteps.PRICE && !housePrice) {
-      setPopUp('Por favor indique el precio de la vivienda.');
+      setPopUp("Por favor indique el precio de la vivienda.");
       return;
     }
 
     if (
       step === FormSteps.PRICE &&
-      isPricedRadioOption === 'Si' &&
+      isPricedRadioOption === "Si" &&
       !appraisalPrice
     ) {
-      setPopUp('Por favor indique el precio de tasación de la vivienda.');
+      setPopUp("Por favor indique el precio de tasación de la vivienda.");
       return;
     }
 
     if (step === FormSteps.PRICE && !amountFinanced) {
-      setPopUp('Por favor indique el importe a financiar.');
+      setPopUp("Por favor indique el importe a financiar.");
       return;
     }
 
     //checks third step
 
     if (step === FormSteps.MORTGAGE_TYPE && !mortgageOption) {
-      setPopUp('Por favor indique el tipo de financiación.');
+      setPopUp("Por favor indique el tipo de financiación.");
       return;
     }
 
     //checks fourth step
 
     if (step === FormSteps.TINTAE && !fixedTin) {
-      setPopUp('Por favor indique el TIN fijo.');
+      setPopUp("Por favor indique el TIN fijo.");
       return;
     }
 
     if (step === FormSteps.TINTAE && !fixedTae) {
-      setPopUp('Por favor indique el TAE fijo.');
+      setPopUp("Por favor indique el TAE fijo.");
       return;
     }
 
     if (
       step === FormSteps.TINTAE &&
-      mortgageOption !== 'Fija' &&
+      mortgageOption !== "Fija" &&
       !variableTin
     ) {
-      setPopUp('Por favor indique el TIN variable.');
+      setPopUp("Por favor indique el TIN variable.");
       return;
     }
 
     setStep(nextStep);
     if (step === FormSteps.TINTAE) {
-      router.push('/results');
+      router.push("/results");
     }
   };
 
@@ -138,36 +135,41 @@ export default function Form() {
   };
 
   useEffect(() => {
-    const data = initializeFromSessionStorage();
-    if (data) useStepStore.setState(data);
+    useStepStore.setState(initializeFromSessionStorage());
   }, []);
 
   return (
-    <div className='form-container'>
+    <div className="form-container">
       {step !== FormSteps.PROVINCE && (
         <>
-          <div className='form-container__go-back' onClick={previousStep}>
+          <div className="form-container__go-back" onClick={previousStep}>
             <ArrowLeft />
           </div>
         </>
       )}
       <Stepper<FormSteps> steps={steps} activeStep={step} />
-      <Spacer size='huge' />
+      <Spacer size="huge" />
       {popUp && (
-        <PopUp handleClose={() => setPopUp('')} text={popUp} title='Upps!' />
+        <PopUp handleClose={() => setPopUp("")} text={popUp} title="Upps!" />
       )}
 
       {/* first Step ---------------------- */}
       {step === FormSteps.PROVINCE && <FirstStep dataCheck={dataCheck} />}
 
       {/* Second Step ---------------------- */}
-      {step === FormSteps.PRICE && <SecondStep dataCheck={dataCheck} />}
+      {step === FormSteps.PRICE && (
+        <SecondStep setPopUp={setPopUp} dataCheck={dataCheck} />
+      )}
 
       {/* Third Step ---------------------- */}
-      {step === FormSteps.MORTGAGE_TYPE && <ThirdStep dataCheck={dataCheck} />}
+      {step === FormSteps.MORTGAGE_TYPE && (
+        <ThirdStep dataCheck={dataCheck} />
+      )}
 
       {/* Fourth Step ---------------------- */}
-      {step === FormSteps.TINTAE && <FourthStep dataCheck={dataCheck} />}
+      {step === FormSteps.TINTAE && (
+        <FourthStep setPopUp={setPopUp} dataCheck={dataCheck} />
+      )}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-@import '../styles/variables.scss';
+@import "../styles/variables.scss";
 
 .landing-container {
   width: 100%;
@@ -10,8 +10,11 @@
   padding-bottom: 56px;
 
   &__logo {
-    width: 245px;
+    width: 200px;
     margin: 20px 0px 60px;
+    @media (min-width: $bk-tablet) {
+      width: 245px;
+    }
   }
 }
 

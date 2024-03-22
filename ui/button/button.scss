@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 button {
   padding: 6px 15px;
@@ -16,6 +16,7 @@ button.--link {
   align-items: center;
   justify-content: center;
   border: solid 1px;
+  text-decoration: none;
   &[disabled] {
     cursor: not-allowed;
   }

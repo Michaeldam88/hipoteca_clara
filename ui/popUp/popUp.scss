@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .pop-up {
   height: 100dvh;
@@ -28,7 +28,9 @@
     z-index: 1;
     width: 100%;
     aspect-ratio: 16/8;
+    min-width: 320px;
     max-width: 360px;
+    margin: 0 16px;
 
     &__title {
       font-weight: 600;

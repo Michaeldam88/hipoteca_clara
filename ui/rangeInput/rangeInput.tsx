@@ -7,7 +7,7 @@ const RangeInput = ({
   name,
   value,
   setValue,
-  setPercentage,
+  getPercentage,
   max = 100,
   min = 0,
   step = 1,
@@ -25,7 +25,7 @@ const RangeInput = ({
   name: string;
   value: number;
   setValue: (value: number) => void;
-  setPercentage?: (value: number) => void;
+  getPercentage?: (value: number) => void;
   max?: number;
   min?: number;
   step?: number;
@@ -45,11 +45,12 @@ const RangeInput = ({
   if (!percentage) percentage = 0;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.target.focus();
     setValue(+event.target.value);
   };
 
   useEffect(() => {
-    if (setPercentage) setPercentage(percentage);
+    if (getPercentage) getPercentage(percentage);
 
     // set the width of the slider bar
     const rangeInputCss: HTMLElement = document?.querySelector(
@@ -85,7 +86,7 @@ const RangeInput = ({
 
   return (
     <div className="range">
-      <label>
+      <label htmlFor={name}>
         <div className="range__top">
           {labelText && <p className="range__label-text">{labelText}</p>}
           {topEndFormattedValue && (
@@ -106,6 +107,7 @@ const RangeInput = ({
         <div className={"range__middle-container"}>
           <div className={"range__middle-left"}>
             <input
+              id={name}
               onChange={handleChange}
               className={`range__input range__input-${name} ${
                 limitColor &&

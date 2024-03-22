@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
 type StepsStore = {
   isPricedRadioOption: string;
@@ -47,71 +47,71 @@ type StepsStore = {
 };
 
 export const useStepStore = create<StepsStore>((set) => {
-  const initialState: Omit<StepsStore, 'reset'> = {
-    isPricedRadioOption: '',
+  const initialState: Omit<StepsStore, "reset"> = {
+    isPricedRadioOption: "",
     setIsPricedRadioOption: (value) => {
       set({ isPricedRadioOption: value });
-      saveToSessionStorage('isPricedRadioOption', value);
+      saveToSessionStorage("isPricedRadioOption", value);
     },
-    isNewRadioOption: '',
+    isNewRadioOption: "",
     setIsNewRadioOption: (value) => {
       set({ isNewRadioOption: value });
-      saveToSessionStorage('isNewRadioOption', value);
+      saveToSessionStorage("isNewRadioOption", value);
     },
-    province: '',
+    province: "",
     setProvince: (value) => {
       set({ province: value });
-      saveToSessionStorage('province', value);
+      saveToSessionStorage("province", value);
     },
-    housePrice: '',
+    housePrice: "",
     setHousePrice: (value) => {
       set({ housePrice: value });
-      saveToSessionStorage('housePrice', value);
+      saveToSessionStorage("housePrice", value);
     },
-    appraisalPrice: '',
+    appraisalPrice: "",
     setAppraisalPrice: (value) => {
       set({ appraisalPrice: value });
-      saveToSessionStorage('appraisalPrice', value);
+      saveToSessionStorage("appraisalPrice", value);
     },
     amountFinanced: 0,
     setAmountFinanced: (value) => {
       set({ amountFinanced: value });
-      saveToSessionStorage('amountFinanced', value);
+      saveToSessionStorage("amountFinanced", value);
     },
     yearsMortgage: 25,
     setYearsMortgage: (value) => {
       set({ yearsMortgage: value });
-      saveToSessionStorage('yearsMortgage', value);
+      saveToSessionStorage("yearsMortgage", value);
     },
-    mortgageOption: '',
+    mortgageOption: "",
     setMortgageOption: (value) => {
       set({ mortgageOption: value });
-      saveToSessionStorage('mortgageOption', value);
+      saveToSessionStorage("mortgageOption", value);
     },
-    fixedTin: '',
+    fixedTin: "",
     setFixedTin: (value) => {
       set({ fixedTin: value });
-      saveToSessionStorage('fixedTin', value);
+      saveToSessionStorage("fixedTin", value);
     },
-    fixedTae: '',
+    fixedTae: "",
     setFixedTae: (value) => {
       set({ fixedTae: value });
-      saveToSessionStorage('fixedTae', value);
+      saveToSessionStorage("fixedTae", value);
     },
-    variableTin: '',
+    variableTin: "",
     setVariableTin: (value) => {
       set({ variableTin: value });
-      saveToSessionStorage('variableTin', value);
+      saveToSessionStorage("variableTin", value);
     },
-    variableTae: '',
+    variableTae: "",
     setVariableTae: (value) => {
       set({ variableTae: value });
-      saveToSessionStorage('variableTae', value);
+      saveToSessionStorage("variableTae", value);
     },
     yearsFixedMortgage: 1,
     setYearsFixedMortgage: (value) => {
       set({ yearsFixedMortgage: value });
-      saveToSessionStorage('yearsFixedMortgage', value);
+      saveToSessionStorage("yearsFixedMortgage", value);
     },
     mortgageResults: {
       monthlyTinPayment: 0,
@@ -126,7 +126,7 @@ export const useStepStore = create<StepsStore>((set) => {
     totalExpenses: 0,
     setTotalExpenses: (value) => {
       set({ totalExpenses: value });
-      saveToSessionStorage('totalExpenses', value);
+      saveToSessionStorage("totalExpenses", value);
     },
   };
 
@@ -143,13 +143,12 @@ const saveToSessionStorage = (key: string, value: any) => {
   try {
     sessionStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
-    console.error('Error saving to session storage:', error);
+    console.error("Error saving to session storage:", error);
   }
 };
 
 export const initializeFromSessionStorage = () => {
-  let savedData: { [key: string]: string };
-
+  const savedData: { [key: string]: string } = {};
   try {
     const keys: string[] = Object.keys(sessionStorage);
     keys.forEach((key) => {
@@ -157,12 +156,9 @@ export const initializeFromSessionStorage = () => {
       if (storedValue) {
         savedData[key] = JSON.parse(storedValue);
       }
-      return savedData;
     });
   } catch (error) {
-    console.error('Error loading from session storage:', error);
-    return {};
+    console.error("Error loading from session storage:", error);
   }
-
-  return null;
+  return savedData;
 };

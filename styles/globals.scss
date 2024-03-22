@@ -1,5 +1,5 @@
-@import './reset.scss';
-@import './variables.scss';
+@import "./reset.scss";
+@import "./variables.scss";
 
 *,
 *:before,
@@ -86,10 +86,11 @@ p {
 
 .button-on-bottom {
   position: fixed;
-  width: calc(100% - $app-sides-padding * 2);
-  bottom: 16px;
-  left: auto;
-  right: auto;
+  width: 100%;
+  padding: $app-sides-padding;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background: rgb(255, 255, 255);
   background: linear-gradient(
     180deg,
@@ -97,5 +98,11 @@ p {
     rgba(25, 58, 72, 1) 50%
   );
   z-index: 3;
-  max-width: calc($max-content-width - $app-sides-padding * 2);
+
+  @media (min-width: $bk-tablet) {
+    left: auto;
+    right: auto;
+    max-width: calc($max-content-width - $app-sides-padding * 2);
+    padding: $app-sides-padding 0;
+  }
 }
