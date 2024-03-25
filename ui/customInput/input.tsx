@@ -43,6 +43,7 @@ const Input = ({
         setValueError("max");
       } else {
         setValue(value);
+        setValueError("");
       }
 
       setFormattedOutput(inputValue);
@@ -68,7 +69,6 @@ const Input = ({
         const numericValue = parseFloat(
           value.replace(/\./g, "").replace(",", ".")
         );
-
         const formattedNumber = new Intl.NumberFormat("de-DE", {
           style: "decimal",
         }).format(numericValue);
@@ -81,6 +81,7 @@ const Input = ({
           setValueError("max");
         } else {
           setValue(numericValue.toString());
+          setValueError("");
         }
 
         setFormattedOutput(formattedNumber);

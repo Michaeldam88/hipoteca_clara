@@ -61,6 +61,7 @@ const SecondStep = ({
         moneyFormat={true}
         min={10000}
         setError={setError}
+        decimals={2}
       />
 
       {isPricedRadioOption === "Si" && (
