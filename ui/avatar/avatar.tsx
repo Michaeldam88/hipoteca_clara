@@ -1,20 +1,20 @@
-import Image from "next/image";
-import "./avatar.scss";
+import Image from 'next/image';
+import './avatar.scss';
 
 interface ImageProps {
   path: string;
   width?: number;
   height?: number;
   alt?: string;
-  roundness?: "none" | "small" | "medium" | "large" | "full";
+  roundness?: 'none' | 'small' | 'medium' | 'large' | 'full';
 }
 
 const Avatar = ({
   path,
   width = 100,
   height = 100,
-  alt = "imagen",
-  roundness = "none",
+  alt = 'imagen',
+  roundness = 'none',
 }: ImageProps) => {
   return (
     <Image
@@ -24,9 +24,11 @@ const Avatar = ({
       height={height}
       className={`avatar --roundness-${roundness}`}
       style={{
-        maxWidth: "100%",
-        height: "auto"
-      }}></Image>
+        maxWidth: '100%',
+        height: 'auto',
+      }}
+      unoptimized
+    />
   );
 };
 

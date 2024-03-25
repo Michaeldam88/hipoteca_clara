@@ -3,6 +3,7 @@
 button {
   padding: 6px 15px;
   border-radius: $radius-small;
+  transition: all 0.3s;
 }
 
 button.--primary,
@@ -15,8 +16,13 @@ button.--link {
   align-items: center;
   justify-content: center;
   border: solid 1px;
+  text-decoration: none;
   &[disabled] {
     cursor: not-allowed;
+  }
+  &.--size-small {
+    height: 36px;
+    font-size: 1rem;
   }
   &.--size-normal {
     height: 42px;
@@ -24,7 +30,7 @@ button.--link {
   }
 
   &.--size-medium {
-    height: 56px;
+    height: $form-height;
     font-size: 1.125rem;
   }
 
@@ -74,4 +80,8 @@ button.--primary-ghost {
   background-color: transparent;
   border: 1px solid $color-primary-350;
   color: $text-color;
+}
+
+.--auto-width {
+  width: fit-content !important;
 }

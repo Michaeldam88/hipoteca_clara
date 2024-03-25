@@ -37,7 +37,7 @@ const ThirdStep = ({
         setOption={getMortgageType}
       />
 
-      <div className='form-button'>
+      <div className='button-on-bottom'>
         <Button
           text='Continuar'
           preset='primary'

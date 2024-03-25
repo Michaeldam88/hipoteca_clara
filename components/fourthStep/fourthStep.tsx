@@ -2,15 +2,17 @@ import { useStepStore } from "@/store/zustand";
 import Input from "@/ui/customInput/input";
 import RangeInput from "@/ui/rangeInput/rangeInput";
 import Spacer from "@/ui/spacer/spacer";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Text from "@/ui/text/text";
 import Button from "@/ui/button/button";
 import { FormSteps } from "@/app/types";
 
 const FourthStep = ({
   dataCheck,
+  setPopUp,
 }: {
   dataCheck: (nextStep: FormSteps) => void;
+  setPopUp: Dispatch<SetStateAction<string>>;
 }) => {
   const {
     mortgageOption,
@@ -25,15 +27,16 @@ const FourthStep = ({
     variableTin,
   } = useStepStore();
 
+  const setError = (error: string) => {
+    setPopUp(error);
+  };
+
   useEffect(() => {
     if (mortgageOption === "Variable") {
       setYearsFixedMortgage(1);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mortgageOption]);
-  
-
-  
 
   return (
     <div>
@@ -72,6 +75,9 @@ const FourthStep = ({
         value={fixedTin}
         right="%"
         decimals={2}
+        min={0.1}
+        max={10}
+        setError={setError}
       />
 
       <Spacer size="medium" />
@@ -83,6 +89,9 @@ const FourthStep = ({
         value={fixedTae}
         right="%"
         decimals={2}
+        min={0.1}
+        max={10}
+        setError={setError}
       />
 
       <Spacer size="large" />
@@ -99,11 +108,15 @@ const FourthStep = ({
             value={variableTin}
             right="% + Euribor"
             decimals={2}
+            min={0.1}
+            max={10}
+            setError={setError}
           />
         </>
       )}
       <Spacer size="enormous" />
-      <div className="form-button">
+      <Spacer size="large" />
+      <div className="button-on-bottom">
         <Button
           text="Continuar"
           preset="primary"

@@ -1,17 +1,19 @@
-import "./footer.scss";
-import Image from "next/image";
+import './footer.scss';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className='footer'>
       <Image
-        src="/assets/publi.png"
-        alt="Publicidad"
+        src='/assets/publi.png'
+        alt='Publicidad'
         fill
-        sizes="100vw"
+        sizes='100vw'
         style={{
-          objectPosition: "center"
-        }} />
+          objectPosition: 'center',
+        }}
+        unoptimized
+      />
     </footer>
   );
 };

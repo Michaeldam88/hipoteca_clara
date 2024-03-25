@@ -22,8 +22,17 @@ body {
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding: 88px 16px 16px;
-  height: 100%;
+  padding-left: $app-sides-padding;
+  padding-right: $app-sides-padding;
+  padding-top: 28px;
+  height: calc(100% - $navbar-height);
+  max-width: $max-content-width;
+  margin: 0 auto;
+
+  @media (min-width: $bk-desktop) {
+    padding-top: 64px;
+    height: calc(100% - $navbar-height-desktop);
+  }
 }
 
 h1,
@@ -69,4 +78,31 @@ h6 {
 
 .--align-right {
   text-align: right;
+}
+
+p {
+  max-width: 780px;
+}
+
+.button-on-bottom {
+  position: fixed;
+  width: 100%;
+  padding: $app-sides-padding;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(25, 58, 72, 0.139) 0%,
+    rgba(25, 58, 72, 1) 50%
+  );
+  z-index: 3;
+
+  @media (min-width: $bk-tablet) {
+    left: auto;
+    right: auto;
+    max-width: calc($max-content-width - $app-sides-padding * 2);
+    padding: $app-sides-padding 0;
+  }
 }

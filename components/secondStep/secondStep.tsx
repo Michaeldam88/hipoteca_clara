@@ -4,12 +4,14 @@ import Button from "@/ui/button/button";
 import Input from "@/ui/customInput/input";
 import RangeInput from "@/ui/rangeInput/rangeInput";
 import Spacer from "@/ui/spacer/spacer";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 const SecondStep = ({
   dataCheck,
+  setPopUp,
 }: {
   dataCheck: (nextStep: FormSteps) => void;
+  setPopUp: Dispatch<SetStateAction<string>>;
 }) => {
   const {
     isPricedRadioOption,
@@ -29,6 +31,24 @@ const SecondStep = ({
     setMortgagePercentage(Math.round(value));
   };
 
+  const setError = (error: string) => {
+    setPopUp(error);
+  };
+
+  useEffect(() => {
+    const newMaxAmount =
+      appraisalPrice &&
+      +appraisalPrice < +housePrice &&
+      isPricedRadioOption === "Si"
+        ? +appraisalPrice
+        : +housePrice;
+    const amountPercentage = (newMaxAmount * mortgagePercentage) / 100;
+
+    if (amountPercentage) setAmountFinanced(amountPercentage);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [housePrice, appraisalPrice]);
+
   return (
     <div>
       <Spacer size="small" />
@@ -39,7 +59,11 @@ const SecondStep = ({
         value={housePrice}
         right="€"
         moneyFormat={true}
+        min={10000}
+        setError={setError}
+        decimals={2}
       />
+
       {isPricedRadioOption === "Si" && (
         <>
           <Spacer size="huge" />
@@ -50,6 +74,8 @@ const SecondStep = ({
             value={appraisalPrice}
             right="€"
             moneyFormat={true}
+            setError={setError}
+            min={10000}
           />
         </>
       )}
@@ -66,14 +92,14 @@ const SecondStep = ({
             ? +appraisalPrice
             : +housePrice
         }
-        step={1}
+        step={100}
         labelText="Importe a financiar"
         topEndFormattedValue={new Intl.NumberFormat("es-ES", {
           maximumFractionDigits: 0,
           style: "currency",
           currency: "EUR",
         }).format(amountFinanced)}
-        setPercentage={getMortgagePercentage}
+        getPercentage={getMortgagePercentage}
         topFormattedValue={`${mortgagePercentage} %`}
         limitColor={true}
         limitColorMin={20}
@@ -92,8 +118,9 @@ const SecondStep = ({
         bottomStartFormattedValue={9}
         bottomEndFormattedValue={40}
       />
-      <Spacer size="giant" />
-      <div className="form-button">
+      <Spacer size="enormous" />
+      <Spacer size="small" />
+      <div className="button-on-bottom">
         <Button
           text="Continuar"
           preset="primary"

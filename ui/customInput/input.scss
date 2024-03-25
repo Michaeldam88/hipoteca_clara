@@ -1,7 +1,7 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 /* remove Firefox number spinner */
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -11,7 +11,7 @@ input[type="number"] {
   background-color: transparent;
   border-radius: $radius-small;
   color: $text-color;
-  height: 56px;
+  height: $form-height;
   font-size: 1rem;
   display: flex;
   align-items: center;

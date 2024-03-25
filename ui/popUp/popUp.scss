@@ -1,6 +1,6 @@
 @import "../../styles/variables.scss";
 
-.popUp {
+.pop-up {
   height: 100dvh;
   display: flex;
   align-items: center;
@@ -11,7 +11,7 @@
   width: 100%;
   z-index: 100;
   &__backdrop {
-    background-color: black;
+    background-color: $color-primary-200;
     opacity: 0.4;
     position: absolute;
     height: 100%;
@@ -23,16 +23,43 @@
 
   &__wrapper {
     display: flex;
-    align-items: center;
-    text-align: center;
-    width: 80%;
-    border-radius: 16px;
+    flex-direction: column;
+    border-radius: 8px;
     z-index: 1;
-    padding: 15px;
+    width: 100%;
+    aspect-ratio: 16/8;
+    min-width: 320px;
+    max-width: 360px;
+    margin: 0 16px;
+
+    &__title {
+      font-weight: 600;
+      margin-bottom: 16px;
+      font-size: 18px;
+    }
+    &__content {
+      padding: 16px;
+      text-align: center;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-wrap: pretty;
+      max-width: 80%;
+      margin: 0 auto;
+    }
+    &__footer {
+      padding: 16px;
+    }
   }
   &--primary {
     color: $text-color;
     background-color: $color-primary-175;
+  }
+
+  &--white {
+    color: $color-primary-200;
+    background-color: $color-primary-0;
   }
 
   &--primary-ghost {

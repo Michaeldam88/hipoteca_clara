@@ -51,7 +51,7 @@ const FirstStep = ({
   const getProvince = (value: string) => {
     setProvince(value);
   };
-
+ 
   return (
     <div>
       <Text preset="small" text="¿La vivienda es nueva?" color="subtle" />
@@ -81,9 +81,9 @@ const FirstStep = ({
         modalHeader="Selecciona una comunidad"
       />
       <Spacer size="enormous" />
-      <Spacer size="medium" />
+      <Spacer size="large" />
 
-      <div className="form-button">
+      <div className="button-on-bottom">
         <Button
           text="Continuar"
           preset="primary"

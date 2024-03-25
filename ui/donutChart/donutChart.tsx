@@ -1,22 +1,26 @@
-import * as d3 from "d3";
-import { ReactNode, useEffect, useRef } from "react";
-import "./donutChart.scss";
+import * as d3 from 'd3';
+import { ReactNode, useEffect, useRef } from 'react';
+import './donutChart.scss';
+
+interface DataItem {
+  color: string;
+  firstValue: number;
+  secondValue: string;
+}
 
 const DonutsChart = ({
-  
   width,
   data,
-  type = "full",
+  type = 'full',
   innerRadius = 0,
   padAngle = 0,
   strokeSize = 0,
   strokeColor,
-  innerElem = "",
+  innerElem = '',
 }: {
-  
   width: number;
   data: { color: string; firstValue: number; secondValue: string }[];
-  type?: "full" | "semi";
+  type?: 'full' | 'semi';
   innerRadius?: number;
   padAngle?: number;
   strokeColor?: string;
@@ -24,11 +28,11 @@ const DonutsChart = ({
   innerElem?: ReactNode;
 }) => {
   const color = d3
-    .scaleOrdinal()
+    .scaleOrdinal<string | number>()
     .domain(data.map((d) => d.firstValue.toString()))
     .range(data.map((d) => d.color));
 
-  const height = type === "full" ? width : width / 2;
+  const height = type === 'full' ? width : width / 2;
   const radius = width / 2;
 
   innerRadius = innerRadius > 1 ? 1 : innerRadius;
@@ -40,43 +44,43 @@ const DonutsChart = ({
     const svg = d3.select(svgRef.current);
 
     const pie = d3
-      .pie()
+      .pie<DataItem>()
       .padAngle(padAngle)
-      .startAngle(type === "full" ? 0 : Math.PI)
+      .startAngle(type === 'full' ? 0 : Math.PI)
       .sort((a, b) => a.firstValue - b.firstValue)
       .value((d) => d.firstValue);
 
     svg
-      .append("g")
+      .append('g')
       .selectAll()
       .data(pie(data))
-      .join("path")
+      .join('path')
       .attr(
-        "d",
+        'd',
         d3
-          .arc()
+          .arc<d3.PieArcDatum<DataItem>>()
           .innerRadius(innerRadius * radius)
           .outerRadius(radius)
       )
-      .attr("id", "item")
+      .attr('id', 'item')
       .attr(
-        "transform",
-        `rotate(${type === "full" ? "0" : "90"} 0 0) translate(${
-          type === "full" ? 0 : radius / 2
+        'transform',
+        `rotate(${type === 'full' ? '0' : '90'} 0 0) translate(${
+          type === 'full' ? 0 : radius / 2
         } 0)`
       )
-      .attr("fill", (d) => color(d.data.firstValue))
-      .attr("stroke", strokeColor ? strokeColor : (d) => color(d))
-      .style("stroke-width", `${strokeSize}px`);
+      .attr('fill', (d: any) => color(d.data.firstValue))
+      .attr('stroke', strokeColor ? strokeColor : (d: any) => color(d))
+      .style('stroke-width', `${strokeSize}px`);
   });
 
   return (
-    <div className={"donutChart-container"}>
+    <div className={'donutChart-container'}>
       {innerElem && (
         <div
-          className={"donutChart-info"}
+          className={'donutChart-info'}
           style={{
-            alignItems: type === "full" ? "center" : "end",
+            alignItems: type === 'full' ? 'center' : 'end',
           }}
         >
           {innerElem}
@@ -86,8 +90,8 @@ const DonutsChart = ({
         ref={svgRef}
         width={width}
         height={height}
-        viewBox={[-width / 2, -height / 2, width, height].join(" ")}
-        style={{ maxWidth: "100%", height: "auto" }}
+        viewBox={[-width / 2, -height / 2, width, height].join(' ')}
+        style={{ maxWidth: '100%', height: 'auto' }}
       ></svg>
     </div>
   );

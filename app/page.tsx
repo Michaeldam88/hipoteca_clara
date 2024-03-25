@@ -1,34 +1,30 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
+"use client";
 import "./landing.scss";
+import Image from "next/image";
 import Button from "@/ui/button/button";
 import Text from "@/ui/text/text";
 import Spacer from "@/ui/spacer/spacer";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Landing() {
+  const router = useRouter();
+
   return (
     <div className="landing-container">
-            
-      <Image
+      <img
         src="/assets/landing-logo.png"
+        width="100%"
         alt="Landing Logo"
-        height="136"
-        width="136"
+        className="landing-container__logo"
       />
-
-      <Spacer size="huge" />
-
       <Text preset="headline4" text="Calculadora de hipotecas" />
-
       <Spacer size="huge" />
-
       <Text
         preset="small"
         align="align-center"
-        text="Calcula gratis y rápidamente el costo
-total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y confía en tu futuro. "
+        text="Calcula gratis y rápidamente el costo total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y confía en tu futuro. "
       />
-
       <Spacer size="huge" />
       <div>
         <div className="landing-detail-box">
@@ -36,9 +32,10 @@ total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y conf
             <Image
               src="/assets/money.png"
               alt="Money Logo"
-              height="18"
-              width="18"
-            ></Image>
+              height="32"
+              width="32"
+              unoptimized
+            />
           </div>
           <div className="landing-detail-box__right">
             <Text preset="small" text="Herramienta gratuita" />
@@ -54,9 +51,10 @@ total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y conf
             <Image
               src="/assets/pen.png"
               alt="Money Logo"
-              height="18"
-              width="18"
-            ></Image>
+              height="32"
+              width="32"
+              unoptimized
+            />
           </div>
           <div className="landing-detail-box__right">
             <Text preset="small" text="En poco pasos." />
@@ -72,8 +70,9 @@ total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y conf
             <Image
               src="/assets/sheet.png"
               alt="Money Logo"
-              height="18"
-              width="18"
+              height="32"
+              width="32"
+              unoptimized
             ></Image>
           </div>
           <div className="landing-detail-box__right">
@@ -89,9 +88,14 @@ total, incluyendo hipoteca y gastos asociados. Toma decisiones informadas y conf
 
       <Spacer size="enormous" />
 
-      <Link className="start-link" href="/form">
-        <Button text="Empezar" preset="primary" size="medium" />
-      </Link>
+      <div className="button-on-bottom">
+        <Button
+          onClick={() => router.push("/form")}
+          text="Empezar"
+          preset="primary"
+          size="medium"
+        />
+      </div>
     </div>
   );
 }
