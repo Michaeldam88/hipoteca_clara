@@ -36,6 +36,7 @@ const SecondStep = ({
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const newMaxAmount =
       appraisalPrice &&
       +appraisalPrice < +housePrice &&

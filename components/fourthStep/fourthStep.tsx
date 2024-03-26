@@ -32,6 +32,7 @@ const FourthStep = ({
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (mortgageOption === "Variable") {
       setYearsFixedMortgage(1);
     }

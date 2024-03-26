@@ -136,6 +136,7 @@ export default function Form() {
 
   useEffect(() => {
     useStepStore.setState(initializeFromSessionStorage());
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -162,9 +163,7 @@ export default function Form() {
       )}
 
       {/* Third Step ---------------------- */}
-      {step === FormSteps.MORTGAGE_TYPE && (
-        <ThirdStep dataCheck={dataCheck} />
-      )}
+      {step === FormSteps.MORTGAGE_TYPE && <ThirdStep dataCheck={dataCheck} />}
 
       {/* Fourth Step ---------------------- */}
       {step === FormSteps.TINTAE && (
