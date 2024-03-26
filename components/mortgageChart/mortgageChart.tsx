@@ -17,6 +17,8 @@ const MortgageChart = ({}: {}) => {
     setMortgageResults,
   } = useStepStore();
 
+  const isMobile = window.innerWidth <= 760;
+
   const euribor = 3.648;
 
   function calculateMortgage(
@@ -155,7 +157,7 @@ const MortgageChart = ({}: {}) => {
       <Spacer size="huge" />
       <DonutsChart
         data={mortgageData}
-        width={180}
+        width={isMobile ? 180 : 240}
         strokeColor="#fff"
         innerRadius={0.65}
         strokeSize={2}

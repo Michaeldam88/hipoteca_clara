@@ -14,6 +14,8 @@ const ExpensesChart = ({}: {}) => {
     setTotalExpenses,
   } = useStepStore();
 
+  const isMobile = window.innerWidth <= 760;
+
   const provinceData = data["autonomous-region"]?.find(
     (element) => element.name === province
   );
@@ -71,7 +73,7 @@ const ExpensesChart = ({}: {}) => {
       <Spacer size="huge" />
       <DonutsChart
         data={expensesData}
-        width={180}
+        width={isMobile ? 180 : 240}
         strokeColor="#fff"
         innerRadius={0.65}
         strokeSize={2}
